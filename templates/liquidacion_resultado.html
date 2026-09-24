@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a class="btn-back" href="{{ url_for('pais_home', pais=liq.pais) }}">&larr; {{ t('back') }}</a>
 {% if liq.empleado.es_demo %}
 <div class="demo-banner">{{ t('demo_banner').replace('{pais}', config.name) }}</div>
 {% endif %}
@@ -33,5 +34,5 @@
     <p class="neto-value">{{ config.currency }} {{ '%.2f'|format(liq.resultado.total_liquidacion) }}</p>
 </section>
 
-<p><a href="{{ url_for('pais_home', pais=liq.pais) }}">&larr; {{ t('back') }}</a></p>
+<p><a class="btn-back" href="{{ url_for('pais_home', pais=liq.pais) }}">&larr; {{ t('back') }}</a></p>
 {% endblock %}

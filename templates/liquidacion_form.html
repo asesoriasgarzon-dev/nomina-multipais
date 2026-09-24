@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a>
 <h1>{{ config.name }} — {{ config.nombre_liquidacion }}</h1>
 <div class="warning-box">{{ t('warning_liquidacion') }}</div>
 {% if ejemplo %}
@@ -51,7 +52,7 @@
     </label>
     <button type="submit">{{ t('calcular_liquidacion') }}</button>
 </form>
-<p><a href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
+<p><a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
 
 {% if ejemplo %}
 <script>

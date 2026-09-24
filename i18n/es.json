@@ -155,6 +155,7 @@
   "no_configurado": "No configurado",
   "empleado_demo": "Empleado {pais} Demo",
   "cargar_ejemplo_demo": "Cargar datos de ejemplo (DEMO)",
+  "incluye_ejemplo": "Incluye ejemplo",
   "demo_banner": "DEMO — cálculo realizado con el motor de {pais}",
   "tabla_paises_title": "Países",
   "empleados_col": "Empleados",

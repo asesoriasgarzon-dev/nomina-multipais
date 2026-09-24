@@ -170,10 +170,13 @@ def pais_home(pais):
     except KeyError:
         return redirect(url_for("index"))
     config = entry["config"]
+    engine = entry["engine"]
     if config.es_matriz:
         return render_template("matriz_home.html", config=config, pais=pais)
     return render_template(
-        "pais_home.html", config=config, pais=pais, estado=estado_contexto(pais)
+        "pais_home.html", config=config, pais=pais, estado=estado_contexto(pais),
+        tiene_ejemplo_novedades=bool(engine and engine.EJEMPLO_NOVEDADES),
+        tiene_ejemplo_liquidacion=bool(engine and engine.EJEMPLO_LIQUIDACION),
     )
 
 

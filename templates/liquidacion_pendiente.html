@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a>
 {% set info = estado_info(pais) %}
 <div class="pais-header">
     <span class="pais-header-title">{{ pais_flag(pais) }} {{ config.name }} — {{ config.nombre_liquidacion }}</span>
@@ -22,5 +23,5 @@
         {% endif %}
     </table>
 </div>
-<p><a href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
+<p><a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
 {% endblock %}

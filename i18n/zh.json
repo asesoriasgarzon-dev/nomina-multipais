@@ -155,6 +155,7 @@
   "no_configurado": "未配置",
   "empleado_demo": "{pais} 演示员工",
   "cargar_ejemplo_demo": "加载示例数据（DEMO）",
+  "incluye_ejemplo": "含示例",
   "demo_banner": "演示 — 使用{pais}引擎计算",
   "tabla_paises_title": "国家",
   "empleados_col": "员工",

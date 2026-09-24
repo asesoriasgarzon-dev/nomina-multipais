@@ -155,6 +155,7 @@
   "no_configurado": "未配置",
   "empleado_demo": "{pais} 示範僱員",
   "cargar_ejemplo_demo": "載入範例資料（DEMO）",
+  "incluye_ejemplo": "含範例",
   "demo_banner": "示範 — 使用{pais}引擎計算",
   "tabla_paises_title": "國家",
   "empleados_col": "僱員",

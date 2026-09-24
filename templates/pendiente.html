@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a>
 {% set info = estado_info(pais) %}
 {% set estado = estado_contexto(pais) %}
 <div class="pais-header">
@@ -41,5 +42,5 @@
 </div>
 {% endif %}
 
-<p><a href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
+<p><a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
 {% endblock %}
