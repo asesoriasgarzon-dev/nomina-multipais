@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% set info = estado_info(pais) %}
+<div class="pais-header">
+    <span class="pais-header-title">{{ pais_flag(pais) }} {{ config.name }} — {{ config.nombre_liquidacion }}</span>
+    <dl>
+        <div><dt>{{ t('select_language') }}</dt><dd>{{ idioma_label(config.idioma_default) }}</dd></div>
+        <div><dt>{{ t('moneda_col') }}</dt><dd>{{ config.currency }}</dd></div>
+        <div><dt>{{ t('estado') }}</dt><dd class="status-badge {{ info[0] }}">{{ info[1] }} {{ t(info[2]) }}</dd></div>
+    </dl>
+</div>
+<div class="pending-box">
+    <h2>{{ t('country_pending_title') }}</h2>
+    <p>{{ t('liquidacion_pendiente_body') }}</p>
+    <h3>{{ t('formula_indemnizacion') }}</h3>
+    {% set indem_raw = config.campos_extra.get('indemnizacion_despido') or config.campos_extra.get('indemnizacion_despido_desde_27802') %}
+    {% set base_raw = config.campos_extra.get('base_indemnizacion') %}
+    <table>
+        <tr><td>{{ t('indemnizacion') }}</td><td>{{ indemnizacion_localizada(pais, indem_raw) if indem_raw else t('no_configurado') }}</td></tr>
+        {% if base_raw %}
+        <tr><td>{{ t('salario_base_liquidacion') }}</td><td>{{ base_indemnizacion_localizada(pais, base_raw) }}</td></tr>
+        {% endif %}
+    </table>
+</div>
+<p><a href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}

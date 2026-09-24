@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% set info = estado_info(pais) %}
+<div class="pais-header">
+    <span class="pais-header-title">{{ pais_flag(pais) }} {{ config.name }}</span>
+    <dl>
+        <div><dt>{{ t('select_language') }}</dt><dd>{{ idioma_label(config.idioma_default) }}</dd></div>
+        <div><dt>{{ t('moneda_col') }}</dt><dd>{{ config.currency }}</dd></div>
+        <div><dt>{{ t('estado') }}</dt><dd class="status-badge {{ info[0] }}">{{ info[1] }} {{ t(info[2]) }}</dd></div>
+    </dl>
+</div>
+
+<p>{{ t('global_view_intro') }}</p>
+
+<div class="flow-diagram">
+    <div class="flow-step">{{ t('global_payroll') }}</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step accent">{{ t('consolidated_view') }}</div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">{{ t('tabla_paises_title') }}</div>
+</div>
+
+<p><a class="btn-export" href="{{ url_for('dashboard') }}">{{ t('ir_al_consolidado') }}</a></p>
+
+<p><a href="{{ url_for('index') }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}

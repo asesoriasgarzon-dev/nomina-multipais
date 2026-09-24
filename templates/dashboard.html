@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ t('global_payroll') }} — {{ t('dashboard_title') }}</h1>
+
+<div class="stat-cards">
+    <div class="stat-card"><strong>{{ resumen.paises_con_reglas }}</strong><span>{{ t('tabla_paises_title') }}</span></div>
+    <div class="stat-card"><strong>{{ total_empleados }}</strong><span>{{ t('empleados_col') }}</span></div>
+    <div class="stat-card"><strong>{{ nominas|length }}</strong><span>{{ t('nominas_col') }}</span></div>
+</div>
+
+<table class="dashboard-table">
+    <thead>
+        <tr>
+            <th>{{ t('country') }}</th>
+            <th>{{ t('empleados_col') }}</th>
+            <th>{{ t('moneda_col') }}</th>
+            <th>{{ t('estado') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in tabla_paises %}
+        {% set info = estado_info(p.code) %}
+        <tr>
+            <td>{{ pais_flag(p.code) }} {{ p.name }}</td>
+            <td class="num">{{ p.empleados }}</td>
+            <td>{{ p.currency }}</td>
+            <td><span class="status-badge {{ info[0] }}">{{ info[1] }} {{ t(info[2]) }}</span></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<section class="result-block">
+    <h2>{{ t('vista_local') }} / {{ t('vista_global') }}</h2>
+    <div class="vocab-compare">
+        <div>
+            <strong>{{ t('vista_local') }}</strong>
+            <ul>
+                <li>EPS</li>
+                <li>Pensión</li>
+                <li>FSP</li>
+                <li>ARL</li>
+                <li>Prima</li>
+                <li>Cesantías</li>
+            </ul>
+        </div>
+        <div>
+            <strong>{{ t('vista_global') }}</strong>
+            <ul>
+                <li>{{ t('devengado') }}</li>
+                <li>{{ t('deducciones') }}</li>
+                <li>{{ t('aportes_patronales') }}</li>
+                <li>{{ t('provisiones') }}</li>
+                <li>{{ t('neto_pagado') }}</li>
+                <li>{{ t('total_aportes_patronales') }}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<h2>{{ t('dashboard_title') }}</h2>
+{% if nominas %}
+<p class="export-actions">
+    <a href="{{ url_for('dashboard_export_xlsx') }}" class="btn-export">{{ t('export_excel') }}</a>
+    <a href="{{ url_for('dashboard_export_pdf') }}" class="btn-export">{{ t('export_pdf') }}</a>
+</p>
+{% endif %}
+{% if not nominas %}
+<p>{{ t('no_records') }}</p>
+{% else %}
+<table class="dashboard-table">
+    <thead>
+        <tr>
+            <th>{{ t('country') }}</th>
+            <th>{{ t('period') }}</th>
+            <th>{{ t('employee_name') }}</th>
+            <th>{{ t('total_devengado') }}</th>
+            <th>{{ t('neto_pagado') }}</th>
+            <th>{{ t('total_aportes_patronales') }}</th>
+            <th>{{ t('total_provisiones') }}</th>
+            <th>{{ t('actions') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for n in nominas %}
+        <tr>
+            <td>{{ n.pais }}</td>
+            <td>{{ n.periodo }}</td>
+            <td>{{ n.empleado.nombre }}{% if n.empleado.es_demo %} <span class="demo-banner">DEMO</span>{% endif %}</td>
+            <td class="num">{{ '%.2f'|format(n.resultado.total_devengado) }}</td>
+            <td class="num">{{ '%.2f'|format(n.resultado.neto_pagado) }}</td>
+            <td class="num">{{ '%.2f'|format(n.resultado.total_aportes_patronales) }}</td>
+            <td class="num">{{ '%.2f'|format(n.resultado.total_provisiones) }}</td>
+            <td><a href="{{ url_for('resultado', nomina_id=n.id) }}">{{ t('view') }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<h2>{{ t('liquidaciones_title') }}</h2>
+{% if not liquidaciones %}
+<p>{{ t('no_records') }}</p>
+{% else %}
+<table class="dashboard-table">
+    <thead>
+        <tr>
+            <th>{{ t('country') }}</th>
+            <th>{{ t('employee_name') }}</th>
+            <th>{{ t('tipo_terminacion') }}</th>
+            <th>{{ t('indemnizacion') }}</th>
+            <th>{{ t('total_liquidacion') }}</th>
+            <th>{{ t('actions') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l in liquidaciones %}
+        <tr>
+            <td>{{ l.pais }}</td>
+            <td>{{ l.empleado.nombre }}</td>
+            <td>{{ t('term_' + l.datos.tipo_terminacion) }}</td>
+            <td class="num">{{ '%.2f'|format(l.resultado.indemnizacion) }}</td>
+            <td class="num">{{ '%.2f'|format(l.resultado.total_liquidacion) }}</td>
+            <td><a href="{{ url_for('liquidacion_resultado', liquidacion_id=l.id) }}">{{ t('view') }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<p><a href="{{ url_for('index') }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}

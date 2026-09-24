@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ t('global_payroll') }}</h1>
+
+<div class="resumen-global">
+    <a class="resumen-item" href="#paises"><strong>{{ resumen.total_contextos }}</strong><span>{{ t('resumen_contextos') }}</span></a>
+    <a class="resumen-item" href="{{ url_for('dashboard') }}"><strong>{{ resumen.paises_con_reglas }}</strong><span>{{ t('resumen_con_reglas') }}</span></a>
+    <a class="resumen-item" href="{{ url_for('pais_home', pais=resumen.primer_preparacion) if resumen.primer_preparacion else url_for('dashboard') }}"><strong>{{ resumen.paises_en_preparacion }}</strong><span>{{ t('resumen_preparacion') }}</span></a>
+    <a class="resumen-item" href="{{ url_for('pais_home', pais=resumen.primer_matriz) if resumen.primer_matriz else url_for('dashboard') }}"><strong>{{ resumen.matrices }}</strong><span>{{ t('resumen_matriz') }}</span></a>
+    <a class="resumen-item accent" href="{{ url_for('dashboard') }}"><strong>{{ resumen.motores_activos }}</strong><span>{{ t('resumen_motores_activos') }}</span></a>
+</div>
+
+<h2 id="paises">{{ t('select_country') }}</h2>
+<div class="country-grid">
+    {% for code, entry in countries.items() %}
+    {% set info = estado_info(code) %}
+    <a class="country-card {{ info[0] }}" href="{{ url_for('pais_home', pais=code) }}">
+        <span class="card-top">
+            <span class="pais-id">{{ pais_flag(code) }} <span class="code">{{ code }}</span></span>
+            <span class="idioma-badge">{{ idioma_label(entry.config.idioma_default) }}</span>
+        </span>
+        <span class="name">{{ entry.config.name }}</span>
+        <span class="status-badge {{ info[0] }}">{{ info[1] }} {{ t(info[2]) }}</span>
+        <span class="status-desc">{{ t(info[3]) }}</span>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

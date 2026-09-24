@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+{% if liq.empleado.es_demo %}
+<div class="demo-banner">{{ t('demo_banner').replace('{pais}', config.name) }}</div>
+{% endif %}
+<h1>{{ config.nombre_liquidacion }} — {{ liq.empleado.nombre }} ({{ config.name }})</h1>
+
+<section class="result-block">
+    <h2>{{ t('prestaciones_proporcionales') }}</h2>
+    <table>
+        {% for k, v in liq.resultado.conceptos.items() %}
+        <tr><td>{{ t(k) }}</td><td class="num">{{ '%.2f'|format(v) }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>{{ t('total_prestaciones') }}</td><td class="num">{{ '%.2f'|format(liq.resultado.total_prestaciones) }}</td></tr>
+    </table>
+</section>
+
+<section class="result-block">
+    <h2>{{ t('indemnizacion') }}</h2>
+    {% if liq.resultado.aplica_indemnizacion %}
+    <p>{{ t('aplica_indemnizacion_si') }}</p>
+    {% else %}
+    <p>{{ t('aplica_indemnizacion_no') }}</p>
+    {% endif %}
+    <table>
+        <tr><td>{{ t('antiguedad_anos') }}</td><td class="num">{{ liq.resultado.antiguedad_anos }}</td></tr>
+        <tr class="total"><td>{{ t('indemnizacion') }}</td><td class="num">{{ '%.2f'|format(liq.resultado.indemnizacion) }}</td></tr>
+    </table>
+</section>
+
+<section class="result-block neto">
+    <h2>{{ t('total_liquidacion') }}</h2>
+    <p class="neto-value">{{ config.currency }} {{ '%.2f'|format(liq.resultado.total_liquidacion) }}</p>
+</section>
+
+<p><a href="{{ url_for('pais_home', pais=liq.pais) }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}

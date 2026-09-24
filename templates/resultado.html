@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% if nomina.empleado.es_demo %}
+<div class="demo-banner">{{ t('demo_banner').replace('{pais}', config.name) }}</div>
+{% endif %}
+<h1>{{ t('resultado_title') }} — {{ nomina.empleado.nombre }} ({{ config.name }}, {{ nomina.periodo }})</h1>
+
+{% macro tabla(titulo, items, total_key, total_val) %}
+<section class="result-block">
+    <h2>{{ titulo }}</h2>
+    <table>
+        {% for k, v in items.items() %}
+        <tr><td>{{ t(k) }}</td><td class="num">{{ '%.2f'|format(v) }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>{{ t(total_key) }}</td><td class="num">{{ '%.2f'|format(total_val) }}</td></tr>
+    </table>
+</section>
+{% endmacro %}
+
+{{ tabla(t('devengado'), nomina.resultado.devengado, 'total_devengado', nomina.resultado.total_devengado) }}
+{{ tabla(t('deducciones'), nomina.resultado.deducciones, 'total_deducciones', nomina.resultado.total_deducciones) }}
+
+<section class="result-block neto">
+    <h2>{{ t('neto_pagado') }}</h2>
+    <p class="neto-value">{{ config.currency }} {{ '%.2f'|format(nomina.resultado.neto_pagado) }}</p>
+</section>
+
+{{ tabla(t('aportes_patronales'), nomina.resultado.aportes_patronales, 'total_aportes_patronales', nomina.resultado.total_aportes_patronales) }}
+{{ tabla(t('provisiones'), nomina.resultado.provisiones, 'total_provisiones', nomina.resultado.total_provisiones) }}
+
+<p><a href="{{ url_for('dashboard') }}">{{ t('dashboard') }}</a> · <a href="{{ url_for('index') }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}

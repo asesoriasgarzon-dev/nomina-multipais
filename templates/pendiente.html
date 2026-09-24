@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+{% set info = estado_info(pais) %}
+{% set estado = estado_contexto(pais) %}
+<div class="pais-header">
+    <span class="pais-header-title">{{ pais_flag(pais) }} {{ config.name }}</span>
+    <dl>
+        <div><dt>{{ t('select_language') }}</dt><dd>{{ idioma_label(config.idioma_default) }}</dd></div>
+        <div><dt>{{ t('moneda_col') }}</dt><dd>{{ config.currency }}</dd></div>
+        <div><dt>{{ t('estado') }}</dt><dd class="status-badge {{ info[0] }}">{{ info[1] }} {{ t(info[2]) }}</dd></div>
+    </dl>
+</div>
+
+<h1>{{ t('motor_nomina_title') }}</h1>
+
+{% if estado == "cargado" %}
+<p>{{ t('motor_desarrollo_intro') }}</p>
+
+<div class="pending-box">
+    <p><strong>{{ t('empleado_demo').replace('{pais}', config.name) }}</strong> · {{ config.currency }}</p>
+    <h3>{{ t('disponible_actualmente') }}</h3>
+    <ul class="checklist">
+        <li>✓ {{ t('legal_params') }}</li>
+        <li>✓ {{ t('jornada_semanal') }}</li>
+        <li>✓ {{ t('salario_minimo') }}</li>
+        <li>✓ {{ t('prima_aguinaldo') }}</li>
+        <li>✓ {{ t('liquidacion_form_title') }}</li>
+    </ul>
+    <h3>{{ t('legal_params') }}</h3>
+    <table>
+        <tr><td>{{ t('jornada_semanal') }}</td><td>{{ config.jornada_semanal_horas if config.jornada_semanal_horas else t('no_configurado') }}{% if config.jornada_semanal_horas %} {{ t('hours') }}{% endif %}</td></tr>
+        <tr><td>{{ t('salario_minimo') }}</td><td>{{ config.currency ~ ' ' ~ config.salario_minimo if config.salario_minimo else t('no_configurado') }}</td></tr>
+        <tr><td>{{ t('vacaciones_anuales') }}</td><td>{{ config.vacaciones_dias_anuales if config.vacaciones_dias_anuales else t('no_configurado') }}{% if config.vacaciones_dias_anuales %} {{ t('days') }}{% endif %}</td></tr>
+        <tr><td>{{ t('prima_aguinaldo') }}</td><td>{{ prima_localizada(pais, config.prima_o_aguinaldo) if config.prima_o_aguinaldo else t('no_configurado') }}</td></tr>
+        <tr><td>{{ t('liquidacion_form_title') }}</td><td>{{ config.nombre_liquidacion or t('no_configurado') }}</td></tr>
+    </table>
+</div>
+{% else %}
+<div class="pending-box">
+    <p>{{ t('estado_preparacion_desc') }}</p>
+</div>
+{% endif %}
+
+<p><a href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}

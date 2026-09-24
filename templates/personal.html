@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ config.name }} — {{ t('personal_title') }}</h1>
+
+<section class="result-block">
+    <h2>{{ t('cargar_excel') }}</h2>
+    <p>
+        <a href="{{ url_for('personal_plantilla', pais=pais) }}" class="btn-export">{{ t('descargar_plantilla') }}</a>
+    </p>
+    <form method="post" action="{{ url_for('personal_cargar', pais=pais) }}" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="archivo" accept=".xlsx" required>
+        <button type="submit">{{ t('cargar_excel') }}</button>
+    </form>
+</section>
+
+<section class="result-block">
+    <h2>{{ t('agregar_empleado') }}</h2>
+    <form method="post" class="form-grid">
+        <label>{{ t('employee_id') }}
+            <input type="text" name="identificacion" required>
+        </label>
+        <label>{{ t('employee_name') }}
+            <input type="text" name="nombre" required>
+        </label>
+        <label>{{ t('cargo') }}
+            <input type="text" name="cargo">
+        </label>
+        <label>{{ t('salario_contrato') }} ({{ config.currency }})
+            <input type="number" step="0.01" name="salario_base">
+        </label>
+        <label>{{ t('fecha_ingreso') }}
+            <input type="date" name="fecha_ingreso">
+        </label>
+        <label>{{ t('estado') }}
+            <select name="estado">
+                <option value="activo">{{ t('activo') }}</option>
+                <option value="inactivo">{{ t('inactivo') }}</option>
+            </select>
+        </label>
+        <button type="submit">{{ t('agregar_empleado') }}</button>
+    </form>
+</section>
+
+<h2>{{ t('personal_title') }}</h2>
+{% if not empleados %}
+<p>{{ t('no_records') }}</p>
+{% else %}
+<table class="dashboard-table">
+    <thead>
+        <tr>
+            <th>{{ t('employee_id') }}</th>
+            <th>{{ t('employee_name') }}</th>
+            <th>{{ t('cargo') }}</th>
+            <th>{{ t('salario_contrato') }}</th>
+            <th>{{ t('fecha_ingreso') }}</th>
+            <th>{{ t('estado') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in empleados %}
+        <tr>
+            <td>{{ e.identificacion }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.cargo }}</td>
+            <td class="num">{{ '%.2f'|format(e.salario_base) if e.salario_base else '-' }}</td>
+            <td>{{ e.fecha_ingreso or '-' }}</td>
+            <td>{{ t(e.estado) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<p><a href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}
