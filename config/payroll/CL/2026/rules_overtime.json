@@ -1,0 +1,97 @@
+[
+  {
+    "rule_id": "CL.OVERTIME.1",
+    "rule_key": "CL.OVERTIME",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": {
+            "reference": {
+              "code": "WORKWEEK_HOURS",
+              "multiple": "30/7"
+            }
+          }
+        },
+        "categories": [
+          {
+            "key": "horas_extraordinarias",
+            "hours_input": "time.overtime_hours",
+            "components": [
+              "1.5"
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Dirección del Trabajo",
+      "legal_reference": "Valor de la hora extraordinaria con sueldo mensual: sueldo / 30 × 28 / (4 × jornada semanal) × 1,5 (ej. 42 h: /168)",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-95182.html",
+      "verified_at": "2026-09-24",
+      "note": "Criterio administrativo de la Dirección del Trabajo, no texto legal."
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Valor hora ordinaria = sueldo/30 × 28 / (4 × jornada semanal) = sueldo / (jornada × 30/7); recargo 50 % (art. 32). La jornada cambia el 26-abr-2026 (44 → 42 h); un período que cruza la fecha se prorratea por días (aproximación). Máximo de 2 horas diarias (art. 31) y pacto escrito no se validan."
+    },
+    "notes": "Fuente del divisor: criterio administrativo de la Dirección del Trabajo (no texto legal)."
+  },
+  {
+    "rule_id": "CL.VAL.OT_LIMIT_DAY.1",
+    "rule_key": "CL.VAL.OT_LIMIT_DAY",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "left": {
+        "input": "time.max_overtime_hours_in_a_day",
+        "default": "0"
+      },
+      "op": ">",
+      "right": "2"
+    },
+    "message": "Horas extraordinarias diarias por encima de 2 (Código del Trabajo art. 31).",
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo art. 32: horas extraordinarias con recargo del 50 % sobre el sueldo convenido para la jornada ordinaria",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

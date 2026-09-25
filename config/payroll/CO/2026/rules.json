@@ -1,0 +1,1481 @@
+[
+  {
+    "rule_id": "CO.BASE_SALARY.1",
+    "rule_key": "CO.BASE_SALARY",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "BASE_SALARY",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.INCAPACITY_EMPLOYER.1",
+    "rule_key": "CO.INCAPACITY_EMPLOYER",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "INCAPACITY_EMPLOYER",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.incapacity_employer_days",
+            "default": "0"
+          }
+        },
+        "factor": "2/3"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Decreto 2943/2013 y CST art. 227: 2 primeros días a cargo del empleador al 66,67%; piso de 1 SMMLV y tramos posteriores no verificados."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "PENDING_VERIFICATION: piso SMMLV y tramos por día."
+  },
+  {
+    "rule_id": "CO.INCAPACITY_EPS.1",
+    "rule_key": "CO.INCAPACITY_EPS",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "INCAPACITY_EPS",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.INCAPACITY_EPS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.VACATION_ENJOYED.1",
+    "rule_key": "CO.VACATION_ENJOYED",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "VACATION_ENJOYED",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.vacation_days",
+            "default": "0"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VACATION_COMPENSATED.1",
+    "rule_key": "CO.VACATION_COMPENSATED",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "VACATION_COMPENSATED",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.vacation_compensated_days",
+            "default": "0"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.BONUS_SALARY.1",
+    "rule_key": "CO.BONUS_SALARY",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS_SALARY",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS_SALARY",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.BONUS_NON_SALARY.1",
+    "rule_key": "CO.BONUS_NON_SALARY",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS_NON_SALARY",
+    "category": "NON_SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS_NON_SALARY",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.TRM_ADJUSTMENT.1",
+    "rule_key": "CO.TRM_ADJUSTMENT",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "TRM_ADJUSTMENT",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.TRM_ADJUSTMENT",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.TRANSPORT_ALLOWANCE.1",
+    "rule_key": "CO.TRANSPORT_ALLOWANCE",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "TRANSPORT_ALLOWANCE",
+    "category": "LABOR_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "reference": {
+            "code": "TRANSPORT_ALLOWANCE"
+          }
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidencia de la República",
+      "legal_reference": "Decreto 1470 de 2025 art. 1: trabajadores que devengan hasta 2 SMMLV",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1470_2025.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2025-12-29"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Se compara el salario mensual contractual con 2 SMMLV (inclusive). Tratamiento de variables, días de vacaciones/incapacidad y periodos parciales: PENDING_VERIFICATION."
+    },
+    "implementation_status": "IMPLEMENTED",
+    "conditions": {
+      "left": {
+        "input": "employment.monthly_salary"
+      },
+      "op": "<=",
+      "right": {
+        "reference": {
+          "code": "SMMLV",
+          "multiple": "2"
+        }
+      }
+    },
+    "notes": "Elegible si salario <= 2 SMMLV; monto fijo mensual prorrateado por días trabajados (base 30)."
+  },
+  {
+    "rule_id": "CO.WITHHOLDING_TAX.1",
+    "rule_key": "CO.WITHHOLDING_TAX",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "WITHHOLDING_TAX",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.WITHHOLDING_TAX",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Retención en la fuente (art. 383 ET y tabla UVT): NO IMPLEMENTADO — MOTOR TRIBUTARIO. Valor digitado por el usuario."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "El motor no calcula el impuesto; solo traslada el valor digitado y lo marca como EXTERNAL_INPUT.",
+    "input_type": "EXTERNAL_INPUT"
+  },
+  {
+    "rule_id": "CO.AFC_DEDUCTION.1",
+    "rule_key": "CO.AFC_DEDUCTION",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFC_DEDUCTION",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.AFC_DEDUCTION",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.VOLUNTARY_PENSION.1",
+    "rule_key": "CO.VOLUNTARY_PENSION",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "VOLUNTARY_PENSION",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.VOLUNTARY_PENSION",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.LOANS_ADVANCES.1",
+    "rule_key": "CO.LOANS_ADVANCES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "LOANS_ADVANCES",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LOANS_ADVANCES",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CO.HEALTH_EMPLOYEE.1",
+    "rule_key": "CO.HEALTH_EMPLOYEE",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "HEALTH_EMPLOYEE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "IBC",
+        "rate": "0.04"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.PENSION_EMPLOYEE.1",
+    "rule_key": "CO.PENSION_EMPLOYEE",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "PENSION_EMPLOYEE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "IBC",
+        "rate": "0.04"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.FSP_EMPLOYEE.1",
+    "rule_key": "CO.FSP_EMPLOYEE",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "FSP_EMPLOYEE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "bracket_rate_on_base",
+      "params": {
+        "base": "IBC",
+        "lookup": {
+          "type": "BASE_MULTIPLE_OF_REFERENCE",
+          "reference": "SMMLV"
+        },
+        "default_rate": "0",
+        "brackets": [
+          {
+            "from": "4",
+            "to": "16",
+            "rate": "0.01"
+          },
+          {
+            "from": "16",
+            "to": "17",
+            "rate": "0.012"
+          },
+          {
+            "from": "17",
+            "to": "18",
+            "rate": "0.014"
+          },
+          {
+            "from": "18",
+            "to": "19",
+            "rate": "0.016"
+          },
+          {
+            "from": "19",
+            "to": "20",
+            "rate": "0.018"
+          },
+          {
+            "from": "20",
+            "to": null,
+            "rate": "0.02"
+          }
+        ]
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 797 de 2003, art. 8 (modifica art. 27 Ley 100 de 1993)",
+      "official_url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_0797_2003.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Ley 797 art. 8: 1% desde 4 SMMLV más 0,2/0,4/0,6/0,8/1,0 puntos para 16-17/17-18/18-19/19-20/>20. Frontera entre tramos: límite inferior inclusivo, superior exclusivo (interpretación sin revisar)."
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.PENSION_EMPLOYER.1",
+    "rule_key": "CO.PENSION_EMPLOYER",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "PENSION_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "IBC",
+        "rate": "0.12"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.HEALTH_EMPLOYER.1",
+    "rule_key": "CO.HEALTH_EMPLOYER",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "HEALTH_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "IBC",
+        "rate": "0.085"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Exonerada si el empleador está exonerado y el trabajador devenga MENOS de 10 SMMLV."
+    },
+    "implementation_status": "IMPLEMENTED",
+    "exceptions": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "left": {
+                "input": "employer.exonerated_art_114_1"
+              },
+              "op": "==",
+              "right": {
+                "value": true
+              }
+            },
+            {
+              "left": {
+                "base": "EXONERATION_BASE"
+              },
+              "op": "<",
+              "right": {
+                "reference": {
+                  "code": "SMMLV",
+                  "multiple": "10"
+                }
+              }
+            }
+          ]
+        },
+        "effect": "ZERO",
+        "reason": "Exoneración art. 114-1 ET: trabajador que devenga menos de 10 SMMLV y empleador exonerado",
+        "source": {
+          "status": "SECONDARY",
+          "authority": "Fuente secundaria (contraste)",
+          "legal_reference": "Estatuto Tributario art. 114-1 (Ley 1819/2016 art. 65; Ley 1943/2018; Ley 1955/2019 art. 204)",
+          "official_url": null,
+          "secondary_url": "https://actualicese.com/estatutotributario/114-1/",
+          "verified_at": "2026-09-24",
+          "note": "Texto contrastado en fuente secundaria; el texto en normograma oficial (DIAN) NO fue descargado. El texto dice 'menos de diez (10) SMMLV' (estricto); NORMATIVA_PAISES.md del proyecto dice '<=10': conflicto documentado."
+        }
+      }
+    ]
+  },
+  {
+    "rule_id": "CO.ARL_CLASS_I.1",
+    "rule_key": "CO.ARL_CLASS_I",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "ARL",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "RISK_BASE",
+        "rate": {
+          "reference": {
+            "code": "ARL_RATE_CLASS_I"
+          }
+        }
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Decreto 1772 de 1994, art. 13 (tabla de tarifas por clase de riesgo)",
+      "official_url": null,
+      "secondary_url": "https://coriesgos.com/blog/arl-independientes-colombia-2026",
+      "verified_at": "2026-09-24",
+      "note": "Clase I = 0,522%. Solo se implementa la clase I; las clases II-V quedan PENDING_VERIFICATION."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "conditions": {
+      "left": {
+        "input": "employer.arl_class",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "I"
+      }
+    }
+  },
+  {
+    "rule_id": "CO.COMPENSATION_FUND.1",
+    "rule_key": "CO.COMPENSATION_FUND",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "COMPENSATION_FUND",
+    "category": "PARAFISCAL",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PARAFISCAL_BASE",
+        "rate": "0.04"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 (arts. 7, 12, 27); Ley 89 de 1988 (ICBF)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Caja 4%, SENA 2%, ICBF 3% contrastados solo en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.SENA.1",
+    "rule_key": "CO.SENA",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "SENA",
+    "category": "PARAFISCAL",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PARAFISCAL_BASE",
+        "rate": "0.02"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 (arts. 7, 12, 27); Ley 89 de 1988 (ICBF)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Caja 4%, SENA 2%, ICBF 3% contrastados solo en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "exceptions": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "left": {
+                "input": "employer.exonerated_art_114_1"
+              },
+              "op": "==",
+              "right": {
+                "value": true
+              }
+            },
+            {
+              "left": {
+                "base": "EXONERATION_BASE"
+              },
+              "op": "<",
+              "right": {
+                "reference": {
+                  "code": "SMMLV",
+                  "multiple": "10"
+                }
+              }
+            }
+          ]
+        },
+        "effect": "ZERO",
+        "reason": "Exoneración art. 114-1 ET: trabajador que devenga menos de 10 SMMLV y empleador exonerado",
+        "source": {
+          "status": "SECONDARY",
+          "authority": "Fuente secundaria (contraste)",
+          "legal_reference": "Estatuto Tributario art. 114-1 (Ley 1819/2016 art. 65; Ley 1943/2018; Ley 1955/2019 art. 204)",
+          "official_url": null,
+          "secondary_url": "https://actualicese.com/estatutotributario/114-1/",
+          "verified_at": "2026-09-24",
+          "note": "Texto contrastado en fuente secundaria; el texto en normograma oficial (DIAN) NO fue descargado. El texto dice 'menos de diez (10) SMMLV' (estricto); NORMATIVA_PAISES.md del proyecto dice '<=10': conflicto documentado."
+        }
+      }
+    ]
+  },
+  {
+    "rule_id": "CO.ICBF.1",
+    "rule_key": "CO.ICBF",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "ICBF",
+    "category": "PARAFISCAL",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PARAFISCAL_BASE",
+        "rate": "0.03"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 (arts. 7, 12, 27); Ley 89 de 1988 (ICBF)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Caja 4%, SENA 2%, ICBF 3% contrastados solo en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "exceptions": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "left": {
+                "input": "employer.exonerated_art_114_1"
+              },
+              "op": "==",
+              "right": {
+                "value": true
+              }
+            },
+            {
+              "left": {
+                "base": "EXONERATION_BASE"
+              },
+              "op": "<",
+              "right": {
+                "reference": {
+                  "code": "SMMLV",
+                  "multiple": "10"
+                }
+              }
+            }
+          ]
+        },
+        "effect": "ZERO",
+        "reason": "Exoneración art. 114-1 ET: trabajador que devenga menos de 10 SMMLV y empleador exonerado",
+        "source": {
+          "status": "SECONDARY",
+          "authority": "Fuente secundaria (contraste)",
+          "legal_reference": "Estatuto Tributario art. 114-1 (Ley 1819/2016 art. 65; Ley 1943/2018; Ley 1955/2019 art. 204)",
+          "official_url": null,
+          "secondary_url": "https://actualicese.com/estatutotributario/114-1/",
+          "verified_at": "2026-09-24",
+          "note": "Texto contrastado en fuente secundaria; el texto en normograma oficial (DIAN) NO fue descargado. El texto dice 'menos de diez (10) SMMLV' (estricto); NORMATIVA_PAISES.md del proyecto dice '<=10': conflicto documentado."
+        }
+      }
+    ]
+  },
+  {
+    "rule_id": "CO.PRIMA_ACCRUAL.1",
+    "rule_key": "CO.PRIMA_ACCRUAL",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "PRIMA_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BENEFIT_BASE",
+        "rate": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "applies_to": {
+      "employment.salary_type": [
+        "ORDINARY"
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.CESANTIAS_ACCRUAL.1",
+    "rule_key": "CO.CESANTIAS_ACCRUAL",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CESANTIAS_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BENEFIT_BASE",
+        "rate": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "applies_to": {
+      "employment.salary_type": [
+        "ORDINARY"
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.CESANTIAS_INTEREST_ACCRUAL.1",
+    "rule_key": "CO.CESANTIAS_INTEREST_ACCRUAL",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CESANTIAS_INTEREST_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BENEFIT_BASE",
+        "rate": "0.01"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "applies_to": {
+      "employment.salary_type": [
+        "ORDINARY"
+      ]
+    },
+    "notes": "12% anual sobre cesantías = 1% mensual sobre la base (12% x 1/12)."
+  },
+  {
+    "rule_id": "CO.VACATION_ACCRUAL.1",
+    "rule_key": "CO.VACATION_ACCRUAL",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "VACATION_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "VACATION_BASE",
+        "rate": "15/360"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CO.MONTHLY_WORK_HOURS.1",
+    "rule_key": "CO.MONTHLY_WORK_HOURS",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "MONTHLY_WORK_HOURS",
+    "category": "WORKING_HOURS",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "reference": {
+            "code": "WORKWEEK_HOURS"
+          }
+        },
+        "factor": "5"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 2101 de 2021, art. 3 (Diario Oficial 51.736, 15-jul-2021)",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2021-07-15"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Horas de trabajo al mes = horas semanales x 5 (divisor 220 con 44 h; 210 con 42 h): fórmula tomada de fuentes secundarias, PENDING_VERIFICATION."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CO.VAL.ACCOUNTED_DAYS.1",
+    "rule_key": "CO.VAL.ACCOUNTED_DAYS",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.accounted_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "value": "30"
+      }
+    },
+    "message": "Los días trabajados, de incapacidad y de vacaciones superan 30 (mes comercial).",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VAL.SALARY_TYPE.1",
+    "rule_key": "CO.VAL.SALARY_TYPE",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "employment.salary_type",
+        "as": "text"
+      },
+      "op": "not_in",
+      "right": [
+        "ORDINARY",
+        "INTEGRAL"
+      ]
+    },
+    "message": "employment.salary_type debe ser ORDINARY o INTEGRAL.",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VAL.INTEGRAL_MINIMUM.1",
+    "rule_key": "CO.VAL.INTEGRAL_MINIMUM",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "employment.salary_type",
+            "as": "text"
+          },
+          "op": "==",
+          "right": {
+            "value": "INTEGRAL"
+          }
+        },
+        {
+          "left": {
+            "input": "employment.monthly_salary"
+          },
+          "op": "<",
+          "right": {
+            "reference": {
+              "code": "SMMLV",
+              "multiple": "13"
+            }
+          }
+        }
+      ]
+    },
+    "message": "El salario integral no puede ser inferior a 13 SMMLV (10 SMMLV + 30% de factor prestacional).",
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Código Sustantivo del Trabajo art. 132 (Ley 50/1990)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/salario-integral.html",
+      "verified_at": "2026-09-24",
+      "note": "Texto oficial no descargado (secretariasenado.gov.co inaccesible durante la verificación)."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VAL.ARL_CLASS.1",
+    "rule_key": "CO.VAL.ARL_CLASS",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "employer.arl_class",
+        "as": "text"
+      },
+      "op": "!=",
+      "right": {
+        "value": "I"
+      }
+    },
+    "message": "Solo está implementada la clase de riesgo I de ARL; las clases II-V están PENDING_VERIFICATION.",
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Decreto 1772 de 1994, art. 13 (tabla de tarifas por clase de riesgo)",
+      "official_url": null,
+      "secondary_url": "https://coriesgos.com/blog/arl-independientes-colombia-2026",
+      "verified_at": "2026-09-24",
+      "note": "Clase I = 0,522%. Solo se implementa la clase I; las clases II-V quedan PENDING_VERIFICATION."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VAL.SALARY_BELOW_MINIMUM.1",
+    "rule_key": "CO.VAL.SALARY_BELOW_MINIMUM",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "left": {
+        "input": "employment.monthly_salary"
+      },
+      "op": "<",
+      "right": {
+        "reference": {
+          "code": "SMMLV"
+        }
+      }
+    },
+    "message": "El salario mensual es inferior al SMMLV (posible jornada parcial); verifique el tratamiento.",
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Salario mínimo legal (CST art. 145): sin verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

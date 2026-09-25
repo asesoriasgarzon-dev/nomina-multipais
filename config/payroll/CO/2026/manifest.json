@@ -1,0 +1,107 @@
+{
+  "country": "CO",
+  "year": 2026,
+  "ruleset_version": "CO-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "COP",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa con retención manual y sin horas extra/recargos."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "SMMLV y auxilio con fuente oficial; SMMLV sujeto a proceso judicial (Consejo de Estado)."
+    },
+    "transport_allowance": {
+      "status": "PENDING_VALIDATION",
+      "note": "Límite de 2 SMMLV implementado y probado en frontera."
+    },
+    "social_security": {
+      "status": "PENDING_VALIDATION",
+      "note": "IBC con tope de 25 SMMLV, FSP, salud y pensión; tasas con fuente secundaria."
+    },
+    "parafiscales_exoneration": {
+      "status": "PENDING_VALIDATION",
+      "note": "Exoneración art. 114-1 ET (menos de 10 SMMLV)."
+    },
+    "integral_salary": {
+      "status": "PENDING_VALIDATION",
+      "note": "Mínimo 13 SMMLV e IBC al 70%; variables e integración con no salariales pendientes."
+    },
+    "working_hours": {
+      "status": "PENDING_VALIDATION",
+      "note": "Jornada por vigencia: 44 h hasta 14-jul-2026; 42 h desde 15-jul-2026."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Provisiones mensuales; sin calendario de pago ni consignación."
+    },
+    "non_salary_share_40": {
+      "status": "PENDING_VALIDATION",
+      "note": "Ley 1393 art. 30: fórmula literal (exceso sobre el 40 % del total de la remuneración integra el IBC) ejecutada como CÁLCULO PROVISIONAL; alcance del 'total de la remuneración' según UGPP/jurisprudencia de unificación y salario integral NO verificados."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "La retención en la fuente es un valor digitado (EXTERNAL_INPUT); no hay motor tributario."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Recargos nocturno/extra/dominical (Ley 2466: 80 % → 90 % el 1-jul-2026 → 100 % el 1-jul-2027) desde datos; acumulación de recargos y clasificación de horas: interpretación sin validar."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Cesantías, intereses, prima, vacaciones e indemnización del art. 64 (indefinido <10/>=10 SMMLV, término fijo, obra o labor) ejecutan desde datos con fuentes oficiales del CST; intereses de cesantías y auxilio en las bases con fuente PENDING; sin validación profesional; sin indemnización moratoria (art. 65)."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Compensación de vacaciones proporcionales y pendientes al retiro; goce/programación no modelados."
+    },
+    "surcharges": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Recargo nocturno 35 % y dominical/festivo 80 % → 90 % (1-jul-2026) → 100 % (1-jul-2027) desde datos (Ley 2466/2025); acumulación con horas extra: interpretación sin validar."
+    }
+  },
+  "known_gaps": [
+    "Retención en la fuente (tabla UVT): NOT_IMPLEMENTED.",
+    "Piso de incapacidad (SMMLV) y tramos por día: PENDING_VERIFICATION.",
+    "Mínimo de IBC (1 SMMLV) para periodos parciales: solo advertencia.",
+    "Redondeo de aportes PILA: PENDING_VERIFICATION.",
+    "Tratamiento de vacaciones compensadas, variables e incapacidades en cada base: interpretación sin revisar.",
+    "ARL clases II-V: PENDING_VERIFICATION.",
+    "Bases sin política de partición: un período que cruza el cambio de una referencia usada por una base se bloquea.",
+    "Indemnización moratoria art. 65 CST: NOT_IMPLEMENTED.",
+    "Intereses de cesantías (Ley 52/1975) y auxilio de transporte en bases de cesantías/prima: fuente PENDING_VERIFICATION.",
+    "Ley 1393/2010 art. 30 (40 %): fórmula literal implementada; alcance del 'total de la remuneración' según UGPP/Consejo de Estado NO verificado (ver docs/CO_LEY_1393_AUDITORIA.md).",
+    "Cesantías del régimen tradicional (contratos anteriores a 1991): NOT_IMPLEMENTED (validación bloquea).",
+    "Retención en la fuente sobre la liquidación: NOT_IMPLEMENTED."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_WITHOUT_CAUSE",
+      "INDIRECT_DISMISSAL",
+      "FIXED_TERM_EXPIRY",
+      "WORK_COMPLETION",
+      "MUTUAL_AGREEMENT",
+      "PROBATION_END",
+      "RETIREMENT",
+      "DEATH",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM",
+      "WORK_COMPLETION"
+    ],
+    "requires_contract_end_for": [
+      "FIXED_TERM",
+      "WORK_COMPLETION"
+    ]
+  }
+}

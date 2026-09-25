@@ -1,0 +1,100 @@
+[
+  {
+    "concept": "FLSA_OVERTIME",
+    "role": "EARNING",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FICA_SS_EMPLOYEE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FICA_SS_EMPLOYER",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MEDICARE_EMPLOYEE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MEDICARE_EMPLOYER",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FUTA",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FEDERAL_WITHHOLDING",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

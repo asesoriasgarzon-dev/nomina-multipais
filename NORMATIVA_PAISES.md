@@ -1,5 +1,12 @@
 # Normativa laboral y de seguridad social — referencia por país (2026)
 
+> **AVISO (2026-09-25): este documento es un resumen histórico y NO es la fuente normativa del sistema.** Las reglas que ejecuta la aplicación viven,
+> con vigencia, fuente y estado de verificación, en `config/payroll/<PAIS>/2026/` (ver `docs/MASTER_PAYROLL_RULES_2026.md` y `docs/SOURCES_REGISTRY_2026.md`).
+> Discrepancias ya detectadas y resueltas a favor del texto oficial: Colombia exoneración art. 114-1 ET «menos de diez (10) SMMLV» (aquí dice «≤10»),
+> auxilio de transporte hasta 2 SMMLV, Perú CTS/gratificación por semestre, Argentina SAC por semestre y art. 245 (Ley 27.802, B.O. 6-mar-2026, vigente
+> desde su publicación; aquí se indica «vigente desde 1-jun-2026», que corresponde solo al Fondo de Asistencia Laboral, prorrogado al 1-nov-2026 por el
+> Decreto 408/2026). Ante cualquier diferencia, prevalece `config/payroll`.
+
 Este documento es la base legal para programar cada `countries/<pais>.py` del
 proyecto. Compilado el 2026-09-23 mediante investigación con fuentes oficiales
 (ministerios de trabajo, institutos de seguridad social, boletines/diarios

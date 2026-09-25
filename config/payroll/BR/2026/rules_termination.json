@@ -1,0 +1,1184 @@
+[
+  {
+    "rule_id": "BR.IN.SALARY.1",
+    "rule_key": "BR.IN.SALARY",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 4.090/1962 art. 1º §§1º-3º (1/12 da remuneração por mês de serviço; fração de 15 dias ou mais = mês integral; proporcional nos contratos a prazo e na aposentadoria) e art. 3º (rescisão sem justa causa: calculada sobre a remuneração do mês da rescisão); CF art. 7º VIII",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/leis/l4090.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.IN.BR_T_VARIABLE.1",
+    "rule_key": "BR.IN.BR_T_VARIABLE",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_VARIABLE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.variable_average",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT arts. 129-130 (30 dias por 12 meses), 142 (remuneração devida na data da concessão), 146 (rescisão: remuneração do período adquirido; parágrafo único: proporcional 1/12 por mês ou fração superior a 14 dias, salvo justa causa), 147 (menos de 12 meses); CF art. 7º XVII (um terço a mais)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.IN.BR_T_UNPAID_SALARY.1",
+    "rule_key": "BR.IN.BR_T_UNPAID_SALARY",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_UNPAID_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.unpaid_salary",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.IN.DAYS_MONTH.1",
+    "rule_key": "BR.IN.DAYS_MONTH",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_DAYS_MONTH",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "COMMERCIAL_DAYS_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.SALDO_SALARIO.1",
+    "rule_key": "BR.SALDO_SALARIO",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_SALDO_SALARIO",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "BR_T_DAYS_MONTH"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Salario/30 por los días trabajados del mes de rescisión."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "BR.13O.1",
+    "rule_key": "BR.13O",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_13O_PROPORCIONAL",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "count": {
+          "unit": "MONTHS_WITH_MIN_DAYS",
+          "day_threshold": 15,
+          "divisor": "12"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 4.090/1962 art. 1º §§1º-3º (1/12 da remuneração por mês de serviço; fração de 15 dias ou mais = mês integral; proporcional nos contratos a prazo e na aposentadoria) e art. 3º (rescisão sem justa causa: calculada sobre a remuneração do mês da rescisão); CF art. 7º VIII",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/leis/l4090.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "1/12 por cada mes calendario del año con 15 días o más trabajados (art. 1º §2º). Sin justa causa (art. 3º), contratos a prazo y aposentadoria (art. 1º §3º)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "DISMISSAL_WITHOUT_CAUSE",
+        "INDIRECT_DISMISSAL",
+        "MUTUAL_AGREEMENT",
+        "FIXED_TERM_EXPIRY",
+        "RETIREMENT",
+        "DEATH"
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.13O_RENUNCIA.1",
+    "rule_key": "BR.13O_RENUNCIA",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_13O_PEDIDO_DEMISSAO",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "count": {
+          "unit": "MONTHS_WITH_MIN_DAYS",
+          "day_threshold": 15,
+          "divisor": "12"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "13.º proporcional en el pedido de dimisión: entendimiento jurisprudencial (TST) que no se consultó en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "PENDING_VERIFICATION: derecho no verificado en fuente oficial.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "RESIGNATION"
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.IN.BR_T_13_ADVANCE.1",
+    "rule_key": "BR.IN.BR_T_13_ADVANCE",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_13_ADVANCE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.thirteenth_advance_paid",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.13O_ADELANTO.1",
+    "rule_key": "BR.13O_ADELANTO",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_13O_ADELANTO_DESCUENTO",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "BR_T_13_ADVANCE"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.FERIAS_PROP.1",
+    "rule_key": "BR.FERIAS_PROP",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FERIAS_PROPORCIONAIS",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "window": {
+          "type": "SERVICE_YEAR"
+        },
+        "count": {
+          "unit": "MONTHS_ROUNDED_BY_DAYS",
+          "day_threshold": 15,
+          "divisor": "12"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT arts. 129-130 (30 dias por 12 meses), 142 (remuneração devida na data da concessão), 146 (rescisão: remuneração do período adquirido; parágrafo único: proporcional 1/12 por mês ou fração superior a 14 dias, salvo justa causa), 147 (menos de 12 meses); CF art. 7º XVII (um terço a mais)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "1/12 por mes de servicio o fracción superior a 14 dias del período aquisitivo (art. 146 párrafo único), salvo justa causa. Antes de 12 meses: sin justa causa o contrato a prazo (art. 147); la renuncia antes de 12 meses se incluye por entendimiento del TST (PENDING_VERIFICATION).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "any": [
+        {
+          "all": [
+            {
+              "left": {
+                "service": "COMPLETED_YEARS"
+              },
+              "op": ">=",
+              "right": "1"
+            },
+            {
+              "left": {
+                "input": "termination.cause",
+                "as": "text"
+              },
+              "op": "not_in",
+              "right": [
+                "DISMISSAL_WITH_CAUSE"
+              ]
+            }
+          ]
+        },
+        {
+          "all": [
+            {
+              "left": {
+                "service": "COMPLETED_YEARS"
+              },
+              "op": "<",
+              "right": "1"
+            },
+            {
+              "left": {
+                "input": "termination.cause",
+                "as": "text"
+              },
+              "op": "in",
+              "right": [
+                "DISMISSAL_WITHOUT_CAUSE",
+                "INDIRECT_DISMISSAL",
+                "MUTUAL_AGREEMENT",
+                "FIXED_TERM_EXPIRY",
+                "RESIGNATION"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.FERIAS_VENCIDAS.1",
+    "rule_key": "BR.FERIAS_VENCIDAS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FERIAS_VENCIDAS",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "vacation_history.days_pending_prior",
+            "default": "0"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT arts. 129-130 (30 dias por 12 meses), 142 (remuneração devida na data da concessão), 146 (rescisão: remuneração do período adquirido; parágrafo único: proporcional 1/12 por mês ou fração superior a 14 dias, salvo justa causa), 147 (menos de 12 meses); CF art. 7º XVII (um terço a mais)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Un salario por cada período de 12 meses adquirido y no gozado (art. 146 caput). El pago en dobro por concesión fuera del plazo (art. 137) NO se calcula."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.FERIAS_TERCO_PROPORCIONAIS.1",
+    "rule_key": "BR.FERIAS_TERCO_PROPORCIONAIS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FERIAS_TERCO_PROPORCIONAIS",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "BR_FERIAS_PROPORCIONAIS"
+        },
+        "factor": "1/3"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT arts. 129-130 (30 dias por 12 meses), 142 (remuneração devida na data da concessão), 146 (rescisão: remuneração do período adquirido; parágrafo único: proporcional 1/12 por mês ou fração superior a 14 dias, salvo justa causa), 147 (menos de 12 meses); CF art. 7º XVII (um terço a mais)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.FERIAS_TERCO_VENCIDAS.1",
+    "rule_key": "BR.FERIAS_TERCO_VENCIDAS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FERIAS_TERCO_VENCIDAS",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "BR_FERIAS_VENCIDAS"
+        },
+        "factor": "1/3"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT arts. 129-130 (30 dias por 12 meses), 142 (remuneração devida na data da concessão), 146 (rescisão: remuneração do período adquirido; parágrafo único: proporcional 1/12 por mês ou fração superior a 14 dias, salvo justa causa), 147 (menos de 12 meses); CF art. 7º XVII (um terço a mais)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.IN.NOTICE_DAYS.1",
+    "rule_key": "BR.IN.NOTICE_DAYS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_NOTICE_DAYS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_quantity",
+      "params": {
+        "years_basis": "COMPLETED_YEARS",
+        "linear": {
+          "base_quantity": "30",
+          "per_completed_year": "3",
+          "max_total": "90"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 12.506/2011 art. 1º: 30 dias até 1 ano de serviço + 3 dias por ano de serviço, até 60 dias adicionais (máximo 90); CLT arts. 487 e 484-A",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12506.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "30 días + 3 por año completo de servicio, máximo 90 (60 adicionales)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.AVISO_INDENIZADO.1",
+    "rule_key": "BR.AVISO_INDENIZADO",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_AVISO_PREVIO_INDENIZADO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "BR_T_NOTICE_DAYS"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 12.506/2011 art. 1º: 30 dias até 1 ano de serviço + 3 dias por ano de serviço, até 60 dias adicionais (máximo 90); CLT arts. 487 e 484-A",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12506.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Salario/30 × días de aviso cuando el empleador no lo concede (termination.notice_given=false). La proyección del aviso indemnizado sobre 13.º y vacaciones (Súmula 371 TST) NO se aplica: PENDING_VERIFICATION.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE",
+            "INDIRECT_DISMISSAL"
+          ]
+        },
+        {
+          "left": {
+            "input": "termination.notice_given",
+            "default": false
+          },
+          "op": "==",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.AVISO_ACUERDO.1",
+    "rule_key": "BR.AVISO_ACUERDO",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_AVISO_PREVIO_ACORDO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "BR.RESCISSION_BASE"
+        },
+        "factor": "0.5",
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "BR_T_NOTICE_DAYS"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT art. 484-A (acordo entre as partes): por metade o aviso prévio indenizado e a multa do FGTS; demais verbas na integralidade",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Art. 484-A I a): la mitad del aviso previo si es indemnizado."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "MUTUAL_AGREEMENT"
+          ]
+        },
+        {
+          "left": {
+            "input": "termination.notice_given",
+            "default": false
+          },
+          "op": "==",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.AVISO_DESCUENTO.1",
+    "rule_key": "BR.AVISO_DESCUENTO",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_AVISO_PREVIO_DESCUENTO",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "BR.RESCISSION_BASE"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT art. 487 §2º: la falta de aviso por el empleado da al empleador el derecho de descontar los salarios correspondientes al plazo",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Un mes de salario (aviso de 30 días del empleado)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "RESIGNATION"
+          ]
+        },
+        {
+          "left": {
+            "input": "termination.notice_given",
+            "default": false
+          },
+          "op": "==",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.FGTS_DEPOSITO.1",
+    "rule_key": "BR.FGTS_DEPOSITO",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FGTS_RESCISAO",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "BR_SALDO_SALARIO"
+        },
+        "factor": "0.08"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 8.036/1990 art. 15 (depósito mensal de 8 % da remuneração) e art. 18 (rescisão: depósitos do mês e do anterior; multa de 40 % sobre o total dos depósitos; 20 % em culpa recíproca ou força maior)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "8 % sobre el saldo de salario del mes de rescisión. La incidencia sobre 13.º y aviso indemnizado y los depósitos del mes anterior no pagados NO se calculan (PENDING_VERIFICATION).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.IN.BR_T_FGTS_BALANCE.1",
+    "rule_key": "BR.IN.BR_T_FGTS_BALANCE",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_T_FGTS_BALANCE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.fgts_balance",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.FGTS_MULTA_40.1",
+    "rule_key": "BR.FGTS_MULTA_40",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FGTS_MULTA_40",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "BR_T_FGTS_BALANCE"
+        },
+        "factor": "0.4"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 8.036/1990 art. 15 (depósito mensal de 8 % da remuneração) e art. 18 (rescisão: depósitos do mês e do anterior; multa de 40 % sobre o total dos depósitos; 20 % em culpa recíproca ou força maior)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/leis/l8036consol.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Porcentaje sobre el saldo de la cuenta vinculada informado (amounts.fgts_balance: depósitos actualizados con intereses)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "DISMISSAL_WITHOUT_CAUSE",
+        "INDIRECT_DISMISSAL"
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.FGTS_MULTA_20.1",
+    "rule_key": "BR.FGTS_MULTA_20",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_FGTS_MULTA_20",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "BR_T_FGTS_BALANCE"
+        },
+        "factor": "0.2"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT art. 484-A (acordo entre as partes): por metade o aviso prévio indenizado e a multa do FGTS; demais verbas na integralidade",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Porcentaje sobre el saldo de la cuenta vinculada informado (amounts.fgts_balance: depósitos actualizados con intereses)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "MUTUAL_AGREEMENT"
+      ]
+    }
+  },
+  {
+    "rule_id": "BR.VAL.FGTS_BALANCE.1",
+    "rule_key": "BR.VAL.FGTS_BALANCE",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "run_types": [
+      "TERMINATION"
+    ],
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE",
+            "INDIRECT_DISMISSAL",
+            "MUTUAL_AGREEMENT"
+          ]
+        },
+        {
+          "left": {
+            "input": "amounts.fgts_balance",
+            "default": "-1"
+          },
+          "op": "<",
+          "right": "0"
+        }
+      ]
+    },
+    "message": "No se informó el saldo del FGTS (amounts.fgts_balance): la multa se calcula sobre 0.",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.REM_PENDENTES.1",
+    "rule_key": "BR.REM_PENDENTES",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_REMUNERACOES_PENDENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "BR_T_UNPAID_SALARY"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

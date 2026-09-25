@@ -1,0 +1,110 @@
+[
+  {
+    "rule_id": "BR.OVERTIME.1",
+    "rule_key": "BR.OVERTIME",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BR_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": {
+            "reference": {
+              "code": "WORKWEEK_HOURS",
+              "multiple": "5"
+            }
+          }
+        },
+        "categories": [
+          {
+            "key": "hora_extra_50",
+            "hours_input": "time.overtime_hours_50",
+            "components": [
+              "1.5"
+            ]
+          },
+          {
+            "key": "adicional_noturno",
+            "hours_input": "time.night_hours",
+            "components": [
+              "0.2"
+            ]
+          },
+          {
+            "key": "feriado_trabalhado_dobro",
+            "hours_input": "time.holiday_hours",
+            "components": [
+              "1"
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CF art. 7º XIII (8 h diárias e 44 semanais) e XVI (serviço extraordinário no mínimo 50 % superior); CLT arts. 59 §1º, 64 (salário-hora do mensalista: salário mensal / (30 × horas da duração do trabalho)), 73 (noturno: 20 % adicional)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "CONFLICTING",
+      "professional_validation": "PENDING",
+      "note": "Divisor: la CLT art. 64 dice salario mensual / (30 × horas de la jornada del art. 58 = 8) = 240, mientras la práctica del TST usa 220 para 44 h semanales. Se usa 220 (semana × 5). PENDING_VERIFICATION. La hora nocturna reducida (52'30\") y la vigencia actual del pago en doble de feriados (Lei 605 art. 9) no se modelan."
+    },
+    "notes": "Hora extra: mínimo 50 % (CF art. 7º XVI); noturno 20 % (CLT art. 73); feriado trabajado sin folga: en dobro (solo el adicional de 100 % se suma al salario ya pagado)."
+  },
+  {
+    "rule_id": "BR.VAL.OT_LIMIT_DAY.1",
+    "rule_key": "BR.VAL.OT_LIMIT_DAY",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "left": {
+        "input": "time.max_overtime_hours_in_a_day",
+        "default": "0"
+      },
+      "op": ">",
+      "right": "2"
+    },
+    "message": "Horas extra diarias por encima de 2 (CLT art. 59).",
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CF art. 7º XIII (8 h diárias e 44 semanais) e XVI (serviço extraordinário no mínimo 50 % superior); CLT arts. 59 §1º, 64 (salário-hora do mensalista: salário mensal / (30 × horas da duração do trabalho)), 73 (noturno: 20 % adicional)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

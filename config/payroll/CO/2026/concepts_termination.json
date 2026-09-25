@@ -1,0 +1,468 @@
+[
+  {
+    "concept": "CO_T_SALARY_12M",
+    "role": "INFO",
+    "label": {
+      "es": "Salario base (último o promedio del año)",
+      "en": "Base salary (last or yearly average)"
+    },
+    "treatments": [
+      {
+        "base": "CO.CESANTIAS_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.VACATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 249 (cesantías: un mes de salario por año y proporcionalmente por fracción) y 253 (base: último salario o promedio del último año si varió en los 3 últimos meses o es variable)",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_SALARY_6M",
+    "role": "INFO",
+    "label": {
+      "es": "Salario base de prima (último o promedio del semestre)",
+      "en": "Prima base salary (last or semester average)"
+    },
+    "treatments": [
+      {
+        "base": "CO.PRIMA_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 306 (modificado Ley 1788/2016): prima de servicios, 30 días de salario por año, por todo el semestre trabajado o proporcionalmente al tiempo trabajado",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_TRANSPORT",
+    "role": "INFO",
+    "label": {
+      "es": "Auxilio de transporte vigente (si aplica)",
+      "en": "Transport allowance (if applicable)"
+    },
+    "treatments": [
+      {
+        "base": "CO.CESANTIAS_BASE",
+        "mode": "INCLUDE",
+        "note": "Inclusión en cesantías: fuente no verificada.",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "CO.PRIMA_BASE",
+        "mode": "INCLUDE",
+        "note": "Inclusión en prima: fuente no verificada.",
+        "status": "PENDING_VERIFICATION"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Inclusión del auxilio de transporte en la base de cesantías y prima (norma y jurisprudencia): no verificada con fuente oficial en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_DAYS_MONTH",
+    "role": "INFO",
+    "label": {
+      "es": "Días comerciales del mes de terminación",
+      "en": "Commercial days in final month"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_DAYS_YEAR",
+    "role": "INFO",
+    "label": {
+      "es": "Días comerciales del año hasta la terminación",
+      "en": "Commercial days in year to date"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_CESANTIAS_PRIOR",
+    "role": "INFO",
+    "label": {
+      "es": "Cesantías de años anteriores no consignadas",
+      "en": "Unpaid prior-year severance fund"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_INTEREST_PRIOR",
+    "role": "INFO",
+    "label": {
+      "es": "Intereses de cesantías anteriores no pagados",
+      "en": "Unpaid prior severance interest"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_PRIMA_PRIOR",
+    "role": "INFO",
+    "label": {
+      "es": "Prima de semestres anteriores no pagada",
+      "en": "Unpaid prior prima"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_T_UNPAID_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Salarios pendientes informados",
+      "en": "Reported unpaid salary"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_CESANTIAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Cesantías (fracción del año)",
+      "en": "Severance (year fraction)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_CESANTIAS_INTERESES",
+    "role": "EARNING",
+    "label": {
+      "es": "Intereses sobre cesantías",
+      "en": "Interest on severance"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_PRIMA",
+    "role": "EARNING",
+    "label": {
+      "es": "Prima de servicios (fracción del semestre)",
+      "en": "Service bonus (semester fraction)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_VACACIONES_PROPORCIONALES",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones proporcionales (compensación)",
+      "en": "Proportional vacation (compensation)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_VACACIONES_PENDIENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones causadas de períodos anteriores",
+      "en": "Vacation accrued in prior periods"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_INDEMNIZACION_INDEFINIDO_MENOR_10",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización art. 64 (indefinido, salario < 10 SMMLV)",
+      "en": "Art. 64 indemnity (indefinite, salary < 10 SMMLV)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_INDEMNIZACION_INDEFINIDO_MAYOR_IGUAL_10",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización art. 64 (indefinido, salario >= 10 SMMLV)",
+      "en": "Art. 64 indemnity (indefinite, salary >= 10 SMMLV)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_INDEMNIZACION_TERMINO_FIJO",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización art. 64 (término fijo: tiempo restante)",
+      "en": "Art. 64 indemnity (fixed term: remaining time)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_INDEMNIZACION_OBRA_LABOR",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización art. 64 (obra o labor: mínimo 15 días)",
+      "en": "Art. 64 indemnity (work/task: minimum 15 days)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_SALARIO_MES_TERMINACION",
+    "role": "EARNING",
+    "label": {
+      "es": "Salario del mes de terminación (días)",
+      "en": "Final-month salary (days)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_AUXILIO_TRANSPORTE_MES",
+    "role": "EARNING",
+    "label": {
+      "es": "Auxilio de transporte del mes de terminación",
+      "en": "Final-month transport allowance"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_CESANTIAS_ANTERIORES",
+    "role": "EARNING",
+    "label": {
+      "es": "Cesantías de años anteriores",
+      "en": "Prior-year severance"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_INTERESES_ANTERIORES",
+    "role": "EARNING",
+    "label": {
+      "es": "Intereses de cesantías anteriores",
+      "en": "Prior severance interest"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_PRIMA_ANTERIOR",
+    "role": "EARNING",
+    "label": {
+      "es": "Prima de semestres anteriores",
+      "en": "Prior prima"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_SALARIOS_PENDIENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Salarios pendientes informados",
+      "en": "Reported unpaid salary"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CO_OVERTIME",
+    "role": "EARNING",
+    "label": {
+      "es": "Horas extra y recargos",
+      "en": "Overtime and premiums"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

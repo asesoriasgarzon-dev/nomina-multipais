@@ -1,0 +1,410 @@
+[
+  {
+    "concept": "BR_T_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Salario mensual (remuneración base)",
+      "en": "Monthly salary (base pay)"
+    },
+    "treatments": [
+      {
+        "base": "BR.RESCISSION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 4.090/1962 art. 1º §§1º-3º (1/12 da remuneração por mês de serviço; fração de 15 dias ou mais = mês integral; proporcional nos contratos a prazo e na aposentadoria) e art. 3º (rescisão sem justa causa: calculada sobre a remuneração do mês da rescisão); CF art. 7º VIII",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/leis/l4090.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_T_VARIABLE",
+    "role": "INFO",
+    "label": {
+      "es": "Promedio de parcelas variables habituales",
+      "en": "Average of habitual variable pay"
+    },
+    "treatments": [
+      {
+        "base": "BR.RESCISSION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "CLT arts. 129-130 (30 dias por 12 meses), 142 (remuneração devida na data da concessão), 146 (rescisão: remuneração do período adquirido; parágrafo único: proporcional 1/12 por mês ou fração superior a 14 dias, salvo justa causa), 147 (menos de 12 meses); CF art. 7º XVII (um terço a mais)",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "CLT art. 142 §§: horistas/tarefeiros/comissionados: média do período aquisitivo; el promedio lo informa el usuario."
+  },
+  {
+    "concept": "BR_T_UNPAID_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Reported unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_T_DAYS_MONTH",
+    "role": "INFO",
+    "label": {
+      "es": "Días del mes de rescisión",
+      "en": "Days in the termination month"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_SALDO_SALARIO",
+    "role": "EARNING",
+    "label": {
+      "es": "Saldo de salario",
+      "en": "Salary balance"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_13O_PROPORCIONAL",
+    "role": "EARNING",
+    "label": {
+      "es": "13.º salario proporcional",
+      "en": "Proportional 13th salary"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_13O_PEDIDO_DEMISSAO",
+    "role": "EARNING",
+    "label": {
+      "es": "13.º proporcional (renuncia)",
+      "en": "Proportional 13th (resignation)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_T_13_ADVANCE",
+    "role": "INFO",
+    "label": {
+      "es": "13.º adelantado ya pagado",
+      "en": "13th advance already paid"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_13O_ADELANTO_DESCUENTO",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label": {
+      "es": "Descuento del adelanto del 13.º",
+      "en": "Deduction of 13th advance"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FERIAS_PROPORCIONAIS",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones proporcionales",
+      "en": "Proportional vacation"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FERIAS_VENCIDAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones vencidas (períodos completos)",
+      "en": "Vested vacation (full periods)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FERIAS_TERCO_PROPORCIONAIS",
+    "role": "EARNING",
+    "label": {
+      "es": "Adicional 1/3 sobre vacaciones proporcionales",
+      "en": "1/3 supplement on vacation"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FERIAS_TERCO_VENCIDAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Adicional 1/3 sobre vacaciones vencidas",
+      "en": "1/3 supplement on vacation"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_T_NOTICE_DAYS",
+    "role": "INFO",
+    "label": {
+      "es": "Días de aviso previo (Ley 12.506)",
+      "en": "Notice days (Law 12.506)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_AVISO_PREVIO_INDENIZADO",
+    "role": "EARNING",
+    "label": {
+      "es": "Aviso previo indemnizado",
+      "en": "Indemnified prior notice"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_AVISO_PREVIO_ACORDO",
+    "role": "EARNING",
+    "label": {
+      "es": "Aviso previo indemnizado (acuerdo, por mitad)",
+      "en": "Indemnified notice (agreement, half)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_AVISO_PREVIO_DESCUENTO",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label": {
+      "es": "Descuento por aviso previo no cumplido",
+      "en": "Deduction for unworked notice"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FGTS_RESCISAO",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label": {
+      "es": "Depósito FGTS de la rescisión (8 %)",
+      "en": "Termination FGTS deposit (8 %)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_T_FGTS_BALANCE",
+    "role": "INFO",
+    "label": {
+      "es": "Saldo de la cuenta FGTS",
+      "en": "FGTS account balance"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FGTS_MULTA_40",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label": {
+      "es": "Multa FGTS 40 %",
+      "en": "Multa FGTS 40 %"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_FGTS_MULTA_20",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label": {
+      "es": "Multa FGTS 20 % (acuerdo)",
+      "en": "Multa FGTS 20 % (acuerdo)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_REMUNERACOES_PENDENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Reported unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BR_OVERTIME",
+    "role": "EARNING",
+    "label": {
+      "es": "Horas extra y adicional nocturno",
+      "en": "Overtime and night premium"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

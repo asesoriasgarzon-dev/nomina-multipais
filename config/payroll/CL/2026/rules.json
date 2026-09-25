@@ -1,0 +1,696 @@
+[
+  {
+    "rule_id": "CL.REMUNERATION.1",
+    "rule_key": "CL.REMUNERATION",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "REMUNERATION",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.BONUS.1",
+    "rule_key": "CL.BONUS",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CL.LEGAL_GRATIFICATION.1",
+    "rule_key": "CL.LEGAL_GRATIFICATION",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "LEGAL_GRATIFICATION",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LEGAL_GRATIFICATION",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CL.AFP_CONTRIBUTION.1",
+    "rule_key": "CL.AFP_CONTRIBUTION",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFP_CONTRIBUTION",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.10"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.AFP_COMMISSION.1",
+    "rule_key": "CL.AFP_COMMISSION",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFP_COMMISSION",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.01"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Comisión promedio fija; varía por AFP."
+  },
+  {
+    "rule_id": "CL.AFC_EMPLOYEE.1",
+    "rule_key": "CL.AFC_EMPLOYEE",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFC_EMPLOYEE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_UNEMPLOYMENT_BASE",
+        "rate": "0.006"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Asume contrato indefinido."
+  },
+  {
+    "rule_id": "CL.HEALTH.1",
+    "rule_key": "CL.HEALTH",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "HEALTH",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.07"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.LOANS.1",
+    "rule_key": "CL.LOANS",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "LOANS",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LOANS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "CL.SINGLE_TAX.1",
+    "rule_key": "CL.SINGLE_TAX",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "SINGLE_TAX",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.SINGLE_TAX",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Impuesto único de segunda categoría (tabla en UTM): NO IMPLEMENTADO — MOTOR TRIBUTARIO."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "input_type": "EXTERNAL_INPUT"
+  },
+  {
+    "rule_id": "CL.SIS_EMPLOYER.1",
+    "rule_key": "CL.SIS_EMPLOYER",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "SIS_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-03-31"
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.0154"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones",
+      "legal_reference": "Tasa del SIS a cargo del empleador: 1,54 % desde enero de 2026 y 1,62 % desde abril de 2026",
+      "official_url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9917.html",
+      "verified_at": "2026-09-24",
+      "note": "Página 'Seguro de Invalidez y Sobrevivencia (SIS)' de la SP."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tasa vigente ene-mar 2026 (1,54 %) según la SP (por resumen de búsqueda de la página oficial)."
+    },
+    "implementation_status": "IMPLEMENTED",
+    "notes": "SIS 1,54 % (ene-mar 2026)."
+  },
+  {
+    "rule_id": "CL.SIS_EMPLOYER.2",
+    "rule_key": "CL.SIS_EMPLOYER",
+    "version": "2",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "SIS_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-04-01",
+      "to": "2026-07-31"
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.0162"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones",
+      "legal_reference": "Tasa del SIS a cargo del empleador: 1,62 % desde abril de 2026",
+      "official_url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-9917.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "SIS 1,62 % abr-jul 2026."
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.SIS_EMPLOYER.3",
+    "rule_key": "CL.SIS_EMPLOYER",
+    "version": "3",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "SIS_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-08-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.0162"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones",
+      "legal_reference": "SIS 1,62 % desde abril de 2026; a partir del 1-ago-2026 la SP indica que la cotización del empleador de la reforma (3,5 %) 'incluye la tasa para el financiamiento del SIS'",
+      "official_url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10906.html",
+      "verified_at": "2026-09-24",
+      "note": "POSIBLE DOBLE CONTEO: si el 3,5 % de la reforma absorbe el SIS, esta regla debe terminar el 31-jul-2026."
+    },
+    "verification": {
+      "interpretation_status": "CONFLICTING",
+      "professional_validation": "PENDING",
+      "note": "PENDING_VERIFICATION: ¿el SIS separado sigue cobrándose desde ago-2026 junto con el 3,5 % de la reforma?"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.PENSION_REFORM_EMPLOYER.1",
+    "rule_key": "CL.PENSION_REFORM_EMPLOYER",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "PENSION_REFORM_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-07-31"
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.01"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones",
+      "legal_reference": "Ley 21.735: cotización adicional del empleador de 1 % entre el 1-ago-2025 y julio de 2026; 3,5 % desde el 1-ago-2026 hasta julio de 2027",
+      "official_url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10906.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Aporte del 1 % (ago-2025 a jul-2026)."
+    },
+    "implementation_status": "IMPLEMENTED",
+    "notes": "Cotización adicional del empleador (reforma previsional): 1 %."
+  },
+  {
+    "rule_id": "CL.PENSION_REFORM_EMPLOYER.2",
+    "rule_key": "CL.PENSION_REFORM_EMPLOYER",
+    "version": "2",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "PENSION_REFORM_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-08-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.035"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones",
+      "legal_reference": "Ley 21.735: 3,5 % del empleador entre el 1-ago-2026 y julio de 2027 (0,1 % a la cuenta individual, 2,5 % SIS y CEV, 0,9 % cotización con rentabilidad protegida)",
+      "official_url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10906.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Aporte del 3,5 % desde ago-2026 (la gradualidad siguiente requiere nuevas versiones)."
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.MUTUAL_EMPLOYER.1",
+    "rule_key": "CL.MUTUAL_EMPLOYER",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "MUTUAL_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.009"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Tasa básica; varía por empresa."
+  },
+  {
+    "rule_id": "CL.AFC_EMPLOYER.1",
+    "rule_key": "CL.AFC_EMPLOYER",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFC_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_UNEMPLOYMENT_BASE",
+        "rate": "0.024"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Asume contrato indefinido."
+  },
+  {
+    "rule_id": "CL.VACATION_ACCRUAL.1",
+    "rule_key": "CL.VACATION_ACCRUAL",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "VACATION_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "CL_TAXABLE_BASE",
+        "rate": "0.0417"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cotización. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Chile), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Legacy: 4.17% (15/360)."
+  },
+  {
+    "rule_id": "CL.VAL.WORKED_DAYS.1",
+    "rule_key": "CL.VAL.WORKED_DAYS",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.worked_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "value": "30"
+      }
+    },
+    "message": "Los días trabajados superan 30 (mes comercial).",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

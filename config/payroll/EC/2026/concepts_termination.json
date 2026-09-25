@@ -1,0 +1,344 @@
+[
+  {
+    "concept": "EC_T_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneración mensual",
+      "en": "Monthly remuneration"
+    },
+    "treatments": [
+      {
+        "base": "EC.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 95 (remuneración para indemnizaciones: todo lo que reciba el trabajador, incluidos trabajos extraordinarios y suplementarios; excepto utilidades, fondo de reserva mensual, viáticos ocasionales, decimotercera y decimocuarta)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_VARIABLE",
+    "role": "INFO",
+    "label": {
+      "es": "Promedio de remuneraciones variables (art. 95)",
+      "en": "Average of variable pay (art. 95)"
+    },
+    "treatments": [
+      {
+        "base": "EC.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 95 (remuneración para indemnizaciones: todo lo que reciba el trabajador, incluidos trabajos extraordinarios y suplementarios; excepto utilidades, fondo de reserva mensual, viáticos ocasionales, decimotercera y decimocuarta)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "Comisiones, horas extra y otros ingresos habituales (promedio informado por el usuario)."
+  },
+  {
+    "concept": "EC_T_UNPAID_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Reported unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_RESERVE_FUND",
+    "role": "INFO",
+    "label": {
+      "es": "Fondo de reserva acumulado pendiente",
+      "en": "Accumulated reserve fund pending"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_YEAR_ACCRUED",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneraciones percibidas en el año calendario",
+      "en": "Remuneration earned in the calendar year"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_DECIMO_TERCERO",
+    "role": "EARNING",
+    "label": {
+      "es": "Décimo tercero (proporcional, acumulado)",
+      "en": "13th salary (prorated, accumulated)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_DECIMO_CUARTO_SIERRA",
+    "role": "EARNING",
+    "label": {
+      "es": "Décimo cuarto acumulado — Sierra/Amazonía (1-ago a 31-jul)",
+      "en": "14th salary accumulated — SIERRA"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_DECIMO_CUARTO_COSTA",
+    "role": "EARNING",
+    "label": {
+      "es": "Décimo cuarto acumulado — Costa/Galápagos (1-mar a fin de feb)",
+      "en": "14th salary accumulated — COSTA"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_VACATION_DAYS",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones anuales",
+      "en": "Annual vacation days"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_VACATION_DAYS_PRORATED",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones proporcionales",
+      "en": "Prorated vacation days"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_VACATION_DAYS_DUE",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones por pagar",
+      "en": "Vacation days to pay"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_VACACIONES",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones no gozadas",
+      "en": "Unused vacation"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_INDEMNIZACION_DESPIDO_INTEMPESTIVO",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización por despido intempestivo (art. 188)",
+      "en": "Unfair dismissal indemnity (art. 188)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_BONIFICACION_DESAHUCIO",
+    "role": "EARNING",
+    "label": {
+      "es": "Bonificación por desahucio (art. 185)",
+      "en": "Notice-termination bonus (art. 185)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_T_DAYS_MONTH",
+    "role": "INFO",
+    "label": {
+      "es": "Días del mes de terminación",
+      "en": "Days in final month"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_REMUNERACION_MES_TERMINACION",
+    "role": "EARNING",
+    "label": {
+      "es": "Remuneración del mes de terminación (días)",
+      "en": "Final-month remuneration (days)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_REMUNERACIONES_PENDIENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Remuneraciones pendientes informadas"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_FONDO_RESERVA_PENDIENTE",
+    "role": "EARNING",
+    "label": {
+      "es": "Fondo de reserva acumulado pendiente",
+      "en": "Fondo de reserva acumulado pendiente"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "EC_OVERTIME",
+    "role": "EARNING",
+    "label": {
+      "es": "Horas suplementarias, extraordinarias y recargo nocturno",
+      "en": "Overtime and night premium"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

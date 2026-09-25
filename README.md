@@ -26,22 +26,68 @@ Abre `http://localhost:5057`. Cambia de idioma con los enlaces ES/EN/PT/简体/�
 del encabezado (independiente del país que se esté consultando: HQ en Hong
 Kong puede ver la nómina de Colombia en chino tradicional).
 
-## Arquitectura
+## Motor normativo 2026 (cálculo mensual, liquidación y horas extra)
 
-- `countries/base.py` — interfaz `PayrollEngine.calcular()` y `CountryConfig`
-  (parámetros legales: salario mínimo, jornada, vacaciones, prima/aguinaldo).
-- `countries/colombia.py` — único motor completo por ahora, portado fórmula a
-  fórmula del Excel de referencia (`Planilla nomina 2026-08 ejemplo.xlsx`, hoja
-  "Nomina mensual"): devengado, deducciones del empleado, aportes patronales a
-  seguridad social y provisión de prestaciones sociales. También implementa
-  `liquidar()` (ver más abajo, "Módulo de liquidación").
-- `countries/stubs.py` — México, Perú, Chile, Brasil, Argentina, Ecuador, EE.UU.
-  y HK (Hong Kong GSR Technology Limited, la matriz) ya tienen su
-  `CountryConfig` cargado (salario mínimo, jornada, vacaciones, tipo de
-  prima/aguinaldo, nombre legal de la liquidación y fórmula de indemnización
-  documentada en `campos_extra`) tomado de `NORMATIVA_PAISES.md`. Falta
-  implementar `calcular()` y `liquidar()` de cada uno — se hace en un archivo
-  nuevo sin tocar el resto del sistema.
+El cálculo **mensual**, la **liquidación/terminación** y las **horas extra y recargos** de los 7 países con motor ya **no** viven en
+fórmulas de código: los ejecuta `payroll_engine/` leyendo datos normativos versionados de `config/payroll/<PAIS>/2026/`
+(`manifest.json`, `references*.json`, `series*.json`, `concepts*.json`, `bases*.json`, `rules.json`, `rules_termination.json`,
+`rules_overtime.json`, `rounding.json`).
+
+```
+NORMA → config/payroll (JSON) → validación de esquema → Rule Resolver (vigencia, ancla, prioridad, tipo de corrida)
+      → Dependency Graph → Bases Engine → mecanismos tipados (Decimal) → redondeo por línea
+      → resultado → explicación → audit trail → snapshot (entrada + normativa + versión del motor)
+```
+
+- **El JSON describe la norma; el código ejecuta el mecanismo.** No hay lenguaje de fórmulas: el JSON guarda tasas, topes, tablas,
+  umbrales, referencias (SMMLV, UMA, SMVM, UF…), ventanas jurídicas (semestres, año de servicio…), condiciones, vigencias y tratamientos por base;
+  los mecanismos (`mechanisms.py`, `mechanisms_termination.py`) son código tipado y genérico (`service_period_proration`,
+  `tiered_service_amount`, `service_quantity`, `remaining_term_amount`, `history_value`, `accrued_in_window`, `hours_at_multipliers`…).
+- **Sin `if país`**: el núcleo no contiene códigos de país ni cifras legales (`tests/payroll_2026/test_architecture.py`, `test_hardcoding_y_legado.py`).
+  El código heredado se movió a `tests/payroll_2026/legacy_fixtures/` (solo pruebas de regresión: **no es fuente de verdad**);
+  `countries/<pais>.py` solo tiene formulario, ejemplos DEMO y etiquetas; `CountryConfig` ya no tiene parámetros legales.
+- **Series temporales**: referencias con vigencia (SMMLV, UMA…) y series por fecha (UF diaria del SII, sin extrapolar) resueltas por la fecha ancla.
+- **Terminación**: la corrida `TERMINATION` recibe fecha de ingreso, de terminación, tipo de contrato, causa, salario e historiales; cada país declara en su
+  manifiesto las causas y contratos soportados. Cada beneficio tiene su propia ventana (p. ej. Perú: CTS por semestre mayo-octubre/noviembre-abril y
+  gratificación por meses calendario completos enero-junio/julio-diciembre; Argentina: SAC por semestre).
+- **Estado real, no "Motor activo"**: la UI lee el *Capability Manifest*. Componentes críticos por país: nómina mensual, horas extra, recargos,
+  vacaciones, seguridad social, prestaciones, terminación, impuesto, auditoría y recálculo histórico. **Ningún país es «implementado»** (falta
+  validación profesional humana y el impuesto es un valor digitado); Colombia y los otros 6 son `parcial`; EE. UU. no tiene motor;
+  Hong Kong es contexto de consolidación (`local_payroll_engine=false`).
+- **Auditoría, reproducibilidad y recálculo**: cada cálculo guarda una corrida inmutable (`payroll_runs`) con su snapshot de entrada, el snapshot
+  normativo por hash y la versión del motor. `/run/<id>` muestra líneas, explicación y estado de verificación de cada regla; `/run/<id>/verify`
+  recalcula con las reglas históricas y compara hashes; `/run/<id>/recalculate` recalcula con las reglas actuales y explica cada diferencia
+  (sin generar ajustes).
+- **Fuentes y verificación (cuatro dimensiones separadas)**: `source_verified`, `interpretation_verified`, `implementation_verified` y
+  `professional_validated` (`payroll_engine/verification.py`, `docs/SOURCES_REGISTRY_2026.md`). Fuente oficial ≠ interpretación correcta. Una regla
+  ejecutada con fuente PENDING/CONFLICTING o con pregunta abierta produce la advertencia `UNVERIFIED_RULE`.
+
+Documentación (generada desde los datos, no editar a mano): `docs/MASTER_PAYROLL_RULES_2026.md`, `docs/LATAM_LABOR_PROFILE_2026.md`,
+`docs/ENGINE_RULE_GAP_ANALYSIS.md`, `docs/KILLCRITIC_PAYROLL_2026.md`, `docs/HARDCODING_INVENTORY.md`, `docs/LEGACY_VS_NORMATIVE.md`,
+`docs/SOURCES_REGISTRY_2026.md`; auditoría escrita a mano: `docs/CO_LEY_1393_AUDITORIA.md`.
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest                              # suite completa (usa una base de datos temporal)
+python tools/generate_payroll_docs.py         # regenera docs/ (ejecuta las pruebas)
+```
+
+**Cómo incorporar una norma nueva**: editar el JSON del país (nueva versión con `effective.from`, nunca sobrescribir la vigente) → el validador de
+esquema la revisa → agregar la prueba de frontera (-1 / exacto / +1) con el esperado calculado de forma independiente → regenerar docs. Si la regla necesita
+un mecanismo que no existe, se agrega en `mechanisms*.py` (genérico, sin país).
+
+**Lo que NO está hecho** (no afirmar lo contrario): **impuesto** de los 7 países (valor digitado `EXTERNAL_INPUT`), **validación profesional** de
+cualquier regla, fuentes aún SECUNDARIAS/PENDING (tasas de seguridad social de Colombia, UMA, RMV de Perú, SM/INSS de Brasil, intereses de cesantías…), Ley 1393
+con alcance sin verificar (cálculo PROVISIONAL), indemnización moratoria, jubilación patronal, salarios vencidos, PTU, INSS/IRRF de la rescisión, EE. UU. estatal/local,
+nómina local de Hong Kong, autenticación/CSRF y separación física de datos demo/reales.
+
+## Arquitectura (formulario, países e interfaz)
+
+- `countries/base.py` — `CountryConfig` (solo etiquetas: nombre, moneda, idioma, nombre legal de la liquidación), `FormSpec` (campos del formulario y
+  ejemplos DEMO) e interfaz `PayrollEngine`.
+- `countries/colombia.py`, `mexico.py`, `peru.py`, `chile.py`, `brasil.py`, `argentina.py`, `ecuador.py` — formulario (`NOVEDADES_CAMPOS`) y ejemplos DEMO.
+  **Sin reglas legales**: el motor es `countries/normative_engines.py` / `colombia_normative.py` (adaptadores formulario → `PayrollRun` → pantalla).
+- `countries/stubs.py` — EE. UU. y HK (Hong Kong GSR Technology Limited, la matriz) sin motor de nómina local.
 - `i18n/{es,en,pt,zh,zh-hk}.json` — diccionarios de traducción de la interfaz
   (`zh` = simplificado/China continental, `zh-hk` = tradicional/Hong Kong).
 - `geolocation.py` — detecta el idioma según la ubicación real del visitante
@@ -137,14 +183,14 @@ acumulativas y Argentina con la Ley 27.802).
   final" en Argentina, "Acta de finiquito" en Ecuador — se muestra tal cual en
   la interfaz, sin traducirlo, porque es terminología legal, no una etiqueta
   de UI.
-- `countries/colombia.py::liquidar()` está implementado y validado a mano:
-  cesantías/prima proporcionales al periodo no consignado del año, intereses
-  de cesantías, vacaciones pendientes (dato manual), e indemnización según
-  CST art. 64 (distingue contrato indefinido con umbral de 10 SMMLV, a
-  término fijo y por obra/labor). Probado con un caso de 2.5 años de
-  antigüedad y verificado a mano contra la fórmula legal — cuadra exacto.
-- Los demás países muestran una página con la fórmula de indemnización ya
-  investigada (texto), para uso manual mientras se programa el motor.
+- La liquidación corre sobre el motor normativo (corrida `TERMINATION`): el formulario ofrece solo las causas y tipos de contrato que el manifiesto de cada país
+  declara soportados, valida la entrada (400 con el motivo) y guarda la corrida auditable (`/run/<id>`). Cubre por país: **CO** cesantías, intereses, prima,
+  vacaciones e indemnización del art. 64 (indefinido <10 / ≥10 SMMLV, término fijo, obra o labor); **PE** CTS, gratificación, bonificación 9 %, vacaciones e
+  indemnización; **AR** SAC por semestre, vacaciones, art. 245 (texto Ley 27.802), preaviso e integración; **MX** aguinaldo, vacaciones, prima vacacional, 3 meses +
+  20 días, prima de antigüedad; **CL** art. 163 con tope de 90 UF (serie UF del SII), aviso, feriado proporcional; **BR** 13.º, férias + 1/3, aviso previo, FGTS y
+  multa; **EC** décimos acumulados, vacaciones, despido intempestivo y desahucio. Lo que no calcula figura en «Brechas conocidas» de cada país.
+- El campo «Salarios pendientes» del formulario incluye el salario de los días del mes de terminación (el motor no lo agrega aparte para no contarlo dos veces);
+  «Días de vacaciones pendientes» son los de períodos anteriores (los del año en curso se calculan solos).
 - El panel consolidado (`/dashboard`) lista también las liquidaciones
   procesadas, con el tipo de terminación y si incluyó indemnización o no —
   para que quede visible y auditable qué se liquidó y por qué.
@@ -173,20 +219,15 @@ acumulativas y Argentina con la Ley 27.802).
   rompe la página), y la precisión de geolocalización por IP no es perfecta
   (VPNs, proxies corporativos). Para producción con más tráfico, considerar
   una base de datos local tipo MaxMind GeoLite2 en vez de la API gratuita.
-- **Cifras legales**: salario mínimo, auxilio de transporte, jornada y
-  vacaciones de cada país vienen del Excel de ejemplo y de la infografía que
-  aportaste. Antes de usarlas con un cliente real, verifícalas contra la fuente
-  oficial de cada país (decreto/gaceta vigente), porque cambian cada año.
+- **Cifras legales**: viven en `config/payroll/<PAIS>/2026/` con su fuente y estado de
+  verificación. Solo las marcadas OFFICIAL tienen respaldo oficial verificado; el resto es SECONDARY
+  o PENDING. Ninguna tiene validación profesional: verifícalas antes de usarlas con un cliente real.
 - **Los diccionarios `i18n/*.json` se cargan una sola vez al iniciar el
   proceso** (`app.py`), no en cada request. El recargador de Flask (`debug=True`)
   detecta cambios en archivos `.py`, pero no en estos `.json` — si editas una
   traducción, reinicia el servidor para verla reflejada.
-- **Liquidación de Colombia**: salario base de liquidación = salario de
-  contrato por defecto; si el empleado tuvo salario variable (comisiones,
-  etc.), la ley exige promediar el último año (art. 132 CST) — no
-  implementado, hay que pasarlo manualmente en "salario base de liquidación".
-  Vacaciones pendientes se reciben como dato manual, no se deriva de un
-  historial de vacaciones tomadas mes a mes.
+- **Liquidación**: el salario base sale del historial mensual (`salary_history`) cuando existe (Colombia: último salario o promedio del año si varió en los 3 últimos
+  meses, art. 253 CST); el formulario web no tiene el historial (usa el salario del contrato o el «salario base de liquidación»); la API del motor sí lo acepta.
 
 ## Origen de los datos
 

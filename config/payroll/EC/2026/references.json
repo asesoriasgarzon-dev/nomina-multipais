@@ -1,0 +1,52 @@
+[
+  {
+    "ref_id": "EC.SBU.2026",
+    "code": "SBU",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "unit": "USD/mes",
+    "value": "482",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio del Trabajo del Ecuador",
+      "legal_reference": "Comunicado oficial: SBU 2026 = USD 482 (consenso, 15-dic-2025); Acuerdo Ministerial MDT-2025-195 según fuentes secundarias",
+      "official_url": "https://www.trabajo.gob.ec/despues-de-casi-una-decada-hay-consenso-gobierno-empleadores-y-trabajadores-acuerdan-fijar-el-salario-basico-unificado-de-2026-en-usd-482-no-hay-imposicion-hay-union/",
+      "verified_at": "2026-09-24",
+      "publication_date": "2025-12-15",
+      "note": "El comunicado oficial no indica el número del acuerdo ni la fecha de vigencia; ambos provienen de fuentes secundarias (RO Suplemento 187, 18-dic-2025; vigente 1-ene-2026)."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "EC.WORKWEEK.2026",
+    "code": "WORKWEEK_HOURS",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "40",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación (Codificación 2005-017, última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 47: jornada máxima de ocho horas diarias, sin exceder de cuarenta horas semanales",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: reformas posteriores no verificadas."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Jornada semanal de 40 horas."
+    }
+  }
+]

@@ -1,0 +1,926 @@
+[
+  {
+    "rule_id": "EC.IN.SALARY.1",
+    "rule_key": "EC.IN.SALARY",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 95 (remuneración para indemnizaciones: todo lo que reciba el trabajador, incluidos trabajos extraordinarios y suplementarios; excepto utilidades, fondo de reserva mensual, viáticos ocasionales, decimotercera y decimocuarta)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.IN.EC_T_VARIABLE.1",
+    "rule_key": "EC.IN.EC_T_VARIABLE",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_VARIABLE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.regular_variable_average",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 95 (remuneración para indemnizaciones: todo lo que reciba el trabajador, incluidos trabajos extraordinarios y suplementarios; excepto utilidades, fondo de reserva mensual, viáticos ocasionales, decimotercera y decimocuarta)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.IN.EC_T_UNPAID_SALARY.1",
+    "rule_key": "EC.IN.EC_T_UNPAID_SALARY",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_UNPAID_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.unpaid_salary",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.IN.EC_T_RESERVE_FUND.1",
+    "rule_key": "EC.IN.EC_T_RESERVE_FUND",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_RESERVE_FUND",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.reserve_fund_unpaid",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.IN.YEAR_ACCRUED.1",
+    "rule_key": "EC.IN.YEAR_ACCRUED",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_YEAR_ACCRUED",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "accrued_in_window",
+      "params": {
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "history_input": "salary_history",
+        "fallback_monthly": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 111 (decimotercera: doceava parte de las remuneraciones percibidas durante el año calendario; pago mensual o, a pedido escrito, acumulado hasta el 24 de diciembre)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Suma del historial mensual del año calendario; sin historial se supone remuneración constante."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.DECIMO_TERCERO.1",
+    "rule_key": "EC.DECIMO_TERCERO",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_DECIMO_TERCERO",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "EC_T_YEAR_ACCRUED"
+        },
+        "factor": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 111 (decimotercera: doceava parte de las remuneraciones percibidas durante el año calendario; pago mensual o, a pedido escrito, acumulado hasta el 24 de diciembre)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "CONFLICTING",
+      "professional_validation": "PENDING",
+      "note": "El art. 111 codificado dice 'año calendario' (enero-diciembre), mientras los instructivos del Ministerio del Trabajo (Acuerdos 45 y 87 de 2015, no consultados) usan el período 1-dic a 30-nov. Se aplica el texto del Código: PENDING_VERIFICATION. Solo si el trabajador pidió acumularlo (employment.thirteenth_accumulated=true); por defecto se paga mensualmente."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "employment.thirteenth_accumulated",
+        "default": false
+      },
+      "op": "==",
+      "right": true
+    }
+  },
+  {
+    "rule_id": "EC.DECIMO_CUARTO_SIERRA.1",
+    "rule_key": "EC.DECIMO_CUARTO_SIERRA",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_DECIMO_CUARTO_SIERRA",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "reference": {
+            "code": "SBU"
+          }
+        },
+        "window": {
+          "type": "RECURRING_PERIODS",
+          "periods": [
+            {
+              "start": "08-01",
+              "end": "07-31"
+            }
+          ]
+        },
+        "count": {
+          "unit": "MONTHS_AND_DAYS",
+          "months_divisor": "12",
+          "days_divisor": "360"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 113 (decimocuarta: 1/12 de la remuneración básica mínima unificada por mes; Costa/Insular hasta el 15 de marzo, Sierra/Amazonía hasta el 15 de agosto; proporcional si sale antes)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "1/12 del SBU por mes (y días/30) del período regional; solo si está acumulado (employment.fourteenth_accumulated=true); la región se informa en employment.region."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "employment.fourteenth_accumulated",
+            "default": false
+          },
+          "op": "==",
+          "right": true
+        },
+        {
+          "left": {
+            "input": "employment.region",
+            "default": "SIERRA_AMAZONIA",
+            "as": "text"
+          },
+          "op": "==",
+          "right": {
+            "value": "SIERRA_AMAZONIA"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "EC.DECIMO_CUARTO_COSTA.1",
+    "rule_key": "EC.DECIMO_CUARTO_COSTA",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_DECIMO_CUARTO_COSTA",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "reference": {
+            "code": "SBU"
+          }
+        },
+        "window": {
+          "type": "RECURRING_PERIODS",
+          "periods": [
+            {
+              "start": "03-01",
+              "end": "02-END"
+            }
+          ]
+        },
+        "count": {
+          "unit": "MONTHS_AND_DAYS",
+          "months_divisor": "12",
+          "days_divisor": "360"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 113 (decimocuarta: 1/12 de la remuneración básica mínima unificada por mes; Costa/Insular hasta el 15 de marzo, Sierra/Amazonía hasta el 15 de agosto; proporcional si sale antes)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "1/12 del SBU por mes (y días/30) del período regional; solo si está acumulado (employment.fourteenth_accumulated=true); la región se informa en employment.region."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "employment.fourteenth_accumulated",
+            "default": false
+          },
+          "op": "==",
+          "right": true
+        },
+        {
+          "left": {
+            "input": "employment.region",
+            "default": "SIERRA_AMAZONIA",
+            "as": "text"
+          },
+          "op": "==",
+          "right": {
+            "value": "COSTA_GALAPAGOS"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "EC.IN.VAC_DAYS.1",
+    "rule_key": "EC.IN.VAC_DAYS",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_VACATION_DAYS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_quantity",
+      "params": {
+        "years_basis": "COMPLETED_YEARS",
+        "linear": {
+          "base_quantity": "15",
+          "per_completed_year": "1",
+          "after_years": 5,
+          "max_total": "30"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 69 (15 días de vacaciones; un día adicional por cada año excedente de cinco, hasta 15 días adicionales)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "15 días + 1 por año excedente de cinco, hasta 15 adicionales (tope 30)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.IN.VAC_PRORATED.1",
+    "rule_key": "EC.IN.VAC_PRORATED",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_VACATION_DAYS_PRORATED",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "line": "EC_T_VACATION_DAYS"
+        },
+        "window": {
+          "type": "SERVICE_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_ACTUAL",
+          "divisor": "365"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 69 (15 días de vacaciones; un día adicional por cada año excedente de cinco, hasta 15 días adicionales)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Proporción del año de servicio en curso por días/365 (el Código exige pagar las no gozadas; la forma de proratear no está en el texto: PENDING_VERIFICATION).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.IN.VAC_DUE.1",
+    "rule_key": "EC.IN.VAC_DUE",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_VACATION_DAYS_DUE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "adjusted_quantity",
+      "params": {
+        "quantity": {
+          "line": "EC_T_VACATION_DAYS_PRORATED"
+        },
+        "add": [
+          {
+            "input": "vacation_history.days_pending_prior",
+            "default": "0"
+          }
+        ],
+        "subtract": [
+          {
+            "input": "vacation_history.days_taken_current",
+            "default": "0"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 69 (15 días de vacaciones; un día adicional por cada año excedente de cinco, hasta 15 días adicionales)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.VACACIONES.1",
+    "rule_key": "EC.VACACIONES",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_VACACIONES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "EC.INDEMNITY_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "EC_T_VACATION_DAYS_DUE"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 69 (15 días de vacaciones; un día adicional por cada año excedente de cinco, hasta 15 días adicionales)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Días por pagar × remuneración/30 (los 15 días incluyen días no laborables)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.INDEMNIZACION_188.1",
+    "rule_key": "EC.INDEMNIZACION_188",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_INDEMNIZACION_DESPIDO_INTEMPESTIVO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "EC.INDEMNITY_BASE"
+        },
+        "unit_days_per_month": "1",
+        "max_units": "25",
+        "tiers": [
+          {
+            "over_years": "0",
+            "up_to_years": "3",
+            "fixed_units": "3"
+          },
+          {
+            "over_years": "3",
+            "units_per_year": "1",
+            "count_from_years": "0",
+            "fraction": "CEIL"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 188 (despido intempestivo: hasta 3 años, 3 meses de remuneración; más de 3 años, un mes por año, máximo 25; la fracción de año cuenta como año completo; base: remuneración al momento del despido)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Hasta 3 años de servicio: 3 meses; más de 3 años: un mes por año, con la fracción de año como año completo, máximo 25 meses. La jubilación patronal proporcional (20-25 años) NO se calcula."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "DISMISSAL_WITHOUT_CAUSE"
+      ]
+    }
+  },
+  {
+    "rule_id": "EC.BONIFICACION_185.1",
+    "rule_key": "EC.BONIFICACION_185",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_BONIFICACION_DESAHUCIO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "EC.INDEMNITY_BASE"
+        },
+        "unit_days_per_month": "1",
+        "tiers": [
+          {
+            "over_years": "0",
+            "units_per_year": "0.25",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 185 (bonificación por desahucio: 25 % de la última remuneración mensual por cada año de servicio; igual bonificación en la terminación por acuerdo de las partes)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "25 % de la última remuneración mensual por año de servicio; el art. 188 remite a esta bonificación además de la indemnización. La fracción de año se prorratea (el texto dice 'por cada uno de los años': PENDING_VERIFICATION).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "NOTICE_TERMINATION",
+        "MUTUAL_AGREEMENT",
+        "DISMISSAL_WITHOUT_CAUSE"
+      ]
+    }
+  },
+  {
+    "rule_id": "EC.IN.DAYS_MONTH.1",
+    "rule_key": "EC.IN.DAYS_MONTH",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_T_DAYS_MONTH",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "COMMERCIAL_DAYS_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.SUELDO_MES.1",
+    "rule_key": "EC.SUELDO_MES",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_REMUNERACION_MES_TERMINACION",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "EC.INDEMNITY_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "EC_T_DAYS_MONTH"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Remuneración/30 por los días del mes de terminación."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "EC.PASS.EC_REMUNERACIONES_PENDIENTES.1",
+    "rule_key": "EC.PASS.EC_REMUNERACIONES_PENDIENTES",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_REMUNERACIONES_PENDIENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "EC_T_UNPAID_SALARY"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.PASS.EC_FONDO_RESERVA_PENDIENTE.1",
+    "rule_key": "EC.PASS.EC_FONDO_RESERVA_PENDIENTE",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_FONDO_RESERVA_PENDIENTE",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "EC_T_RESERVE_FUND"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "base": "EC.INDEMNITY_BASE",
+    "country": "EC",
+    "description": "Remuneración del art. 95 (salario + variables habituales)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo art. 95 (remuneración para indemnizaciones: todo lo que reciba el trabajador, incluidos trabajos extraordinarios y suplementarios; excepto utilidades, fondo de reserva mensual, viáticos ocasionales, decimotercera y decimocuarta)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada; sin validación profesional."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  }
+]

@@ -5,33 +5,67 @@
 <div class="demo-banner">{{ t('demo_banner').replace('{pais}', config.name) }}</div>
 {% endif %}
 <h1>{{ config.nombre_liquidacion }} — {{ liq.empleado.nombre }} ({{ config.name }})</h1>
-
+{% set res = liq.resultado %}
+{% if res.motor == 'normativo' %}
+<div class="warning-box">{{ t('liq_engine_notice') }}</div>
+<p><span class="cap-status run-{{ res.run_status }}">{{ t('run_status_' ~ res.run_status) }}</span>
+    {% if res.run_db_id %}<a class="btn-export" href="{{ url_for('payroll_run_view', run_id=res.run_db_id) }}">{{ t('ver_auditoria') }}</a>{% endif %}</p>
+{% if res.warnings %}
+<section class="result-block"><h2>{{ t('run_warnings') }}</h2>
+    <ul class="warn-list">{% for w in res.warnings %}<li>{{ w }}</li>{% endfor %}</ul></section>
+{% endif %}
 <section class="result-block">
     <h2>{{ t('prestaciones_proporcionales') }}</h2>
     <table>
-        {% for k, v in liq.resultado.conceptos.items() %}
-        <tr><td>{{ t(k) }}</td><td class="num">{{ '%.2f'|format(v) }}</td></tr>
+        {% for l in res.lineas if l.category != 'TERMINATION_INDEMNITY' and l.role != 'EMPLOYER_CONTRIBUTION' and l.amount != 0 %}
+        <tr><td>{{ concept_label(l) }}{% if l.role == 'EMPLOYEE_DEDUCTION' %} (&minus;){% endif %}</td><td class="num">{{ '%.2f'|format(l.amount) }}</td></tr>
         {% endfor %}
-        <tr class="total"><td>{{ t('total_prestaciones') }}</td><td class="num">{{ '%.2f'|format(liq.resultado.total_prestaciones) }}</td></tr>
+        <tr class="total"><td>{{ t('total_prestaciones') }}</td><td class="num">{{ '%.2f'|format(res.total_prestaciones) }}</td></tr>
     </table>
 </section>
-
 <section class="result-block">
     <h2>{{ t('indemnizacion') }}</h2>
-    {% if liq.resultado.aplica_indemnizacion %}
-    <p>{{ t('aplica_indemnizacion_si') }}</p>
-    {% else %}
-    <p>{{ t('aplica_indemnizacion_no') }}</p>
-    {% endif %}
+    {% if res.aplica_indemnizacion %}<p>{{ t('aplica_indemnizacion_si') }}</p>{% else %}<p>{{ t('aplica_indemnizacion_no') }}</p>{% endif %}
     <table>
-        <tr><td>{{ t('antiguedad_anos') }}</td><td class="num">{{ liq.resultado.antiguedad_anos }}</td></tr>
-        <tr class="total"><td>{{ t('indemnizacion') }}</td><td class="num">{{ '%.2f'|format(liq.resultado.indemnizacion) }}</td></tr>
+        <tr><td>{{ t('antiguedad_anos') }}</td><td class="num">{{ res.antiguedad_anos }} <small class="muted">({{ res.antiguedad_texto }})</small></td></tr>
+        {% for l in res.lineas if l.category == 'TERMINATION_INDEMNITY' and l.role == 'EARNING' and l.amount != 0 %}
+        <tr><td>{{ concept_label(l) }}</td><td class="num">{{ '%.2f'|format(l.amount) }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>{{ t('indemnizacion') }}</td><td class="num">{{ '%.2f'|format(res.indemnizacion) }}</td></tr>
     </table>
 </section>
+{% set employer_lines = res.lineas | selectattr('role', 'equalto', 'EMPLOYER_CONTRIBUTION') | selectattr('amount', 'ne', 0) | list %}
+{% if employer_lines %}
+<section class="result-block">
+    <h2>{{ t('costo_empleador') }}</h2>
+    <table>{% for l in employer_lines %}<tr><td>{{ concept_label(l) }}</td><td class="num">{{ '%.2f'|format(l.amount) }}</td></tr>{% endfor %}</table>
+</section>
+{% endif %}
+{% else %}
+{# liquidaciones guardadas antes del motor normativo (cálculo heredado): se muestran tal como se guardaron #}
+<div class="warning-box">{{ t('liq_legacy_notice') }}</div>
+<section class="result-block">
+    <h2>{{ t('prestaciones_proporcionales') }}</h2>
+    <table>
+        {% for k, v in res.conceptos.items() %}
+        <tr><td>{{ t(k) }}</td><td class="num">{{ '%.2f'|format(v) }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>{{ t('total_prestaciones') }}</td><td class="num">{{ '%.2f'|format(res.total_prestaciones) }}</td></tr>
+    </table>
+</section>
+<section class="result-block">
+    <h2>{{ t('indemnizacion') }}</h2>
+    {% if res.aplica_indemnizacion %}<p>{{ t('aplica_indemnizacion_si') }}</p>{% else %}<p>{{ t('aplica_indemnizacion_no') }}</p>{% endif %}
+    <table>
+        <tr><td>{{ t('antiguedad_anos') }}</td><td class="num">{{ res.antiguedad_anos }}</td></tr>
+        <tr class="total"><td>{{ t('indemnizacion') }}</td><td class="num">{{ '%.2f'|format(res.indemnizacion) }}</td></tr>
+    </table>
+</section>
+{% endif %}
 
 <section class="result-block neto">
     <h2>{{ t('total_liquidacion') }}</h2>
-    <p class="neto-value">{{ config.currency }} {{ '%.2f'|format(liq.resultado.total_liquidacion) }}</p>
+    <p class="neto-value">{{ config.currency }} {{ '%.2f'|format(res.total_liquidacion) }}</p>
 </section>
 
 <p><a class="btn-back" href="{{ url_for('pais_home', pais=liq.pais) }}">&larr; {{ t('back') }}</a></p>

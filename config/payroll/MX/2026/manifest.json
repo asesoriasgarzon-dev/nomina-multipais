@@ -1,0 +1,86 @@
+{
+  "country": "MX",
+  "year": 2026,
+  "ruleset_version": "MX-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "MXN",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa equivalente al motor heredado; ISR manual; SBC sin integrar."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "SM general y ZLFN con fuente oficial (CONASAMI); UMA con fuente secundaria y cambio el 1-feb."
+    },
+    "working_hours": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Reducción gradual 48 → 40 h (2026-2030) declarada como referencia con vigencia."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Horas extra dobles/triples con versiones por vigencia (reforma DOF 1-may-2026, extraída por lectura automática) y prima dominical; descanso obligatorio NOT_IMPLEMENTED."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Tabla del art. 76 (reforma 2023) y pago proporcional al término; goce no modelado."
+    },
+    "social_security": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "IMSS: SBC simplificado (sin integración), cesantía y vejez a tasa plana."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "El impuesto es un valor digitado (EXTERNAL_INPUT); no existe motor tributario."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Solo provisión de aguinaldo."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Aguinaldo proporcional, vacaciones y prima vacacional, indemnización de 3 meses y de 20 días por año (plazo indeterminado/determinado) y prima de antigüedad con tope de 2 salarios mínimos por zona desde datos con fuente oficial (Orden Jurídico Nacional). Fracciones de año, salario integrado, salarios vencidos y PTU: interpretación sin validar o NOT_IMPLEMENTED."
+    },
+    "surcharges": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Prima dominical del 25 % (art. 71); descanso obligatorio y séptimo día trabajado (arts. 73 y 75): NOT_IMPLEMENTED."
+    }
+  },
+  "known_gaps": [
+    "ISR (art. 96 LISR) y subsidio: NOT_IMPLEMENTED.",
+    "SBC: integración de prestaciones y bonos pendiente.",
+    "Cesantía y vejez: tabla progresiva pendiente.",
+    "Prima de riesgo IMSS por empresa.",
+    "PTU, prima vacacional, vacaciones.",
+    "Impuesto estatal sobre nómina y salario mínimo de zona fronteriza en cálculos.",
+    "Períodos que cruzan el cambio de UMA (1-feb) se bloquean: las bases no declaran política de partición.",
+    "Salarios vencidos (art. 48), PTU y reparto: NOT_IMPLEMENTED.",
+    "Salario integrado: solo prestaciones de ley (aguinaldo + prima vacacional) más lo informado.",
+    "Fracción de año en indemnización de 20 días y en prima de antigüedad: prorrateo sin verificar.",
+    "Tope de 2 salarios mínimos de la prima de antigüedad: art. 486 no reproducido en la extracción.",
+    "Horas extra 2028-2030 (10/11/12 h): versiones futuras sin cargar.",
+    "El sitio de la Cámara de Diputados no fue accesible: el texto primario salió del Orden Jurídico Nacional (reforma 30-sep-2024)."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_WITHOUT_CAUSE",
+      "INDIRECT_DISMISSAL",
+      "FIXED_TERM_EXPIRY",
+      "MUTUAL_AGREEMENT",
+      "DEATH",
+      "RETIREMENT",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM"
+    ],
+    "requires_contract_end_for": []
+  }
+}

@@ -23,5 +23,7 @@
 
 <p><a class="btn-export" href="{{ url_for('dashboard') }}">{{ t('ir_al_consolidado') }}</a></p>
 
+{% include "_capability_panel.html" %}
+
 <p><a class="btn-back" href="{{ url_for('index') }}">&larr; {{ t('back') }}</a></p>
 {% endblock %}

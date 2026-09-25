@@ -1,0 +1,85 @@
+{
+  "country": "BR",
+  "year": 2026,
+  "ruleset_version": "BR-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "BRL",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa equivalente al motor heredado; régimen general; IRRF manual."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "Salario mínimo y techo del INSS con fuente secundaria."
+    },
+    "working_hours": {
+      "status": "PENDING_VALIDATION",
+      "note": "Jornada de 44 h semanales (CF art. 7º XIII) verificada; cambios futuros no cargados."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "50 % (CF/CLT), adicional nocturno 20 %; divisor 220 vs 240 en conflicto (CONFLICTING)."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Vacaciones proporcionales y vencidas con 1/3 al término; goce no modelado."
+    },
+    "social_security": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "INSS progresivo con techo; patronal solo régimen general."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "El impuesto es un valor digitado (EXTERNAL_INPUT); no existe motor tributario."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "13º y férias + 1/3 como provisión."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Saldo de salario, 13.º proporcional (mes con 15+ días), vacaciones proporcionales y vencidas + 1/3, aviso previo (30 + 3 por año, máx. 90) indemnizado o por mitad en acuerdo (art. 484-A), depósito FGTS y multa 40 %/20 % desde datos con fuentes oficiales del Planalto. Sin proyección del aviso, sin INSS/IRRF sobre la rescisión, sin vacaciones en dobro (art. 137)."
+    },
+    "surcharges": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Adicional noturno 20 % (CLT art. 73) y feriado trabajado en dobro; hora reducida y DSR: NOT_IMPLEMENTED."
+    }
+  },
+  "known_gaps": [
+    "IRRF y deducciones.",
+    "Simples Nacional / CPRB.",
+    "13º por avos y férias proporcionales en la liquidación.",
+    "Aviso prévio proporcional y multa FGTS con histórico.",
+    "Adicional noturno, horas extras.",
+    "eSocial.",
+    "Proyección del aviso previo indemnizado sobre 13.º y vacaciones (Súmula 371 TST): NOT_IMPLEMENTED.",
+    "INSS e IRRF sobre las verbas rescisórias: NOT_IMPLEMENTED (sin motor tributario).",
+    "Vacaciones en dobro (CLT art. 137) y períodos vencidos con prescripción: NOT_IMPLEMENTED.",
+    "FGTS sobre 13.º y aviso indemnizado y depósitos del mes anterior: PENDING_VERIFICATION.",
+    "Hora nocturna reducida (52'30\"), DSR y reflejos de las horas extra: NOT_IMPLEMENTED.",
+    "Salario mínimo (R$ 1.621) y techo del INSS con fuente secundaria: sin cambio."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_WITHOUT_CAUSE",
+      "INDIRECT_DISMISSAL",
+      "MUTUAL_AGREEMENT",
+      "FIXED_TERM_EXPIRY",
+      "RETIREMENT",
+      "DEATH",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM"
+    ],
+    "requires_contract_end_for": []
+  }
+}

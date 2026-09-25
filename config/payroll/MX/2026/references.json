@@ -1,0 +1,129 @@
+[
+  {
+    "ref_id": "MX.SM_GENERAL.2026",
+    "code": "SM_GENERAL_DAILY",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "MXN/día",
+    "value": "315.04",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión Nacional de los Salarios Mínimos (CONASAMI)",
+      "legal_reference": "Resolución del H. Consejo de Representantes de la CONASAMI (3-dic-2025): salario mínimo general $315.04 y ZLFN $440.87 diarios, desde el 1-ene-2026",
+      "official_url": "https://www.gob.mx/conasami/articulos/incremento-a-los-salarios-minimos-para-2026?idiom=es",
+      "verified_at": "2026-09-24",
+      "publication_date": "2025-12-03"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "MX.SM_ZLFN.2026",
+    "code": "SM_ZLFN_DAILY",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "MXN/día",
+    "value": "440.87",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión Nacional de los Salarios Mínimos (CONASAMI)",
+      "legal_reference": "Resolución del H. Consejo de Representantes de la CONASAMI (3-dic-2025): salario mínimo general $315.04 y ZLFN $440.87 diarios, desde el 1-ene-2026",
+      "official_url": "https://www.gob.mx/conasami/articulos/incremento-a-los-salarios-minimos-para-2026?idiom=es",
+      "verified_at": "2026-09-24",
+      "publication_date": "2025-12-03"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Zona Libre de la Frontera Norte: referencia distinta del salario mínimo general."
+    },
+    "note": "Zona Libre de la Frontera Norte: referencia distinta del salario mínimo general."
+  },
+  {
+    "ref_id": "MX.UMA.2026",
+    "code": "UMA_DAILY",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "MXN/día",
+    "value": "117.31",
+    "effective": {
+      "from": "2026-02-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "INEGI, Comunicado de prensa 1/26 (UMA); DOF 9-ene-2026",
+      "official_url": null,
+      "secondary_url": "https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/uma/uma2026.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Vigente desde el 1-feb-2026. Confirmado en resultados de búsqueda; el documento oficial no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "La UMA cambia cada 1 de febrero: enero de 2026 usa el valor anterior."
+    },
+    "note": "La UMA cambia cada 1 de febrero: enero de 2026 usa el valor anterior."
+  },
+  {
+    "ref_id": "MX.UMA.2025",
+    "code": "UMA_DAILY",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "MXN/día",
+    "value": "113.14",
+    "effective": {
+      "from": "2025-02-01",
+      "to": "2026-01-31"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Valor 2025 de la UMA inferido del incremento de 3.69% reportado; no verificado contra INEGI."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "MX.WORKWEEK.2026",
+    "code": "WORKWEEK_HOURS",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "48",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-12-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Diario Oficial de la Federación",
+      "legal_reference": "Decreto de reducción gradual de jornada (DOF 1-may-2026): 48 horas semanales en 2026",
+      "official_url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01%2F05%2F2026",
+      "verified_at": "2026-09-24",
+      "note": "Extraído por lectura automática de la nota del DOF; verificación literal pendiente. Antes de la reforma la LFT ya fijaba 48 horas (art. 61 y jornada máxima)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Jornada semanal 2026."
+    },
+    "note": "Reducción gradual: 48 (2026), 46 (2027), 44 (2028), 42 (2029), 40 (2030)."
+  }
+]

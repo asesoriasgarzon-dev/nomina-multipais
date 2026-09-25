@@ -1,0 +1,349 @@
+[
+  {
+    "concept": "AR_T_MONTHLY_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Sueldo mensual vigente",
+      "en": "Current monthly salary"
+    },
+    "treatments": [
+      {
+        "base": "AR.VACATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "AR.NOTICE_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_BEST_REMUNERATION",
+    "role": "INFO",
+    "label": {
+      "es": "Mejor remuneración mensual normal y habitual (último año)",
+      "en": "Best normal and habitual monthly remuneration (last year)"
+    },
+    "treatments": [
+      {
+        "base": "AR.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado y Ley 27.802 (B.O. 6-mar-2026)",
+      "legal_reference": "LCT art. 245 (texto art. 51 Ley 27.802, vigente desde su publicación): un mes de sueldo por año o fracción mayor de 3 meses sobre la mejor remuneración mensual, normal y habitual del último año; tope de 3 veces el promedio del convenio colectivo aplicable (nunca inferior al 67 % de la remuneración); mínimo de un mes",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24",
+      "note": "El tope depende del convenio colectivo (dato de entrada amounts.cct_average_salary); sin el dato el tope NO se aplica y se emite advertencia."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_UNPAID_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Reported unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_SAC_ACCRUED",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneraciones devengadas en la fracción del semestre",
+      "en": "Remuneration accrued in the semester fraction"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_SAC_PROPORCIONAL",
+    "role": "EARNING",
+    "label": {
+      "es": "SAC proporcional (fracción del semestre)",
+      "en": "Proportional SAC (semester fraction)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_VACATION_ENTITLEMENT_DAYS",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones anuales según antigüedad al 31-dic",
+      "en": "Annual vacation days by seniority at 31-Dec"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_VACATION_DAYS_PRORATED",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones proporcionales del año",
+      "en": "Prorated vacation days of the year"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_VACATION_DAYS_DUE",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones a indemnizar",
+      "en": "Vacation days to be paid out"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_VACACIONES_NO_GOZADAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones no gozadas (indemnización)",
+      "en": "Unused vacation (payout)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_PROBATION_MONTHS",
+    "role": "INFO",
+    "label": {
+      "es": "Meses de período de prueba",
+      "en": "Probation months"
+    },
+    "treatments": [],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT art. 92 bis: período de prueba de 6 meses (ampliable por convenio colectivo)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_INDEMNIZACION_ART_245",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización por antigüedad (art. 245)",
+      "en": "Seniority indemnity (art. 245)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_NOTICE_MONTHS",
+    "role": "INFO",
+    "label": {
+      "es": "Meses de preaviso (art. 231)",
+      "en": "Notice months (art. 231)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_PREAVISO_SUSTITUTIVO",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización sustitutiva de preaviso (art. 232)",
+      "en": "Substitute notice indemnity (art. 232)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_MONTH_END_DAYS",
+    "role": "INFO",
+    "label": {
+      "es": "Días faltantes hasta fin de mes",
+      "en": "Days remaining to month end"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_INTEGRACION_MES_DESPIDO",
+    "role": "EARNING",
+    "label": {
+      "es": "Integración del mes de despido (art. 233)",
+      "en": "Dismissal-month integration (art. 233)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_T_DAYS_MONTH",
+    "role": "INFO",
+    "label": {
+      "es": "Días del mes de terminación",
+      "en": "Days in the final month"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_SUELDO_MES_TERMINACION",
+    "role": "EARNING",
+    "label": {
+      "es": "Sueldo del mes de terminación (días)",
+      "en": "Final-month salary (days)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_REMUNERACIONES_PENDIENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Reported unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AR_OVERTIME",
+    "role": "EARNING",
+    "label": {
+      "es": "Horas extra",
+      "en": "Overtime"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

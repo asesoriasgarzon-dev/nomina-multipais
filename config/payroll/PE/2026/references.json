@@ -1,0 +1,51 @@
+[
+  {
+    "ref_id": "PE.RMV.2025",
+    "code": "RMV",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "unit": "PEN/mes",
+    "value": "1130",
+    "effective": {
+      "from": "2025-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "D.S. N° 006-2024-TR (RMV S/ 1,130), según fuentes secundarias",
+      "official_url": null,
+      "secondary_url": "https://trendperu.com/sueldo-minimo-peru-2026/",
+      "verified_at": "2026-09-24",
+      "note": "Vigente en septiembre de 2026 según fuentes secundarias (no existe decreto que la reemplace); texto oficial no descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "PE.WORKWEEK.LEGACY",
+    "code": "WORKWEEK_HOURS",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "48",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Jornada máxima. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

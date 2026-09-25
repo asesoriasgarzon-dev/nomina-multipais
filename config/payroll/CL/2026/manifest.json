@@ -1,0 +1,81 @@
+{
+  "country": "CL",
+  "year": 2026,
+  "ruleset_version": "CL-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "CLP",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa con tope imponible en UF; impuesto manual; tasas AFC/mutual con fuente pendiente."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "UF diaria (SII, oficial) y topes imponibles (SP); ingreso mínimo de mayo-2026 sin norma oficial verificada."
+    },
+    "working_hours": {
+      "status": "PENDING_VALIDATION",
+      "note": "Jornada por vigencia (Ley 21.561): 44 h, 42 h desde 26-abr-2026, 40 h desde 2028."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Horas extraordinarias al 50 % con el divisor de la Dirección del Trabajo y la jornada por vigencia."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "15 días hábiles + progresivo (art. 68) y compensación proporcional al término."
+    },
+    "social_security": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "AFP, salud, SIS, reforma y mutual con topes de 89,9→90,0 UF y 135,1→135,2 UF (cesantía) por vigencia; tasas de AFC/mutual/comisión AFP aún con fuente pendiente."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "El impuesto es un valor digitado (EXTERNAL_INPUT); no existe motor tributario."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Solo provisión de vacaciones."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Indemnización por años de servicio (art. 163, tope 330 días), aviso previo sustitutivo (art. 161) y feriado proporcional (art. 73) con la base topada a 90 UF del último día del mes anterior al pago (art. 172, serie UF del SII). Conversión de días hábiles a corridos, recargos de los arts. 168-169 y obra o faena: sin validar / no implementados."
+    },
+    "surcharges": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Recargos por domingo/festivo y nocturno no investigados."
+    }
+  },
+  "known_gaps": [
+    "Impuesto único de segunda categoría.",
+    "Gratificación legal automática.",
+    "Ingreso mínimo desde el 1-may-2026.",
+    "Obra o faena (art. 163 inc. 3: 2,5 días por mes) y recargos de los arts. 168-169: NOT_IMPLEMENTED.",
+    "Gratificación legal proporcional y feriado progresivo con años previos: dato de entrada.",
+    "SIS a partir del 1-ago-2026: la Superintendencia indica que el 3,5 % de la reforma 'incluye la tasa para el financiamiento del SIS'; se mantiene el 1,62 % del SIS con interpretación CONFLICTING (posible doble conteo).",
+    "Serie UF cubierta solo hasta el 9-oct-2026."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "MUTUAL_AGREEMENT",
+      "DEATH",
+      "FIXED_TERM_EXPIRY",
+      "WORK_COMPLETION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_BUSINESS_NEEDS",
+      "DISMISSAL_DESAHUCIO",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM",
+      "WORK_COMPLETION"
+    ],
+    "requires_contract_end_for": []
+  }
+}

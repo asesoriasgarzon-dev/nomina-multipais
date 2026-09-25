@@ -24,5 +24,8 @@
         {{ t('personal_title') }}
     </a>
 </div>
+
+{% include "_capability_panel.html" %}
+
 <p><a class="btn-back" href="{{ url_for('index') }}">&larr; {{ t('back') }}</a></p>
 {% endblock %}

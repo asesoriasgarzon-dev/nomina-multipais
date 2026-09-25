@@ -1,0 +1,163 @@
+[
+  {
+    "base": "IBC",
+    "country": "CO",
+    "description": "Ingreso Base de Cotización (salud, pensión y FSP). Tope 25 SMMLV; mínimo 1 SMMLV.",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 797 de 2003, art. 5 (modifica art. 18 Ley 100 de 1993)",
+      "official_url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_0797_2003.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Mínimo de 1 SMMLV: no se aplica a periodos parciales hasta verificar su proporcionalidad; solo advertencia."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "SMMLV",
+            "multiple": "25"
+          }
+        },
+        "enforcement": "ENFORCE",
+        "source": "Ley 797/2003 art. 5"
+      },
+      "minimum": {
+        "value": {
+          "reference": {
+            "code": "SMMLV",
+            "multiple": "1"
+          }
+        },
+        "enforcement": "WARN_ONLY",
+        "status": "PENDING_VERIFICATION"
+      }
+    }
+  },
+  {
+    "base": "RISK_BASE",
+    "country": "CO",
+    "description": "Base de cotización a riesgos laborales (ARL), con el tope de 25 SMMLV.",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tope de 25 SMMLV en riesgos laborales: sin verificar contra el decreto."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "SMMLV",
+            "multiple": "25"
+          }
+        },
+        "enforcement": "ENFORCE"
+      }
+    }
+  },
+  {
+    "base": "PARAFISCAL_BASE",
+    "country": "CO",
+    "description": "Nómina mensual de salarios (Caja, SENA, ICBF).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 art. 27",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Composición por concepto sin revisar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "base": "BENEFIT_BASE",
+    "country": "CO",
+    "description": "Base de prestaciones sociales (prima, cesantías, intereses).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Base de prestaciones sociales (prima, cesantías, intereses)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "base": "VACATION_BASE",
+    "country": "CO",
+    "description": "Base de la provisión de vacaciones.",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Base de la provisión de vacaciones."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "base": "EXONERATION_BASE",
+    "country": "CO",
+    "description": "Salario devengado en el mes para la exoneración del art. 114-1 ET.",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Estatuto Tributario art. 114-1 (Ley 1819/2016 art. 65; Ley 1943/2018; Ley 1955/2019 art. 204)",
+      "official_url": null,
+      "secondary_url": "https://actualicese.com/estatutotributario/114-1/",
+      "verified_at": "2026-09-24",
+      "note": "Texto contrastado en fuente secundaria; el texto en normograma oficial (DIAN) NO fue descargado. El texto dice 'menos de diez (10) SMMLV' (estricto); NORMATIVA_PAISES.md del proyecto dice '<=10': conflicto documentado."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

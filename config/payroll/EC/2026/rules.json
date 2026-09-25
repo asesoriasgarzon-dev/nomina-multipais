@@ -1,0 +1,430 @@
+[
+  {
+    "rule_id": "EC.REMUNERATION.1",
+    "rule_key": "EC.REMUNERATION",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "REMUNERATION",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "EC.BONUS.1",
+    "rule_key": "EC.BONUS",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "EC.IESS_EMPLOYEE.1",
+    "rule_key": "EC.IESS_EMPLOYEE",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "IESS_EMPLOYEE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "EC_REMUNERATION_BASE",
+        "rate": "0.0945"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.LOANS.1",
+    "rule_key": "EC.LOANS",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "LOANS",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LOANS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "EC.INCOME_TAX.1",
+    "rule_key": "EC.INCOME_TAX",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "INCOME_TAX",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.INCOME_TAX",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Impuesto a la renta (proyección anual con gastos personales): NO IMPLEMENTADO — MOTOR TRIBUTARIO."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "input_type": "EXTERNAL_INPUT"
+  },
+  {
+    "rule_id": "EC.IESS_EMPLOYER.1",
+    "rule_key": "EC.IESS_EMPLOYER",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "IESS_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "EC_REMUNERATION_BASE",
+        "rate": "0.1115"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "EC.IECE_SECAP.1",
+    "rule_key": "EC.IECE_SECAP",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "IECE_SECAP",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "EC_REMUNERATION_BASE",
+        "rate": "0.01"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Vigencia de IECE/SECAP sin verificar (ND)."
+  },
+  {
+    "rule_id": "EC.THIRTEENTH_ACCRUAL.1",
+    "rule_key": "EC.THIRTEENTH_ACCRUAL",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "THIRTEENTH_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "EC_REMUNERATION_BASE",
+        "rate": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Sin ventana Dic-Nov."
+  },
+  {
+    "rule_id": "EC.FOURTEENTH_ACCRUAL.1",
+    "rule_key": "EC.FOURTEENTH_ACCRUAL",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "FOURTEENTH_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "reference": {
+            "code": "SBU"
+          }
+        },
+        "factor": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Monto fijo SBU/12 sin prorrateo por días (heredado); sin ventana por región."
+  },
+  {
+    "rule_id": "EC.RESERVE_FUND_ACCRUAL.1",
+    "rule_key": "EC.RESERVE_FUND_ACCRUAL",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "RESERVE_FUND_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "EC_REMUNERATION_BASE",
+        "rate": "0.0833"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Se provisiona desde el mes 1; la ley lo exige tras un año de servicio."
+  },
+  {
+    "rule_id": "EC.VAL.WORKED_DAYS.1",
+    "rule_key": "EC.VAL.WORKED_DAYS",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.worked_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "value": "30"
+      }
+    },
+    "message": "Los días trabajados superan 30 (mes comercial).",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "ref_id": "CO.SMMLV.2026",
+    "code": "SMMLV",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "COP/mes",
+    "value": "1750905",
+    "currency": "COP",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidencia de la República (Decreto 1469/2025, DO 53.350) y Decreto 159/2026 (DO 53.403, 19-feb-2026)",
+      "legal_reference": "Decreto 1469 de 2025 art. 1 (SMMLV 2026 = $1.750.905), suspendido provisionalmente por el Consejo de Estado (rad. 11001-03-25-000-2026-00004-00); Decreto 159 de 2026 art. 1-2, transitorio 'hasta que se dicte sentencia'.",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_0159_2026.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2026-02-19",
+      "note": "Decreto 1469/2025: https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1469_2025.htm. La suspensión del 13-feb-2026 consta en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "RIESGO: el decreto está sujeto a proceso de nulidad ante el Consejo de Estado; si la sentencia cambia el valor se debe agregar una versión nueva con su vigencia (no editar esta)."
+    },
+    "note": "RIESGO: el decreto está sujeto a proceso de nulidad ante el Consejo de Estado; si la sentencia cambia el valor se debe agregar una versión nueva con su vigencia (no editar esta)."
+  },
+  {
+    "ref_id": "CO.TRANSPORT_ALLOWANCE.2026",
+    "code": "TRANSPORT_ALLOWANCE",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "COP/mes",
+    "value": "249095",
+    "currency": "COP",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidencia de la República",
+      "legal_reference": "Decreto 1470 de 2025 art. 1-2 (Diario Oficial 53.350, 29-dic-2025)",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1470_2025.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2025-12-29"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Aplica a trabajadores que devenguen hasta 2 SMMLV."
+    },
+    "note": "Aplica a trabajadores que devenguen hasta 2 SMMLV."
+  },
+  {
+    "ref_id": "CO.ARL_RATE_CLASS_I.2026",
+    "code": "ARL_RATE_CLASS_I",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "ratio",
+    "value": "0.00522",
+    "currency": null,
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Decreto 1772 de 1994, art. 13 (tabla de tarifas por clase de riesgo)",
+      "official_url": null,
+      "secondary_url": "https://coriesgos.com/blog/arl-independientes-colombia-2026",
+      "verified_at": "2026-09-24",
+      "note": "Clase I = 0,522%. Solo se implementa la clase I; las clases II-V quedan PENDING_VERIFICATION."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "CO.WORKWEEK_HOURS.2025",
+    "code": "WORKWEEK_HOURS",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "44",
+    "currency": null,
+    "effective": {
+      "from": "2025-07-15",
+      "to": "2026-07-14"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 2101 de 2021, art. 3 (Diario Oficial 51.736, 15-jul-2021)",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2021-07-15"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Fecha derivada del texto: entrada en vigencia 15-jul-2021; 'transcurridos dos años' (47 h), 'tres años' (46 h) y 'a partir del cuarto año' -2 h cada año (44 h y 42 h). Interpretación: cada reducción rige desde el 15-jul."
+    },
+    "note": "Fecha derivada del texto: entrada en vigencia 15-jul-2021; 'transcurridos dos años' (47 h), 'tres años' (46 h) y 'a partir del cuarto año' -2 h cada año (44 h y 42 h). Interpretación: cada reducción rige desde el 15-jul."
+  },
+  {
+    "ref_id": "CO.WORKWEEK_HOURS.2026",
+    "code": "WORKWEEK_HOURS",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "42",
+    "currency": null,
+    "effective": {
+      "from": "2026-07-15",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 2101 de 2021, art. 3 (Diario Oficial 51.736, 15-jul-2021)",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2021-07-15"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Fecha derivada del texto: entrada en vigencia 15-jul-2021; 'transcurridos dos años' (47 h), 'tres años' (46 h) y 'a partir del cuarto año' -2 h cada año (44 h y 42 h). Interpretación: cada reducción rige desde el 15-jul."
+    },
+    "note": "Fecha derivada del texto: entrada en vigencia 15-jul-2021; 'transcurridos dos años' (47 h), 'tres años' (46 h) y 'a partir del cuarto año' -2 h cada año (44 h y 42 h). Interpretación: cada reducción rige desde el 15-jul."
+  }
+]

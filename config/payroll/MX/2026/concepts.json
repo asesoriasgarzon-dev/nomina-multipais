@@ -1,0 +1,412 @@
+[
+  {
+    "concept": "SALARY_EARNED",
+    "role": "EARNING",
+    "label_key": "valor_salario_devengado",
+    "treatments": [
+      {
+        "base": "MX_SALARY_EARNED_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "SBC_SALARY",
+    "role": "INFO",
+    "label_key": null,
+    "treatments": [
+      {
+        "base": "SBC",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BONUS",
+    "role": "EARNING",
+    "label_key": "bonos_comisiones",
+    "treatments": [
+      {
+        "base": "SBC",
+        "mode": "EXCLUDE",
+        "reason": "El motor heredado excluye los bonos de la base; su naturaleza jurídica no está verificada.",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "MX_SALARY_EARNED_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No forma parte del salario base"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "El motor heredado excluye los bonos de la base; su naturaleza jurídica no está verificada."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_EE_EXCESS",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_salud_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_EE_EXCESS. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_EE_CASH",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_salud_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_EE_CASH. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_EE_PENSIONERS",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_salud_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_EE_PENSIONERS. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_EE_DISABILITY",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_EE_DISABILITY. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_EE_RETIREMENT",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_EE_RETIREMENT. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "INFONAVIT_CREDIT",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "descuento_credito_vivienda",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto INFONAVIT_CREDIT. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "LOANS",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "prestamos_avances",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto LOANS. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "ISR_WITHHOLDING",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "retencion_impuesto_renta",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto ISR_WITHHOLDING. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_FIXED",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_FIXED. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_EXCESS",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_EXCESS. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_CASH",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_CASH. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_PENSIONERS",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_PENSIONERS. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_NURSERY",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_NURSERY. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_DISABILITY",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "pension_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_DISABILITY. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_RETIREMENT",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "pension_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_RETIREMENT. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_SEVERANCE_OLD_AGE",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "pension_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_SEVERANCE_OLD_AGE. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IMSS_ER_RISK",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "aporte_riesgo_laboral_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto IMSS_ER_RISK. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "INFONAVIT_ER",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "aporte_vivienda_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto INFONAVIT_ER. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AGUINALDO_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "prima",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Concepto AGUINALDO_ACCRUAL. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

@@ -1,0 +1,487 @@
+[
+  {
+    "rule_id": "BR.SALARY_EARNED.1",
+    "rule_key": "BR.SALARY_EARNED",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "SALARY_EARNED",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.BONUS.1",
+    "rule_key": "BR.BONUS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "BR.INSS_EMPLOYEE.1",
+    "rule_key": "BR.INSS_EMPLOYEE",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "INSS_EMPLOYEE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "progressive_brackets",
+      "params": {
+        "base": "BR_INSS_EMPLOYEE_BASE",
+        "brackets": [
+          {
+            "from": "0",
+            "to": "1621.00",
+            "rate": "0.075"
+          },
+          {
+            "from": "1621.00",
+            "to": "2902.84",
+            "rate": "0.09"
+          },
+          {
+            "from": "2902.84",
+            "to": "4354.27",
+            "rate": "0.12"
+          },
+          {
+            "from": "4354.27",
+            "to": "8475.55",
+            "rate": "0.14"
+          }
+        ]
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Portaria Interministerial MPS/MF nº 13/2026 (tabela INSS 2026)",
+      "official_url": null,
+      "secondary_url": "",
+      "verified_at": "2026-09-24",
+      "note": "Tramos 7,5% / 9% / 12% / 14% según fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tramos contiguos (el motor heredado dejaba huecos de R$ 0,01 entre tramos)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.LOANS.1",
+    "rule_key": "BR.LOANS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "LOANS",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LOANS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "BR.IRRF.1",
+    "rule_key": "BR.IRRF",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "IRRF",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.IRRF",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "IRRF (tabla progresiva con deducciones): NO IMPLEMENTADO — MOTOR TRIBUTARIO."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "input_type": "EXTERNAL_INPUT"
+  },
+  {
+    "rule_id": "BR.INSS_EMPLOYER.1",
+    "rule_key": "BR.INSS_EMPLOYER",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "INSS_EMPLOYER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BR_PAYROLL_BASE",
+        "rate": "0.20"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Alícuota. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Brasil), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Régimen general; Simples/CPRB no implementados."
+  },
+  {
+    "rule_id": "BR.RAT.1",
+    "rule_key": "BR.RAT",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "RAT",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BR_PAYROLL_BASE",
+        "rate": "0.02"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Alícuota. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Brasil), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Promedio del rango 1%-3% según actividad/FAP."
+  },
+  {
+    "rule_id": "BR.SYSTEM_S.1",
+    "rule_key": "BR.SYSTEM_S",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "SYSTEM_S",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BR_PAYROLL_BASE",
+        "rate": "0.058"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Alícuota. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Brasil), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Terceros (Sistema S) fijos: ND según actividad."
+  },
+  {
+    "rule_id": "BR.FGTS.1",
+    "rule_key": "BR.FGTS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "FGTS",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BR_PAYROLL_BASE",
+        "rate": "0.08"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Alícuota. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Brasil), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "BR.THIRTEENTH_ACCRUAL.1",
+    "rule_key": "BR.THIRTEENTH_ACCRUAL",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "THIRTEENTH_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BR_SALARY_BASE",
+        "rate": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Alícuota. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Brasil), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "BR.VACATION_ACCRUAL.1",
+    "rule_key": "BR.VACATION_ACCRUAL",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "concept": "VACATION_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "BR_SALARY_BASE",
+        "rate": "1/9"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Alícuota. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Brasil), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Férias + 1/3 = 1/12 × 4/3 = 1/9; sin encargos sobre la provisión."
+  },
+  {
+    "rule_id": "BR.VAL.WORKED_DAYS.1",
+    "rule_key": "BR.VAL.WORKED_DAYS",
+    "version": "1",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.worked_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "value": "30"
+      }
+    },
+    "message": "Los días trabajados superan 30 (mes comercial).",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

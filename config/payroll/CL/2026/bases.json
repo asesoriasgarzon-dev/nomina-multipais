@@ -1,0 +1,76 @@
+[
+  {
+    "base": "CL_TAXABLE_BASE",
+    "country": "CL",
+    "description": "Renta imponible simplificada (solo REMUNERATION) con el tope imponible mensual en UF (AFP, salud, accidentes).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones (vía Dirección del Trabajo)",
+      "legal_reference": "Res. exenta SP N°27 (89,9 UF desde el 1-ene-2026) y N°237 de 2026 (90,0 UF desde el 1-feb-2026)",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-118076.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tope imponible = UF del último día del período × tope en UF vigente. La composición (solo remuneración) sigue sin validación profesional."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "UF"
+          }
+        },
+        "scale_by": {
+          "reference": {
+            "code": "TAX_CAP_UF_PENSION"
+          }
+        },
+        "enforcement": "ENFORCE",
+        "source": "Superintendencia de Pensiones: 89,9 UF (ene-2026) / 90,0 UF (desde feb-2026)"
+      }
+    }
+  },
+  {
+    "base": "CL_UNEMPLOYMENT_BASE",
+    "country": "CL",
+    "description": "Renta imponible simplificada con el tope imponible del seguro de cesantía en UF.",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones (vía Dirección del Trabajo)",
+      "legal_reference": "Res. exenta SP N°26 (135,1 UF desde el 1-ene-2026) y N°236 de 2026 (135,2 UF desde el 1-feb-2026)",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-118077.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tope imponible = UF del último día del período × tope en UF vigente. La composición (solo remuneración) sigue sin validación profesional."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "UF"
+          }
+        },
+        "scale_by": {
+          "reference": {
+            "code": "TAX_CAP_UF_UNEMPLOYMENT"
+          }
+        },
+        "enforcement": "ENFORCE",
+        "source": "Superintendencia de Pensiones: 135,1 UF (ene-2026) / 135,2 UF (desde feb-2026)"
+      }
+    }
+  }
+]

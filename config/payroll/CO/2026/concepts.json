@@ -1,0 +1,819 @@
+[
+  {
+    "concept": "BASE_SALARY",
+    "role": "EARNING",
+    "label_key": "valor_salario_devengado",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE",
+        "applies_to": {
+          "employment.salary_type": [
+            "ORDINARY"
+          ]
+        },
+        "priority": 10
+      },
+      {
+        "base": "IBC",
+        "mode": "INCLUDE",
+        "fraction": "0.70",
+        "applies_to": {
+          "employment.salary_type": [
+            "INTEGRAL"
+          ]
+        },
+        "priority": 10,
+        "note": "Salario integral: cotización sobre el 70% (Ley 797/2003 art. 5)."
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "INCLUDE",
+        "applies_to": {
+          "employment.salary_type": [
+            "ORDINARY"
+          ]
+        },
+        "priority": 10
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "INCLUDE",
+        "fraction": "0.70",
+        "applies_to": {
+          "employment.salary_type": [
+            "INTEGRAL"
+          ]
+        },
+        "priority": 10,
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "INCLUDE",
+        "applies_to": {
+          "employment.salary_type": [
+            "ORDINARY"
+          ]
+        },
+        "priority": 10
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "INCLUDE",
+        "fraction": "0.70",
+        "applies_to": {
+          "employment.salary_type": [
+            "INTEGRAL"
+          ]
+        },
+        "priority": 10,
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE",
+        "applies_to": {
+          "employment.salary_type": [
+            "ORDINARY"
+          ]
+        },
+        "priority": 10
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "INCLUDE",
+        "priority": 10
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE",
+        "priority": 10
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 797 de 2003, art. 5 (modifica art. 18 Ley 100 de 1993)",
+      "official_url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_0797_2003.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "70% aplica a salario integral; su extensión a riesgos y parafiscales está PENDING_VERIFICATION."
+    }
+  },
+  {
+    "concept": "VACATION_ENJOYED",
+    "role": "EARNING",
+    "label_key": "valor_vac_disfrutadas",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "EXCLUDE",
+        "reason": "ARL no se cotiza en días de vacaciones (tratamiento heredado)",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tratamiento de vacaciones disfrutadas por base: sin verificar contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "VACATION_COMPENSATED",
+    "role": "EARNING",
+    "label_key": "valor_vac_compensadas",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "El motor heredado lo incluía para el trabajador y lo excluía para el empleador; ahora hay una sola base."
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "EXCLUDE"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "EXCLUDE"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "EXCLUDE"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tratamiento de vacaciones compensadas en dinero por base: PENDING_VERIFICATION (posición UGPP no verificada)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "INCAPACITY_EMPLOYER",
+    "role": "EARNING",
+    "label_key": "incapacidad_empresa",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "EXCLUDE"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "EXCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Incapacidad a cargo del empleador: bases sin verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "INCAPACITY_EPS",
+    "role": "EARNING",
+    "label_key": "incapacidad_valor_eps",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "EXCLUDE"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "EXCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Incapacidad reconocida por EPS: bases sin verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BONUS_SALARY",
+    "role": "EARNING",
+    "label_key": "bonos_comisiones",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Vacaciones sobre salario ordinario; promedio de variables pendiente."
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Bonos y comisiones de naturaleza salarial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BONUS_NON_SALARY",
+    "role": "EARNING",
+    "label_key": "bonificaciones_no_salariales",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "SPECIAL_RULE",
+        "special": "SHARE_EXCESS",
+        "status": "PENDING_VERIFICATION",
+        "params": {
+          "share": "0.40",
+          "non_salary_concepts": [
+            "BONUS_NON_SALARY"
+          ],
+          "total_of": [
+            "BASE_SALARY",
+            "VACATION_ENJOYED",
+            "VACATION_COMPENSATED",
+            "INCAPACITY_EMPLOYER",
+            "INCAPACITY_EPS",
+            "BONUS_SALARY",
+            "TRM_ADJUSTMENT",
+            "BONUS_NON_SALARY"
+          ]
+        },
+        "note": "Ley 1393/2010 art. 30 (texto literal): el exceso sobre el 40 % del total de la remuneración integra el IBC de salud y pensión. PROVISIONAL: alcance del 'total de la remuneración' sin verificar (UGPP / jurisprudencia de unificación)."
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constitutivo de salario"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constitutivo de salario"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constitutivo de salario"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constitutivo de salario"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constitutivo de salario"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial de la Ley 1393 de 2010)",
+      "legal_reference": "Ley 1393 de 2010 art. 30: 'para los efectos relacionados con los artículos 18 y 204 de la Ley 100 de 1993, los pagos laborales no constitutivos de salario de los trabajadores particulares no podrán ser superiores al 40% del total de la remuneración'",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_1393_2010.html",
+      "verified_at": "2026-09-24",
+      "note": "Texto literal verificado. La página oficial marca 'Jurisprudencia Unificación' sobre este artículo: su contenido NO se leyó."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "open_question": true,
+      "note": "PENDING_VERIFICATION: la fórmula (exceso sobre el 40 % del total de la remuneración integra el IBC) sigue el texto literal; no se verificó qué conceptos integran 'el total de la remuneración' según la UGPP y la jurisprudencia de unificación, ni el tratamiento del salario integral. Ver docs/CO_LEY_1393_AUDITORIA.md."
+    }
+  },
+  {
+    "concept": "TRM_ADJUSTMENT",
+    "role": "EARNING",
+    "label_key": "ajuste_trm",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Ajuste por TRM (salario pactado en moneda extranjera): tratamiento por base sin verificar. El motor heredado lo sumaba al IBC del trabajador pero no lo mostraba ni lo consideraba en aportes del empleador."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "TRANSPORT_ALLOWANCE",
+    "role": "EARNING",
+    "label_key": "auxilio_transporte",
+    "treatments": [
+      {
+        "base": "IBC",
+        "mode": "EXCLUDE",
+        "reason": "No constituye salario",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "RISK_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constituye salario",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "PARAFISCAL_BASE",
+        "mode": "EXCLUDE",
+        "reason": "No constituye salario",
+        "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "BENEFIT_BASE",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se computa para prima y cesantías."
+      },
+      {
+        "base": "VACATION_BASE",
+        "mode": "EXCLUDE"
+      },
+      {
+        "base": "EXONERATION_BASE",
+        "mode": "EXCLUDE",
+        "status": "PENDING_VERIFICATION"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Naturaleza del auxilio de transporte (no salarial; base de prestaciones): norma sin descargar (Ley 15/1959 y complementarias)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "WITHHOLDING_TAX",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "retencion_fuente",
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Valor digitado (EXTERNAL_INPUT)"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AFC_DEDUCTION",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "descuento_afc",
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Concepto de nómina"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "VOLUNTARY_PENSION",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aportes_voluntarios_pension",
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Concepto de nómina"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "LOANS_ADVANCES",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "prestamos_avances",
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Concepto de nómina"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "HEALTH_EMPLOYEE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_salud_empleado",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PENSION_EMPLOYEE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_empleado",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FSP_EMPLOYEE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_fsp_empleado",
+    "treatments": [],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 797 de 2003, art. 8 (modifica art. 27 Ley 100 de 1993)",
+      "official_url": "https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/ley_0797_2003.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "HEALTH_EMPLOYER",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PENSION_EMPLOYER",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "pension_empleador",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 100 de 1993 arts. 20 y 204; Ley 797/2003 art. 7; Ley 1122/2007 art. 10",
+      "official_url": null,
+      "secondary_url": "https://loggro.com/blog/articulo/cuanto-se-debe-descontar-de-la-nomina-en-salud-y-pension/",
+      "verified_at": "2026-09-24",
+      "note": "Tasas 4%/4% trabajador y 12% pensión / 8,5% salud empleador contrastadas solo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "ARL",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "arl",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Decreto 1772 de 1994, art. 13 (tabla de tarifas por clase de riesgo)",
+      "official_url": null,
+      "secondary_url": "https://coriesgos.com/blog/arl-independientes-colombia-2026",
+      "verified_at": "2026-09-24",
+      "note": "Clase I = 0,522%. Solo se implementa la clase I; las clases II-V quedan PENDING_VERIFICATION."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "COMPENSATION_FUND",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "caja_compensacion",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 (arts. 7, 12, 27); Ley 89 de 1988 (ICBF)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Caja 4%, SENA 2%, ICBF 3% contrastados solo en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "SENA",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "sena",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 (arts. 7, 12, 27); Ley 89 de 1988 (ICBF)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Caja 4%, SENA 2%, ICBF 3% contrastados solo en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "ICBF",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "icbf",
+    "treatments": [],
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Ley 21 de 1982 (arts. 7, 12, 27); Ley 89 de 1988 (ICBF)",
+      "official_url": null,
+      "secondary_url": "https://www.gerencie.com/aportes-parafiscales.html",
+      "verified_at": "2026-09-24",
+      "note": "Caja 4%, SENA 2%, ICBF 3% contrastados solo en fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "VACATION_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "vacaciones",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PRIMA_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "prima",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CESANTIAS_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "cesantias",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CESANTIAS_INTEREST_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "intereses_cesantias",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "CST arts. 249 (cesantías), 306 (prima), 186 (vacaciones) y Ley 52/1975 (intereses): provisión mensual a razón de 1/12, 15/360 y 1% no verificada contra texto oficial."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MONTHLY_WORK_HOURS",
+    "role": "INFO",
+    "label_key": null,
+    "treatments": [],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República",
+      "legal_reference": "Ley 2101 de 2021, art. 3 (Diario Oficial 51.736, 15-jul-2021)",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm",
+      "verified_at": "2026-09-24",
+      "publication_date": "2021-07-15"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

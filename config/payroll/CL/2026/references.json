@@ -1,0 +1,127 @@
+[
+  {
+    "ref_id": "CL.MIN_INCOME.2026-01",
+    "code": "MIN_INCOME",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "CLP/mes",
+    "value": "539000",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-04-30"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio del Trabajo y Previsión Social",
+      "legal_reference": "Ley N° 21.751 (D.O. 28-jun-2025): ingreso mínimo mensual $539.000 desde el 1-ene-2026",
+      "official_url": "https://www.mintrab.gob.cl/ya-es-una-realidad-diario-oficial-publica-ley-21-751-que-reajusta-el-monto-del-ingreso-minimo-mensual/",
+      "verified_at": "2026-09-24",
+      "publication_date": "2025-06-28"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "CL.MIN_INCOME.2026-05",
+    "code": "MIN_INCOME",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "CLP/mes",
+    "value": "553553",
+    "effective": {
+      "from": "2026-05-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Fuentes secundarias (Senado, Garrigues, Carey) indican $553.553 desde el 1-may-2026, pero la página oficial de la Ley 21.751 consultada solo llega a $539.000 y el texto de la ley del reajuste de mayo-2026 no fue verificado."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "PENDING_VERIFICATION: cambio del 1-may-2026 sin norma oficial verificada."
+    },
+    "note": "PENDING_VERIFICATION: cambio del 1-may-2026 sin norma oficial verificada."
+  },
+  {
+    "ref_id": "CL.WORKWEEK.2024",
+    "code": "WORKWEEK_HOURS",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "44",
+    "effective": {
+      "from": "2024-04-26",
+      "to": "2026-04-25"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso Nacional de Chile / Ministerio del Trabajo",
+      "legal_reference": "Ley N° 21.561 (jornada de 40 horas): 44 h desde 26-abr-2024, 42 h desde 26-abr-2026, 40 h desde 26-abr-2028",
+      "official_url": "https://www.mintrab.gob.cl/40horas/",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Cambio de jornada por fecha (Ley 21.561)."
+    },
+    "note": "Cambio de jornada por fecha (Ley 21.561)."
+  },
+  {
+    "ref_id": "CL.WORKWEEK.2026",
+    "code": "WORKWEEK_HOURS",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "42",
+    "effective": {
+      "from": "2026-04-26",
+      "to": "2028-04-25"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso Nacional de Chile / Ministerio del Trabajo",
+      "legal_reference": "Ley N° 21.561 (jornada de 40 horas): 44 h desde 26-abr-2024, 42 h desde 26-abr-2026, 40 h desde 26-abr-2028",
+      "official_url": "https://www.mintrab.gob.cl/40horas/",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Cambio de jornada por fecha (Ley 21.561)."
+    },
+    "note": "Cambio de jornada por fecha (Ley 21.561)."
+  },
+  {
+    "ref_id": "CL.WORKWEEK.2028",
+    "code": "WORKWEEK_HOURS",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "40",
+    "effective": {
+      "from": "2028-04-26",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso Nacional de Chile / Ministerio del Trabajo",
+      "legal_reference": "Ley N° 21.561 (jornada de 40 horas): 44 h desde 26-abr-2024, 42 h desde 26-abr-2026, 40 h desde 26-abr-2028",
+      "official_url": "https://www.mintrab.gob.cl/40horas/",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Cambio de jornada por fecha (Ley 21.561)."
+    },
+    "note": "Cambio de jornada por fecha (Ley 21.561)."
+  }
+]

@@ -1,0 +1,83 @@
+{
+  "country": "EC",
+  "year": 2026,
+  "ruleset_version": "EC-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "USD",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa equivalente al motor heredado; renta manual."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "SBU 2026 con comunicado oficial del Ministerio del Trabajo."
+    },
+    "working_hours": {
+      "status": "PENDING_VALIDATION",
+      "note": "Jornada de 40 h (art. 47) con copia del Código de 2020."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Recargos de los arts. 49 y 55; divisor 240 sin verificar."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "15 días + 1 por año excedente de cinco (máx. 30) y pago proporcional."
+    },
+    "social_security": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "IESS sobre remuneración (sin bonos)."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "El impuesto es un valor digitado (EXTERNAL_INPUT); no existe motor tributario."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Décimos y fondo de reserva como provisión sin ventanas ni región."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Despido intempestivo (art. 188: 3 meses hasta 3 años; 1 mes por año, fracción = año, máx. 25), bonificación por desahucio (art. 185), vacaciones (art. 69), décimo tercero y cuarto acumulados desde datos con el Código del Trabajo (copia de 2020). Jubilación patronal, utilidades y fondo de reserva: NOT_IMPLEMENTED/dato de entrada; décimo tercero con interpretación CONFLICTING (período)."
+    },
+    "surcharges": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Recargo nocturno 25 % (art. 49) y trabajo en sábado/domingo 100 % (art. 55 num. 4)."
+    }
+  },
+  "known_gaps": [
+    "Impuesto a la renta.",
+    "Décimo tercero/cuarto por ventana y región.",
+    "Fondo de reserva desde el segundo año.",
+    "Mejor remuneración en indemnización.",
+    "Jubilación patronal proporcional (20-25 años, art. 188) y participación de utilidades: NOT_IMPLEMENTED.",
+    "Décimo tercero: período calendario vs 1-dic a 30-nov (CONFLICTING); solo si se acumula.",
+    "Fondo de reserva: solo dato de entrada (pasa por el motor sin cálculo).",
+    "La copia del Código del Trabajo consultada es de 2020 (reformas posteriores sin verificar)."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "NOTICE_TERMINATION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_WITHOUT_CAUSE",
+      "FIXED_TERM_EXPIRY",
+      "WORK_COMPLETION",
+      "MUTUAL_AGREEMENT",
+      "DEATH",
+      "RETIREMENT",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM",
+      "WORK_COMPLETION"
+    ],
+    "requires_contract_end_for": []
+  }
+}

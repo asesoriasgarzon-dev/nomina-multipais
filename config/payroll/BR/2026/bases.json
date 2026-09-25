@@ -1,0 +1,77 @@
+[
+  {
+    "base": "BR_INSS_EMPLOYEE_BASE",
+    "country": "BR",
+    "description": "Salário-de-contribuição do empregado (con techo del INSS).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Portaria MPS/MF 13/2026",
+      "official_url": null,
+      "secondary_url": "",
+      "verified_at": "2026-09-24",
+      "note": "Techo en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Datos migrados del motor heredado a formato normativo para equivalencia de resultados; la regla jurídica sigue sin revisión profesional (PENDING_VERIFICATION)."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "INSS_CEILING"
+          }
+        },
+        "enforcement": "ENFORCE"
+      }
+    }
+  },
+  {
+    "base": "BR_PAYROLL_BASE",
+    "country": "BR",
+    "description": "Base de la contribución patronal (sin techo): salario + bonos.",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Base de la contribución patronal (sin techo): salario + bonos."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "base": "BR_SALARY_BASE",
+    "country": "BR",
+    "description": "Salario devengado (base de las provisiones de 13º y férias).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Salario devengado (base de las provisiones de 13º y férias)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

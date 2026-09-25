@@ -1,0 +1,215 @@
+[
+  {
+    "concept": "REMUNERATION",
+    "role": "EARNING",
+    "label_key": "valor_salario_devengado",
+    "treatments": [
+      {
+        "base": "PE_REMUNERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BONUS",
+    "role": "EARNING",
+    "label_key": "bonos_comisiones",
+    "treatments": [
+      {
+        "base": "PE_REMUNERATION_BASE",
+        "mode": "EXCLUDE",
+        "reason": "El motor heredado toma solo la remuneración como base; bonos y asignación familiar no se incluyen (sin verificar).",
+        "status": "PENDING_VERIFICATION"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "El motor heredado toma solo la remuneración como base; bonos y asignación familiar no se incluyen (sin verificar)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FAMILY_ALLOWANCE",
+    "role": "EARNING",
+    "label_key": "asignacion_familiar",
+    "treatments": [
+      {
+        "base": "PE_REMUNERATION_BASE",
+        "mode": "EXCLUDE",
+        "reason": "El motor heredado toma solo la remuneración como base; bonos y asignación familiar no se incluyen (sin verificar).",
+        "status": "PENDING_VERIFICATION"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "El motor heredado toma solo la remuneración como base; bonos y asignación familiar no se incluyen (sin verificar)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AFP_MANDATORY",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_privada_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AFP_INSURANCE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_privada_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "AFP_COMMISSION",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_privada_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "LOANS",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "prestamos_avances",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "INCOME_TAX_5TH",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "retencion_impuesto_renta",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "ESSALUD",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "salud_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "GRATIFICATION_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "prima",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "CTS_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "cesantias",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

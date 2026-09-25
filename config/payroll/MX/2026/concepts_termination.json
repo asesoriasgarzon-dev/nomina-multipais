@@ -1,0 +1,404 @@
+[
+  {
+    "concept": "MX_T_DAILY_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Salario diario (cuota diaria)",
+      "en": "Daily salary"
+    },
+    "treatments": [
+      {
+        "base": "MX.DAILY_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "MX.SDI_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "MX.PA_BASE_GENERAL",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "MX.PA_BASE_ZLFN",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_DAILY_EXTRA",
+    "role": "INFO",
+    "label": {
+      "es": "Otras prestaciones diarias integrables (art. 84)",
+      "en": "Other daily integrable benefits"
+    },
+    "treatments": [
+      {
+        "base": "MX.SDI_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "Otras prestaciones que integran el salario (art. 84): importe diario informado."
+  },
+  {
+    "concept": "MX_T_UNPAID_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Salarios pendientes informados",
+      "en": "Reported unpaid salary"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_VACATION_DAYS",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones del año de servicio en curso",
+      "en": "Vacation days of the current service year"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_VACATION_DAYS_PRORATED",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones proporcionales",
+      "en": "Prorated vacation days"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_VACATION_DAYS_DUE",
+    "role": "INFO",
+    "label": {
+      "es": "Días de vacaciones por pagar",
+      "en": "Vacation days to pay"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_SDI_AGUINALDO",
+    "role": "INFO",
+    "label": {
+      "es": "Parte diaria del aguinaldo (15/365)",
+      "en": "Daily share of aguinaldo (15/365)"
+    },
+    "treatments": [
+      {
+        "base": "MX.SDI_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_SDI_VAC_PREMIUM",
+    "role": "INFO",
+    "label": {
+      "es": "Parte diaria de la prima vacacional",
+      "en": "Daily share of vacation premium"
+    },
+    "treatments": [
+      {
+        "base": "MX.SDI_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_AGUINALDO_PROPORCIONAL",
+    "role": "EARNING",
+    "label": {
+      "es": "Aguinaldo proporcional",
+      "en": "Proportional aguinaldo"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_VACACIONES",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones (proporcionales y pendientes)",
+      "en": "Vacation (prorated and pending)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_PRIMA_VACACIONAL",
+    "role": "EARNING",
+    "label": {
+      "es": "Prima vacacional (25 %)",
+      "en": "Vacation premium (25 %)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_INDEMNIZACION_3_MESES",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización constitucional (3 meses)",
+      "en": "Constitutional indemnity (3 months)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_INDEMNIZACION_20_DIAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización 20 días por año (indefinido)",
+      "en": "20 days per year indemnity (indefinite)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_INDEMNIZACION_PLAZO_DETERMINADO",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización art. 50 I (plazo determinado)",
+      "en": "Art. 50 I indemnity (fixed term)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_PRIMA_ANTIGUEDAD_GENERAL",
+    "role": "EARNING",
+    "label": {
+      "es": "Prima de antigüedad (zona general)",
+      "en": "Seniority premium (GENERAL)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_PRIMA_ANTIGUEDAD_ZLFN",
+    "role": "EARNING",
+    "label": {
+      "es": "Prima de antigüedad (ZLFN)",
+      "en": "Seniority premium (ZLFN)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_T_DAYS_MONTH",
+    "role": "INFO",
+    "label": {
+      "es": "Días del mes de terminación",
+      "en": "Days in final month"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_SALARIO_MES_TERMINACION",
+    "role": "EARNING",
+    "label": {
+      "es": "Salario del mes de terminación (días)",
+      "en": "Final-month salary (days)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_SALARIOS_PENDIENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Salarios pendientes informados",
+      "en": "Reported unpaid salary"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_OVERTIME",
+    "role": "EARNING",
+    "label": {
+      "es": "Horas extra",
+      "en": "Overtime"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "MX_SUNDAY_PREMIUM",
+    "role": "EARNING",
+    "label": {
+      "es": "Prima dominical",
+      "en": "Sunday premium"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

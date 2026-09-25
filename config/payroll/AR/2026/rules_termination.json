@@ -1,0 +1,944 @@
+[
+  {
+    "rule_id": "AR.IN.AR_T_MONTHLY_SALARY.1",
+    "rule_key": "AR.IN.AR_T_MONTHLY_SALARY",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_MONTHLY_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "AR.IN.BEST_REMUNERATION.1",
+    "rule_key": "AR.IN.BEST_REMUNERATION",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_BEST_REMUNERATION",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "history_value",
+      "params": {
+        "history_input": "salary_history",
+        "method": "MAX",
+        "window_months": 12,
+        "fallback": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado y Ley 27.802 (B.O. 6-mar-2026)",
+      "legal_reference": "LCT art. 245 (texto art. 51 Ley 27.802, vigente desde su publicación): un mes de sueldo por año o fracción mayor de 3 meses sobre la mejor remuneración mensual, normal y habitual del último año; tope de 3 veces el promedio del convenio colectivo aplicable (nunca inferior al 67 % de la remuneración); mínimo de un mes",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24",
+      "note": "El tope depende del convenio colectivo (dato de entrada amounts.cct_average_salary); sin el dato el tope NO se aplica y se emite advertencia."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Máximo mensual de las remuneraciones informadas del último año (el usuario debe cargar solo conceptos mensuales, normales y habituales: sin SAC, vacaciones ni premios no mensuales). El promedio de variables (6 meses / 1 año) se calcula fuera del motor."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.IN.AR_T_UNPAID_SALARY.1",
+    "rule_key": "AR.IN.AR_T_UNPAID_SALARY",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_UNPAID_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.unpaid_salary",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "AR.IN.SAC_ACCRUED.1",
+    "rule_key": "AR.IN.SAC_ACCRUED",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_SAC_ACCRUED",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "accrued_in_window",
+      "params": {
+        "window": {
+          "type": "RECURRING_PERIODS",
+          "periods": [
+            {
+              "start": "01-01",
+              "end": "06-30"
+            },
+            {
+              "start": "07-01",
+              "end": "12-31"
+            }
+          ]
+        },
+        "history_input": "salary_history",
+        "fallback_monthly": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT art. 123 (SAC en la extinción): 'la doceava parte de las remuneraciones devengadas en la fracción del semestre trabajado, hasta el momento de dejar el servicio'; art. 122 (semestres que culminan en junio y diciembre)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Suma de las remuneraciones devengadas (historial mensual informado) dentro de la fracción del semestre; sin historial se supone remuneración constante (meses + días/30)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.SAC_PROPORCIONAL.1",
+    "rule_key": "AR.SAC_PROPORCIONAL",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_SAC_PROPORCIONAL",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "AR_T_SAC_ACCRUED"
+        },
+        "factor": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT art. 123 (SAC en la extinción): 'la doceava parte de las remuneraciones devengadas en la fracción del semestre trabajado, hasta el momento de dejar el servicio'; art. 122 (semestres que culminan en junio y diciembre)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Art. 123: doceava parte de lo devengado en la fracción del semestre trabajada. Semestres ene-jun y jul-dic, recortados por la fecha de ingreso. No agrega el SAC sobre preaviso e integración (criterio jurisprudencial, PENDING_VERIFICATION).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.IN.VAC_ENTITLEMENT.1",
+    "rule_key": "AR.IN.VAC_ENTITLEMENT",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_VACATION_ENTITLEMENT_DAYS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_quantity",
+      "params": {
+        "years_basis": "YEARS_AT_YEAR_END",
+        "table_decimal": [
+          {
+            "up_to": "5",
+            "value": "14"
+          },
+          {
+            "up_to": "10",
+            "value": "21"
+          },
+          {
+            "up_to": "20",
+            "value": "28"
+          },
+          {
+            "up_to": null,
+            "value": "35"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "14/21/28/35 días corridos; la antigüedad se computa al 31 de diciembre del año de la terminación (art. 150). El requisito de trabajar la mitad de los días hábiles del año (art. 151) no se verifica."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.IN.VAC_PRORATED.1",
+    "rule_key": "AR.IN.VAC_PRORATED",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_VACATION_DAYS_PRORATED",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "line": "AR_T_VACATION_ENTITLEMENT_DAYS"
+        },
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_ACTUAL",
+          "divisor": "365"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Art. 156: proporcional a la fracción del año trabajada; se mide en días del año calendario sobre 365 (criterio de práctica, sin texto expreso)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.IN.VAC_DUE.1",
+    "rule_key": "AR.IN.VAC_DUE",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_VACATION_DAYS_DUE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "adjusted_quantity",
+      "params": {
+        "quantity": {
+          "line": "AR_T_VACATION_DAYS_PRORATED"
+        },
+        "add": [
+          {
+            "input": "vacation_history.days_pending_prior",
+            "default": "0"
+          }
+        ],
+        "subtract": [
+          {
+            "input": "vacation_history.days_taken_current",
+            "default": "0"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Proporcionales del año + días pendientes de años anteriores − días gozados del año en curso."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.VACACIONES_NO_GOZADAS.1",
+    "rule_key": "AR.VACACIONES_NO_GOZADAS",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_VACACIONES_NO_GOZADAS",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "AR.VACATION_BASE"
+        },
+        "proration": {
+          "type": "FIXED_DIVISOR",
+          "divisor": "25",
+          "days": {
+            "line": "AR_T_VACATION_DAYS_DUE"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Art. 155 a): sueldo mensual / 25 por cada día. Sin variables ni SAC sobre vacaciones."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.IN.AR_T_PROBATION_MONTHS.1",
+    "rule_key": "AR.IN.AR_T_PROBATION_MONTHS",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_PROBATION_MONTHS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "employment.probation_months",
+          "default": "6"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT art. 92 bis: período de prueba de 6 meses (ampliable por convenio colectivo)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "AR.INDEMNIZACION_245.1",
+    "rule_key": "AR.INDEMNIZACION_245",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_INDEMNIZACION_ART_245",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "AR.INDEMNITY_BASE"
+        },
+        "unit_days_per_month": "1",
+        "tiers": [
+          {
+            "over_years": "0",
+            "units_per_year": "1",
+            "fraction": "THRESHOLD",
+            "threshold_months": 3
+          }
+        ],
+        "min_units": "1",
+        "base_cap": {
+          "input": "amounts.cct_average_salary",
+          "multiple": "3",
+          "floor_share": "0.67"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado y Ley 27.802 (B.O. 6-mar-2026)",
+      "legal_reference": "LCT art. 245 (texto art. 51 Ley 27.802, vigente desde su publicación): un mes de sueldo por año o fracción mayor de 3 meses sobre la mejor remuneración mensual, normal y habitual del último año; tope de 3 veces el promedio del convenio colectivo aplicable (nunca inferior al 67 % de la remuneración); mínimo de un mes",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24",
+      "note": "El tope depende del convenio colectivo (dato de entrada amounts.cct_average_salary); sin el dato el tope NO se aplica y se emite advertencia."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Un mes por año o fracción MAYOR de 3 meses (3 meses y 1 día suma), mínimo un mes; el tope (3 × promedio del convenio, piso 67 % de la remuneración) exige el dato del convenio."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "INDEFINITE"
+          ]
+        },
+        {
+          "left": {
+            "service": "MONTHS_DECIMAL"
+          },
+          "op": ">",
+          "right": {
+            "input": "employment.probation_months",
+            "default": "6"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "AR.IN.NOTICE_MONTHS.1",
+    "rule_key": "AR.IN.NOTICE_MONTHS",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_NOTICE_MONTHS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_quantity",
+      "params": {
+        "years_basis": "COMPLETED_YEARS",
+        "table_decimal": [
+          {
+            "up_to": "5",
+            "value": "1"
+          },
+          {
+            "up_to": null,
+            "value": "2"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado",
+      "legal_reference": "LCT arts. 231 (preaviso: 1 mes hasta 5 años, 2 meses más de 5; sin obligación en período de prueba; texto art. 48 Ley 27.802), 232 (indemnización sustitutiva), 233 (integración del mes de despido; no procede en período de prueba)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "AR.PREAVISO.1",
+    "rule_key": "AR.PREAVISO",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_PREAVISO_SUSTITUTIVO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "AR.NOTICE_BASE"
+        },
+        "factor": {
+          "line": "AR_T_NOTICE_MONTHS"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado",
+      "legal_reference": "LCT arts. 231 (preaviso: 1 mes hasta 5 años, 2 meses más de 5; sin obligación en período de prueba; texto art. 48 Ley 27.802), 232 (indemnización sustitutiva), 233 (integración del mes de despido; no procede en período de prueba)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Solo si el empleador no otorgó el preaviso (termination.notice_given=false) y no está en período de prueba."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE"
+          ]
+        },
+        {
+          "left": {
+            "input": "termination.notice_given",
+            "default": false
+          },
+          "op": "==",
+          "right": false
+        },
+        {
+          "left": {
+            "service": "MONTHS_DECIMAL"
+          },
+          "op": ">",
+          "right": {
+            "input": "employment.probation_months",
+            "default": "6"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "AR.IN.MONTH_END_DAYS.1",
+    "rule_key": "AR.IN.MONTH_END_DAYS",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_MONTH_END_DAYS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "DAYS_REMAINING_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado",
+      "legal_reference": "LCT arts. 231 (preaviso: 1 mes hasta 5 años, 2 meses más de 5; sin obligación en período de prueba; texto art. 48 Ley 27.802), 232 (indemnización sustitutiva), 233 (integración del mes de despido; no procede en período de prueba)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "AR.INTEGRACION_MES.1",
+    "rule_key": "AR.INTEGRACION_MES",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_INTEGRACION_MES_DESPIDO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "AR.NOTICE_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "AR_T_MONTH_END_DAYS"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado",
+      "legal_reference": "LCT arts. 231 (preaviso: 1 mes hasta 5 años, 2 meses más de 5; sin obligación en período de prueba; texto art. 48 Ley 27.802), 232 (indemnización sustitutiva), 233 (integración del mes de despido; no procede en período de prueba)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Extinción por el empleador sin preaviso en fecha que no es fin de mes: salarios de los días faltantes (sueldo/30 × días)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE"
+          ]
+        },
+        {
+          "left": {
+            "input": "termination.notice_given",
+            "default": false
+          },
+          "op": "==",
+          "right": false
+        },
+        {
+          "left": {
+            "service": "MONTHS_DECIMAL"
+          },
+          "op": ">",
+          "right": {
+            "input": "employment.probation_months",
+            "default": "6"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "AR.IN.DAYS_MONTH.1",
+    "rule_key": "AR.IN.DAYS_MONTH",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_T_DAYS_MONTH",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "COMMERCIAL_DAYS_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "AR.SUELDO_MES.1",
+    "rule_key": "AR.SUELDO_MES",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_SUELDO_MES_TERMINACION",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "AR.VACATION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "AR_T_DAYS_MONTH"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Sueldo/30 por los días del mes de terminación (convención)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "AR.REM_PENDIENTES.1",
+    "rule_key": "AR.REM_PENDIENTES",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_REMUNERACIONES_PENDIENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "AR_T_UNPAID_SALARY"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

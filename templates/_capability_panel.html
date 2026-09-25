@@ -1,0 +1,53 @@
+{# Estado real del contexto: se lee del Capability Manifest y de los datos normativos, nunca de valores escritos aquí. #}
+{% set cap = capability_info(pais) %}
+{% set info = estado_info(pais) %}
+<section class="result-block cap-panel">
+    <h2>{{ t('cap_title') }}</h2>
+    <dl class="cap-summary">
+        <div><dt>{{ t('cap_state') }}</dt><dd class="status-badge {{ info[0] }}">{{ info[1] }} {{ t(info[2]) }}</dd></div>
+        <div><dt>{{ t('cap_execution_path') }}</dt><dd>{{ t('cap_path_' ~ cap.execution_path) }}</dd></div>
+        <div><dt>{{ t('cap_normative_date') }}</dt><dd>{{ cap.normative_date }}</dd></div>
+        <div><dt>{{ t('cap_ruleset') }}</dt><dd>{{ cap.ruleset_version }}</dd></div>
+    </dl>
+    {% set cov = cap.coverage %}
+    {% if cov.rules_total %}
+    <p class="cap-coverage">
+        <strong>{{ t('cap_coverage') }}:</strong>
+        {{ cov.rules_implemented }} {{ t('cap_rules_implemented') }} ·
+        {{ cov.rules_partial }} {{ t('cap_rules_partial') }} ·
+        {{ cov.rules_not_implemented }} {{ t('cap_rules_pending') }} ·
+        {{ cov.rules_without_official_source }}/{{ cov.rules_total }} {{ t('cap_rules_no_official') }} ·
+        {{ cov.rules_pending_professional_validation }}/{{ cov.rules_total }} {{ t('cap_rules_prof_pending') }}
+    </p>
+    {% endif %}
+    {% if cap.components %}
+    <h3>{{ t('cap_components') }}</h3>
+    <table class="cap-table">
+        {% for name, c in cap.components.items() %}
+        <tr>
+            <td>{{ t('comp_' ~ name) }}</td>
+            <td><span class="cap-status cap-{{ c.status }}">{{ t('cap_status_' ~ c.status) }}</span></td>
+            <td class="cap-note">{% if request._lang == 'es' %}{{ c.note or '' }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if not cap.complete_engine %}<p class="cap-note">{{ t('cap_complete_engine') }}</p>{% endif %}
+    {% endif %}
+    <h3>{{ t('cap_capabilities') }}</h3>
+    <table class="cap-table">
+        {% for name, c in cap.capabilities.items() %}
+        {% set key = 'capname_' ~ name %}
+        <tr>
+            <td>{{ t(key) if t(key) != key else name.replace('_', ' ') }}</td>
+            <td><span class="cap-status cap-{{ c.status }}">{{ t('cap_status_' ~ c.status) }}</span></td>
+            <td class="cap-note">{% if request._lang == 'es' %}{{ c.note or '' }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if cap.known_gaps and request._lang == 'es' %}
+    <h3>{{ t('cap_gaps') }}</h3>
+    <ul class="cap-gaps">{% for g in cap.known_gaps %}<li>{{ g }}</li>{% endfor %}</ul>
+    {% elif cap.known_gaps %}
+    <p class="cap-note">{{ t('cap_notes_es_only') }}</p>
+    {% endif %}
+</section>

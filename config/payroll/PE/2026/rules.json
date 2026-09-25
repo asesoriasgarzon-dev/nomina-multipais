@@ -1,0 +1,463 @@
+[
+  {
+    "rule_id": "PE.REMUNERATION.1",
+    "rule_key": "PE.REMUNERATION",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "REMUNERATION",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "PE.BONUS.1",
+    "rule_key": "PE.BONUS",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "PE.FAMILY_ALLOWANCE.1",
+    "rule_key": "PE.FAMILY_ALLOWANCE",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "FAMILY_ALLOWANCE",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.FAMILY_ALLOWANCE",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "PE.AFP_MANDATORY.1",
+    "rule_key": "PE.AFP_MANDATORY",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFP_MANDATORY",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PE_REMUNERATION_BASE",
+        "rate": "0.10"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "PE.AFP_INSURANCE.1",
+    "rule_key": "PE.AFP_INSURANCE",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFP_INSURANCE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PE_REMUNERATION_BASE",
+        "rate": "0.0137"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Tasa 2026 sin verificar (ND)."
+  },
+  {
+    "rule_id": "PE.AFP_COMMISSION.1",
+    "rule_key": "PE.AFP_COMMISSION",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "AFP_COMMISSION",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PE_REMUNERATION_BASE",
+        "rate": "0.0155"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Comisión promedio de mercado: varía por AFP. Sin selector de administradora ni de sistema (ONP no implementado)."
+  },
+  {
+    "rule_id": "PE.LOANS.1",
+    "rule_key": "PE.LOANS",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "LOANS",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LOANS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "PE.INCOME_TAX_5TH.1",
+    "rule_key": "PE.INCOME_TAX_5TH",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "INCOME_TAX_5TH",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.INCOME_TAX_5TH",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Renta de quinta categoría (proyección anual con acumulados): NO IMPLEMENTADO — MOTOR TRIBUTARIO."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "input_type": "EXTERNAL_INPUT"
+  },
+  {
+    "rule_id": "PE.ESSALUD.1",
+    "rule_key": "PE.ESSALUD",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "ESSALUD",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PE_REMUNERATION_BASE",
+        "rate": "0.09"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "PE.GRATIFICATION_ACCRUAL.1",
+    "rule_key": "PE.GRATIFICATION_ACCRUAL",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "GRATIFICATION_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PE_REMUNERATION_BASE",
+        "rate": "1/6"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Provisión 2 gratificaciones/año; sin bonificación extraordinaria (9%) ni calendario de depósito."
+  },
+  {
+    "rule_id": "PE.CTS_ACCRUAL.1",
+    "rule_key": "PE.CTS_ACCRUAL",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "CTS_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "PE_REMUNERATION_BASE",
+        "rate": "1/12"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de aporte. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Perú), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "No incluye 1/6 de gratificación en la base del CTS ni ventanas semestrales."
+  },
+  {
+    "rule_id": "PE.VAL.WORKED_DAYS.1",
+    "rule_key": "PE.VAL.WORKED_DAYS",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.worked_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "value": "30"
+      }
+    },
+    "message": "Los días trabajados superan 30 (mes comercial).",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

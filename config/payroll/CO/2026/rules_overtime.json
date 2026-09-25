@@ -1,0 +1,206 @@
+[
+  {
+    "rule_id": "CO.OVERTIME.1",
+    "rule_key": "CO.OVERTIME",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "conditions": {
+      "left": {
+        "input": "employment.salary_type",
+        "default": "ORDINARY",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "ORDINARY"
+      }
+    },
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": {
+            "reference": {
+              "code": "WORKWEEK_HOURS",
+              "multiple": "5"
+            }
+          }
+        },
+        "categories": [
+          {
+            "key": "recargo_nocturno",
+            "hours_input": "time.hours_night_surcharge",
+            "components": [
+              "0.35"
+            ]
+          },
+          {
+            "key": "extra_diurna",
+            "hours_input": "time.hours_overtime_day",
+            "components": [
+              "1.25"
+            ]
+          },
+          {
+            "key": "extra_nocturna",
+            "hours_input": "time.hours_overtime_night",
+            "components": [
+              "1.75"
+            ]
+          },
+          {
+            "key": "dominical_diurno",
+            "hours_input": "time.hours_sunday_day",
+            "components": [
+              {
+                "reference": {
+                  "code": "SUNDAY_HOLIDAY_SURCHARGE"
+                }
+              }
+            ]
+          },
+          {
+            "key": "dominical_nocturno",
+            "hours_input": "time.hours_sunday_night",
+            "components": [
+              "0.35",
+              {
+                "reference": {
+                  "code": "SUNDAY_HOLIDAY_SURCHARGE"
+                }
+              }
+            ]
+          },
+          {
+            "key": "extra_diurna_dominical",
+            "hours_input": "time.hours_overtime_sunday_day",
+            "components": [
+              "1.25",
+              {
+                "reference": {
+                  "code": "SUNDAY_HOLIDAY_SURCHARGE"
+                }
+              }
+            ]
+          },
+          {
+            "key": "extra_nocturna_dominical",
+            "hours_input": "time.hours_overtime_sunday_night",
+            "components": [
+              "1.75",
+              {
+                "reference": {
+                  "code": "SUNDAY_HOLIDAY_SURCHARGE"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 168 (Ley 50/1990): recargo nocturno 35 %, extra diurna 25 %, extra nocturna 75 %; cada recargo es exclusivo (art. 168 num. 4)",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "PENDING_VERIFICATION: valor hora = salario ordinario / (horas semanales × 5) (44 h → 220; 42 h → 210). La acumulación del recargo dominical con nocturno/extra se toma como suma de porcentajes (interpretación administrativa, no verificada: el art. 168 num. 4 dice que cada recargo es exclusivo). Las horas vienen clasificadas por el usuario. Salario integral: no aplica.",
+      "open_question": true
+    },
+    "notes": "El cambio de jornada 44 h → 42 h (15-jul-2026) dentro del período se prorratea por días (SPLIT_BY_DAYS) como aproximación: para exactitud, liquidar por períodos que no crucen la fecha."
+  },
+  {
+    "rule_id": "CO.VAL.OT_LIMIT_DAY.1",
+    "rule_key": "CO.VAL.OT_LIMIT_DAY",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "left": {
+        "input": "time.max_overtime_hours_in_a_day",
+        "default": "0"
+      },
+      "op": ">",
+      "right": "2"
+    },
+    "message": "Horas extra diarias por encima de 2 (CST art. 167A, Ley 2466/2025 art. 13).",
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 167A (Ley 2466/2025 art. 13): las horas extra no pueden exceder 2 diarias y 12 semanales",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VAL.OT_LIMIT_WEEK.1",
+    "rule_key": "CO.VAL.OT_LIMIT_WEEK",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "left": {
+        "input": "time.max_overtime_hours_in_a_week",
+        "default": "0"
+      },
+      "op": ">",
+      "right": "12"
+    },
+    "message": "Horas extra semanales por encima de 12 (CST art. 167A, Ley 2466/2025 art. 13).",
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 167A (Ley 2466/2025 art. 13): las horas extra no pueden exceder 2 diarias y 12 semanales",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

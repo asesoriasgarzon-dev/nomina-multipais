@@ -1,0 +1,115 @@
+[
+  {
+    "rule_id": "EC.OVERTIME.1",
+    "rule_key": "EC.OVERTIME",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "concept": "EC_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": "240"
+        },
+        "categories": [
+          {
+            "key": "recargo_nocturno",
+            "hours_input": "time.night_hours",
+            "components": [
+              "0.25"
+            ]
+          },
+          {
+            "key": "suplementaria_hasta_24h",
+            "hours_input": "time.overtime_hours_until_midnight",
+            "components": [
+              "1.5"
+            ]
+          },
+          {
+            "key": "suplementaria_24h_a_06h",
+            "hours_input": "time.overtime_hours_midnight_to_6",
+            "components": [
+              "2"
+            ]
+          },
+          {
+            "key": "sabado_domingo",
+            "hours_input": "time.weekend_hours",
+            "components": [
+              "2"
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo arts. 47 (8 h diarias/40 semanales), 49 (jornada nocturna 19h00-06h00 con 25 % más), 55 (horas suplementarias: hasta 24h00 recargo 50 %; entre 24h00 y 06h00, 100 %; sábado o domingo, 100 %; máximo 4 diarias y 12 semanales)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Valor hora = remuneración mensual / 240 (30 días × 8 h): divisor de práctica, PENDING_VERIFICATION. El nocturno del art. 49 solo agrega el 25 % (la hora ordinaria ya está en el salario); las suplementarias y las horas de fin de semana se pagan completas con el recargo.",
+      "open_question": true
+    },
+    "notes": "Límites de 4 horas diarias y 12 semanales (art. 55): no se validan."
+  },
+  {
+    "rule_id": "EC.VAL.OT_WEEK.1",
+    "rule_key": "EC.VAL.OT_WEEK",
+    "version": "1",
+    "country": "EC",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "WARNING",
+    "conditions": {
+      "left": {
+        "input": "time.max_overtime_hours_in_a_week",
+        "default": "0"
+      },
+      "op": ">",
+      "right": "12"
+    },
+    "message": "Horas suplementarias semanales por encima de 12 (Código del Trabajo art. 55 num. 1).",
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Comisión de Legislación y Codificación — Código del Trabajo, Codificación 2005-017 (última modificación 22-jun-2020)",
+      "legal_reference": "Código del Trabajo arts. 47 (8 h diarias/40 semanales), 49 (jornada nocturna 19h00-06h00 con 25 % más), 55 (horas suplementarias: hasta 24h00 recargo 50 %; entre 24h00 y 06h00, 100 %; sábado o domingo, 100 %; máximo 4 diarias y 12 semanales)",
+      "official_url": "https://www.uafe.gob.ec/wp-content/uploads/downloads/2020/04/A2-CODIGO-DEL-TRABAJO.pdf",
+      "verified_at": "2026-09-24",
+      "note": "La copia consultada tiene última modificación 2020: las reformas posteriores no se verificaron."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

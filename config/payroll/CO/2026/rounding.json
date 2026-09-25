@@ -1,0 +1,23 @@
+{
+  "calculation_precision": 28,
+  "currency_precision": 2,
+  "rounding_mode": "ROUND_HALF_UP",
+  "currency": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "tax": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "contribution": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "display": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "status": "PENDING_VERIFICATION",
+  "note": "El redondeo de aportes en la PILA (múltiplos de 100/1000) no fue verificado; se conserva 2 decimales para no alterar el motor heredado."
+}

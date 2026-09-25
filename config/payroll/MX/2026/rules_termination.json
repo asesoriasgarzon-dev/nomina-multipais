@@ -1,0 +1,1148 @@
+[
+  {
+    "rule_id": "MX.IN.DAILY_SALARY.1",
+    "rule_key": "MX.IN.DAILY_SALARY",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_DAILY_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "FIXED_DIVISOR",
+          "divisor": "30",
+          "days": "1"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Salario diario = salario mensual / 30 (convención); si el salario es diario, informar el mensual equivalente."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IN.MX_T_DAILY_EXTRA.1",
+    "rule_key": "MX.IN.MX_T_DAILY_EXTRA",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_DAILY_EXTRA",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.extra_daily_benefits",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "MX.IN.MX_T_UNPAID_SALARY.1",
+    "rule_key": "MX.IN.MX_T_UNPAID_SALARY",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_UNPAID_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.unpaid_salary",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "MX.IN.VAC_DAYS.1",
+    "rule_key": "MX.IN.VAC_DAYS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_VACATION_DAYS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_quantity",
+      "params": {
+        "years_basis": "COMPLETED_YEARS",
+        "year_offset": 1,
+        "table": [
+          {
+            "min": 1,
+            "max": 1,
+            "value": "12"
+          },
+          {
+            "min": 2,
+            "max": 2,
+            "value": "14"
+          },
+          {
+            "min": 3,
+            "max": 3,
+            "value": "16"
+          },
+          {
+            "min": 4,
+            "max": 4,
+            "value": "18"
+          },
+          {
+            "min": 5,
+            "max": 5,
+            "value": "20"
+          },
+          {
+            "min": 6,
+            "max": 10,
+            "value": "22"
+          },
+          {
+            "min": 11,
+            "max": 15,
+            "value": "24"
+          },
+          {
+            "min": 16,
+            "max": 20,
+            "value": "26"
+          },
+          {
+            "min": 21,
+            "max": 25,
+            "value": "28"
+          },
+          {
+            "min": 26,
+            "max": 30,
+            "value": "30"
+          },
+          {
+            "min": 31,
+            "max": 35,
+            "value": "32"
+          },
+          {
+            "min": 36,
+            "max": 40,
+            "value": "34"
+          },
+          {
+            "min": 41,
+            "max": 45,
+            "value": "36"
+          },
+          {
+            "min": 46,
+            "max": 50,
+            "value": "38"
+          },
+          {
+            "min": 51,
+            "max": 55,
+            "value": "40"
+          },
+          {
+            "min": 56,
+            "max": 60,
+            "value": "42"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Procuraduría Federal de la Defensa del Trabajo (PROFEDET)",
+      "legal_reference": "LFT art. 76: tabla de días de vacaciones por año de servicio (12, 14, 16, 18, 20; 22 años 6-10; 24 11-15; 26 16-20; 28 21-25; 30 26-30)",
+      "official_url": "https://www.gob.mx/profedet/articulos/la-ley-federal-del-trabajo-es-tu-aliada-en-tu-derecho-a-recibir-vacaciones?idiom=es",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Se usa la fila del año de servicio EN CURSO (años completos + 1) para el pago proporcional; el texto del art. 79 solo dice 'proporcional al tiempo de servicios' (PENDING_VERIFICATION). La tabla llega a 30 años en la fuente; de 31 a 60 años se extrapola el patrón (+2 por cada cinco años).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IN.VAC_PRORATED.1",
+    "rule_key": "MX.IN.VAC_PRORATED",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_VACATION_DAYS_PRORATED",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "line": "MX_T_VACATION_DAYS"
+        },
+        "window": {
+          "type": "SERVICE_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_ACTUAL",
+          "divisor": "365"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 76 (vacaciones: 12 días al año de servicios, +2 por año hasta 20, luego +2 por cada cinco años), 79 (proporcional si la relación termina antes del año), 80 (prima vacacional no menor a 25 %)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IN.VAC_DUE.1",
+    "rule_key": "MX.IN.VAC_DUE",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_VACATION_DAYS_DUE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "adjusted_quantity",
+      "params": {
+        "quantity": {
+          "line": "MX_T_VACATION_DAYS_PRORATED"
+        },
+        "add": [
+          {
+            "input": "vacation_history.days_pending_prior",
+            "default": "0"
+          }
+        ],
+        "subtract": [
+          {
+            "input": "vacation_history.days_taken_current",
+            "default": "0"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 76 (vacaciones: 12 días al año de servicios, +2 por año hasta 20, luego +2 por cada cinco años), 79 (proporcional si la relación termina antes del año), 80 (prima vacacional no menor a 25 %)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IN.SDI_AGUINALDO.1",
+    "rule_key": "MX.IN.SDI_AGUINALDO",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_SDI_AGUINALDO",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "MX.DAILY_BASE",
+        "rate": "15/365"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Prestaciones de ley como única integración (aguinaldo 15 días); otras prestaciones: amounts.extra_daily_benefits."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IN.SDI_VAC_PREMIUM.1",
+    "rule_key": "MX.IN.SDI_VAC_PREMIUM",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_SDI_VAC_PREMIUM",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "MX.DAILY_BASE",
+        "rate": "25/36500",
+        "factor": {
+          "line": "MX_T_VACATION_DAYS"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Prima vacacional 25 % × días de vacaciones / 365 por día."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.AGUINALDO.1",
+    "rule_key": "MX.AGUINALDO",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_AGUINALDO_PROPORCIONAL",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "MX.DAILY_BASE"
+        },
+        "factor": "15",
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_ACTUAL",
+          "divisor": "365"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT art. 87: aguinaldo anual de por lo menos 15 días de salario, proporcional al tiempo trabajado 'cualquiera que fuere éste'",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "15 días de salario × días trabajados del año / 365 (art. 87: proporcional al tiempo trabajado). Sin descontar aguinaldo ya pagado (no se informa)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.VACACIONES.1",
+    "rule_key": "MX.VACACIONES",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_VACACIONES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "MX.DAILY_BASE"
+        },
+        "factor": {
+          "line": "MX_T_VACATION_DAYS_DUE"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 76 (vacaciones: 12 días al año de servicios, +2 por año hasta 20, luego +2 por cada cinco años), 79 (proporcional si la relación termina antes del año), 80 (prima vacacional no menor a 25 %)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Días por pagar × salario diario. Las vacaciones no se compensan en dinero durante la relación (art. 79); al terminar se pagan."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.PRIMA_VACACIONAL.1",
+    "rule_key": "MX.PRIMA_VACACIONAL",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_PRIMA_VACACIONAL",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "MX_VACACIONES"
+        },
+        "factor": "0.25"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 76 (vacaciones: 12 días al año de servicios, +2 por año hasta 20, luego +2 por cada cinco años), 79 (proporcional si la relación termina antes del año), 80 (prima vacacional no menor a 25 %)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.INDEMNIZACION_3M.1",
+    "rule_key": "MX.INDEMNIZACION_3M",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_INDEMNIZACION_3_MESES",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "MX.SDI_BASE"
+        },
+        "factor": "90"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tres meses = 90 días de salario diario integrado. Los salarios vencidos (art. 48, hasta 12 meses) dependen del juicio y NO se calculan."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.cause",
+        "as": "text"
+      },
+      "op": "in",
+      "right": [
+        "DISMISSAL_WITHOUT_CAUSE"
+      ]
+    }
+  },
+  {
+    "rule_id": "MX.INDEMNIZACION_20D.1",
+    "rule_key": "MX.INDEMNIZACION_20D",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_INDEMNIZACION_20_DIAS",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "MX.SDI_BASE"
+        },
+        "unit_days_per_month": "1",
+        "tiers": [
+          {
+            "over_years": "0",
+            "units_per_year": "20",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "20 días por año de servicios; la fracción de año se prorratea (el texto no lo dice: PENDING_VERIFICATION).",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "INDEFINITE"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "MX.INDEMNIZACION_PLAZO.1",
+    "rule_key": "MX.INDEMNIZACION_PLAZO",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_INDEMNIZACION_PLAZO_DETERMINADO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "MX.SDI_BASE"
+        },
+        "unit_days_per_month": "1",
+        "tiers": [
+          {
+            "over_years": "0",
+            "up_to_years": "1",
+            "units_per_year": "180",
+            "fraction": "PRORATA"
+          },
+          {
+            "over_years": "1",
+            "fixed_units": "180"
+          },
+          {
+            "over_years": "1",
+            "units_per_year": "20",
+            "count_from_years": "1",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "<1 año: salarios de la mitad del tiempo de servicios (180 días por año prorrateado); >1 año: 6 meses por el primer año + 20 días por cada año siguiente."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "FIXED_TERM"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "MX.PRIMA_ANTIGUEDAD_GENERAL.1",
+    "rule_key": "MX.PRIMA_ANTIGUEDAD_GENERAL",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_PRIMA_ANTIGUEDAD_GENERAL",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "MX.PA_BASE_GENERAL"
+        },
+        "unit_days_per_month": "1",
+        "tiers": [
+          {
+            "over_years": "0",
+            "units_per_year": "12",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT art. 162: prima de antigüedad de 12 días de salario por año de servicios; el salario no excede del doble del salario mínimo (arts. 485-486); se paga a quien se separa voluntariamente con 15 años o más, y a quienes son separados o se separan por causa justificada",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24",
+      "note": "El tope del doble del salario mínimo se cita del art. 486 (no reproducido en esta extracción): verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "12 días por año de servicios con el salario topado a 2 salarios mínimos de la zona. Fracción de año prorrateada (PENDING_VERIFICATION). Solo trabajadores de planta (contrato indefinido); renuncia solo con 15 años o más.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "any": [
+            {
+              "left": {
+                "input": "termination.cause",
+                "as": "text"
+              },
+              "op": "in",
+              "right": [
+                "DISMISSAL_WITH_CAUSE",
+                "DISMISSAL_WITHOUT_CAUSE",
+                "INDIRECT_DISMISSAL",
+                "DEATH",
+                "RETIREMENT"
+              ]
+            },
+            {
+              "all": [
+                {
+                  "left": {
+                    "input": "termination.cause",
+                    "as": "text"
+                  },
+                  "op": "in",
+                  "right": [
+                    "RESIGNATION",
+                    "MUTUAL_AGREEMENT"
+                  ]
+                },
+                {
+                  "left": {
+                    "service": "COMPLETED_YEARS"
+                  },
+                  "op": ">=",
+                  "right": "15"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "INDEFINITE"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.wage_zone",
+            "default": "GENERAL",
+            "as": "text"
+          },
+          "op": "==",
+          "right": {
+            "value": "GENERAL"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "MX.PRIMA_ANTIGUEDAD_ZLFN.1",
+    "rule_key": "MX.PRIMA_ANTIGUEDAD_ZLFN",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_PRIMA_ANTIGUEDAD_ZLFN",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "MX.PA_BASE_ZLFN"
+        },
+        "unit_days_per_month": "1",
+        "tiers": [
+          {
+            "over_years": "0",
+            "units_per_year": "12",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT art. 162: prima de antigüedad de 12 días de salario por año de servicios; el salario no excede del doble del salario mínimo (arts. 485-486); se paga a quien se separa voluntariamente con 15 años o más, y a quienes son separados o se separan por causa justificada",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24",
+      "note": "El tope del doble del salario mínimo se cita del art. 486 (no reproducido en esta extracción): verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "12 días por año de servicios con el salario topado a 2 salarios mínimos de la zona. Fracción de año prorrateada (PENDING_VERIFICATION). Solo trabajadores de planta (contrato indefinido); renuncia solo con 15 años o más.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "any": [
+            {
+              "left": {
+                "input": "termination.cause",
+                "as": "text"
+              },
+              "op": "in",
+              "right": [
+                "DISMISSAL_WITH_CAUSE",
+                "DISMISSAL_WITHOUT_CAUSE",
+                "INDIRECT_DISMISSAL",
+                "DEATH",
+                "RETIREMENT"
+              ]
+            },
+            {
+              "all": [
+                {
+                  "left": {
+                    "input": "termination.cause",
+                    "as": "text"
+                  },
+                  "op": "in",
+                  "right": [
+                    "RESIGNATION",
+                    "MUTUAL_AGREEMENT"
+                  ]
+                },
+                {
+                  "left": {
+                    "service": "COMPLETED_YEARS"
+                  },
+                  "op": ">=",
+                  "right": "15"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "INDEFINITE"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.wage_zone",
+            "default": "GENERAL",
+            "as": "text"
+          },
+          "op": "==",
+          "right": {
+            "value": "ZLFN"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "MX.IN.DAYS_MONTH.1",
+    "rule_key": "MX.IN.DAYS_MONTH",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_T_DAYS_MONTH",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "COMMERCIAL_DAYS_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "MX.SALARIO_MES.1",
+    "rule_key": "MX.SALARIO_MES",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_SALARIO_MES_TERMINACION",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "MX.DAILY_BASE"
+        },
+        "factor": {
+          "line": "MX_T_DAYS_MONTH"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Salario diario × días del mes hasta la terminación (base 30)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "MX.REM_PENDIENTES.1",
+    "rule_key": "MX.REM_PENDIENTES",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_SALARIOS_PENDIENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "MX_T_UNPAID_SALARY"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

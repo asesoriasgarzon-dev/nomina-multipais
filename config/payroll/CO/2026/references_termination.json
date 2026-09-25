@@ -1,0 +1,77 @@
+[
+  {
+    "ref_id": "CO.SUNDAY_SURCHARGE.2025-07",
+    "code": "SUNDAY_HOLIDAY_SURCHARGE",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "fracción sobre el salario ordinario",
+    "value": "0.80",
+    "effective": {
+      "from": "2025-07-01",
+      "to": "2026-06-30"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República / Secretaría del Senado",
+      "legal_reference": "Ley 2466 de 2025 art. 14 (CST art. 179): recargo dominical/festivo 100 %, gradual: 80 % desde el 1-jul-2025, 90 % desde el 1-jul-2026, 100 % desde el 1-jul-2027",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Implementación gradual del recargo por trabajo en día de descanso obligatorio (parágrafo transitorio)."
+    },
+    "note": "Implementación gradual del recargo por trabajo en día de descanso obligatorio (parágrafo transitorio)."
+  },
+  {
+    "ref_id": "CO.SUNDAY_SURCHARGE.2026-07",
+    "code": "SUNDAY_HOLIDAY_SURCHARGE",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "fracción sobre el salario ordinario",
+    "value": "0.90",
+    "effective": {
+      "from": "2026-07-01",
+      "to": "2027-06-30"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República / Secretaría del Senado",
+      "legal_reference": "Ley 2466 de 2025 art. 14 (CST art. 179): recargo dominical/festivo 100 %, gradual: 80 % desde el 1-jul-2025, 90 % desde el 1-jul-2026, 100 % desde el 1-jul-2027",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Implementación gradual del recargo por trabajo en día de descanso obligatorio (parágrafo transitorio)."
+    },
+    "note": "Implementación gradual del recargo por trabajo en día de descanso obligatorio (parágrafo transitorio)."
+  },
+  {
+    "ref_id": "CO.SUNDAY_SURCHARGE.2027-07",
+    "code": "SUNDAY_HOLIDAY_SURCHARGE",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "fracción sobre el salario ordinario",
+    "value": "1.00",
+    "effective": {
+      "from": "2027-07-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Congreso de la República / Secretaría del Senado",
+      "legal_reference": "Ley 2466 de 2025 art. 14 (CST art. 179): recargo dominical/festivo 100 %, gradual: 80 % desde el 1-jul-2025, 90 % desde el 1-jul-2026, 100 % desde el 1-jul-2027",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Implementación gradual del recargo por trabajo en día de descanso obligatorio (parágrafo transitorio)."
+    },
+    "note": "Implementación gradual del recargo por trabajo en día de descanso obligatorio (parágrafo transitorio)."
+  }
+]

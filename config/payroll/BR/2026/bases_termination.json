@@ -1,0 +1,26 @@
+[
+  {
+    "base": "BR.RESCISSION_BASE",
+    "country": "BR",
+    "description": "Remuneración base de la rescisión (salario + variables habituales)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Lei 4.090/1962 art. 1º §§1º-3º (1/12 da remuneração por mês de serviço; fração de 15 dias ou mais = mês integral; proporcional nos contratos a prazo e na aposentadoria) e art. 3º (rescisão sem justa causa: calculada sobre a remuneração do mês da rescisão); CF art. 7º VIII",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/leis/l4090.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada; sin validación profesional."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  }
+]

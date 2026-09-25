@@ -1,0 +1,152 @@
+[
+  {
+    "ref_id": "US.FED_MIN_WAGE",
+    "code": "FEDERAL_MIN_WAGE",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "unit": "USD/hora",
+    "value": "7.25",
+    "effective": {
+      "from": "2009-07-24",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "U.S. Department of Labor — Wage and Hour Division",
+      "legal_reference": "Fair Labor Standards Act (29 U.S.C. §206, §207); 29 CFR Chapter V",
+      "official_url": "https://www.dol.gov/agencies/whd/flsa",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Vigente desde el 24-jul-2009."
+    },
+    "note": "Vigente desde el 24-jul-2009."
+  },
+  {
+    "ref_id": "US.OT_THRESHOLD",
+    "code": "OVERTIME_THRESHOLD_HOURS",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "unit": "horas/semana",
+    "value": "40",
+    "effective": {
+      "from": "2009-07-24",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "U.S. Department of Labor — Wage and Hour Division",
+      "legal_reference": "Fair Labor Standards Act (29 U.S.C. §206, §207); 29 CFR Chapter V",
+      "official_url": "https://www.dol.gov/agencies/whd/flsa",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Empleados no exentos."
+    },
+    "note": "Empleados no exentos."
+  },
+  {
+    "ref_id": "US.OT_MULTIPLIER",
+    "code": "OVERTIME_MULTIPLIER",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "unit": "multiplicador",
+    "value": "1.5",
+    "effective": {
+      "from": "2009-07-24",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "U.S. Department of Labor — Wage and Hour Division",
+      "legal_reference": "Fair Labor Standards Act (29 U.S.C. §206, §207); 29 CFR Chapter V",
+      "official_url": "https://www.dol.gov/agencies/whd/flsa",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "1,5 veces la tarifa regular."
+    },
+    "note": "1,5 veces la tarifa regular."
+  },
+  {
+    "ref_id": "US.SS_WAGE_BASE.2026",
+    "code": "SS_WAGE_BASE",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "unit": "USD/año",
+    "value": "184500",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Social Security Administration — Contribution and Benefit Base 2026",
+      "official_url": null,
+      "secondary_url": "https://www.ssa.gov/oact/cola/cbb.html",
+      "verified_at": "2026-09-24",
+      "note": "Valor confirmado en fuentes secundarias; la página oficial de SSA devolvió HTTP 403."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "US.FICA_SS_RATE",
+    "code": "FICA_SS_RATE",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "unit": "ratio",
+    "value": "0.062",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "IRC §3101/§3111 (FICA)",
+      "official_url": null,
+      "secondary_url": "https://www.paycom.com/resources/blog/fica-tax/",
+      "verified_at": "2026-09-24",
+      "note": "Tasa contrastada en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "US.MEDICARE_RATE",
+    "code": "MEDICARE_RATE",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "unit": "ratio",
+    "value": "0.0145",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "IRC §3101(b)/§3111(b) (Medicare)",
+      "official_url": null,
+      "secondary_url": "https://www.paycom.com/resources/blog/fica-tax/",
+      "verified_at": "2026-09-24",
+      "note": "Tasa contrastada en fuente secundaria."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

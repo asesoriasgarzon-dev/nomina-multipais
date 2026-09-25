@@ -1,0 +1,190 @@
+[
+  {
+    "concept": "REMUNERATION",
+    "role": "EARNING",
+    "label_key": "valor_salario_devengado",
+    "treatments": [
+      {
+        "base": "EC_REMUNERATION_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "BONUS",
+    "role": "EARNING",
+    "label_key": "bonos_comisiones",
+    "treatments": [
+      {
+        "base": "EC_REMUNERATION_BASE",
+        "mode": "EXCLUDE",
+        "reason": "El motor heredado solo aporta al IESS sobre la remuneración; los bonos no se incluyen (sin verificar).",
+        "status": "PENDING_VERIFICATION"
+      }
+    ],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "El motor heredado solo aporta al IESS sobre la remuneración; los bonos no se incluyen (sin verificar)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IESS_EMPLOYEE",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "aporte_pension_empleado",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "LOANS",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "prestamos_avances",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "INCOME_TAX",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "retencion_impuesto_renta",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IESS_EMPLOYER",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "pension_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "IECE_SECAP",
+    "role": "EMPLOYER_CONTRIBUTION",
+    "label_key": "aporte_capacitacion_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "THIRTEENTH_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "prima",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "FOURTEENTH_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "prima",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "RESERVE_FUND_ACCRUAL",
+    "role": "ACCRUAL",
+    "label_key": "fondo_garantia_empleador",
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa. Valor tomado del motor heredado / NORMATIVA_PAISES.md (Ecuador), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

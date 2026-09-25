@@ -1,0 +1,76 @@
+[
+  {
+    "ref_id": "BR.MIN_WAGE.2026",
+    "code": "MIN_WAGE",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "unit": "BRL/mês",
+    "value": "1621",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Decreto nº 12.797/2025 (salário mínimo 2026 = R$ 1.621)",
+      "official_url": null,
+      "secondary_url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12797.htm",
+      "verified_at": "2026-09-24",
+      "note": "Confirmado por múltiples fuentes secundarias; la página oficial de Planalto no pudo descargarse (ECONNRESET)."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "BR.INSS_CEILING.2026",
+    "code": "INSS_CEILING",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "unit": "BRL/mês",
+    "value": "8475.55",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Portaria Interministerial MPS/MF nº 13, de 9-jan-2026 (teto do INSS)",
+      "official_url": null,
+      "secondary_url": "https://documentacao.senior.com.br/exigenciaslegais/noticias/trabalhista-previdenciaria/2026/2026-01-12-trabalhista-portaria-interministerial-mps-mf-n-13-nova-tabela-de-contribuicao-do-inss-para-2026/",
+      "verified_at": "2026-09-24",
+      "note": "Teto R$ 8.475,55 y contribución máxima R$ 988,09 según fuentes secundarias."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "BR.WORKWEEK.2026",
+    "code": "WORKWEEK_HOURS",
+    "country": "BR",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "44",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidência da República — Portal da Legislação (Planalto)",
+      "legal_reference": "Constituição Federal art. 7º XIII: duração do trabalho normal não superior a oito horas diárias e quarenta e quatro semanais",
+      "official_url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Jornada semanal de 44 horas (sem cambios cargados para 2026)."
+    }
+  }
+]

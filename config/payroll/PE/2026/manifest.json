@@ -1,0 +1,83 @@
+{
+  "country": "PE",
+  "year": 2026,
+  "ruleset_version": "PE-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "PEN",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa equivalente al motor heredado; solo AFP; renta manual."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "RMV con fuente secundaria."
+    },
+    "working_hours": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Jornada sin verificar."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Sobretasas 25 %/35 % (D.S. 007-2002-TR art. 10); divisor del valor hora sin verificar."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Vacaciones truncas y adquiridas al cese; goce/programación no modelados."
+    },
+    "social_security": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "AFP y EsSalud sobre remuneración (sin bonos ni tope); ONP NOT_IMPLEMENTED."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "El impuesto es un valor digitado (EXTERNAL_INPUT); no existe motor tributario."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Provisión mensual simple; liquidación de CTS/gratificación por semestre en corrida TERMINATION."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "CTS trunca, gratificación trunca, vacaciones truncas e indemnización por despido arbitrario ejecutan desde datos (semestres jurídicos distintos por beneficio). Régimen general únicamente; indemnización de plazo fijo con fuente pendiente; sin validación profesional."
+    },
+    "surcharges": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Sobretasa nocturna (D.S. 007-2002-TR) y trabajo en feriado no investigados."
+    }
+  },
+  "known_gaps": [
+    "ONP y selector AFP/ONP.",
+    "Renta de quinta categoría.",
+    "Bonificación extraordinaria 9%.",
+    "Régimen laboral (MYPE, agrario).",
+    "Regímenes MYPE/agrario/construcción civil: NOT_IMPLEMENTED (validación bloquea la corrida).",
+    "Indemnización de plazo fijo (art. 76 TUO 728): fuente PENDING_VERIFICATION.",
+    "Descuento de días no laborados (1/30) en gratificación y CTS no modelado.",
+    "Renta de quinta y retenciones sobre la liquidación: NOT_IMPLEMENTED.",
+    "Cese antes del 15-jul/15-dic: la gratificación ordinaria del semestre anterior aún no pagada es un dato de entrada (amounts.gratification_unpaid_prior)."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_WITHOUT_CAUSE",
+      "FIXED_TERM_EXPIRY",
+      "MUTUAL_AGREEMENT",
+      "DEATH",
+      "RETIREMENT",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM"
+    ],
+    "requires_contract_end_for": [
+      "FIXED_TERM"
+    ]
+  }
+}

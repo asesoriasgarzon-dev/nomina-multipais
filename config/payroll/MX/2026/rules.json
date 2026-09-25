@@ -1,0 +1,950 @@
+[
+  {
+    "rule_id": "MX.SALARY_EARNED.1",
+    "rule_key": "MX.SALARY_EARNED",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "SALARY_EARNED",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.paid_days"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "MX.SBC_SALARY.1",
+    "rule_key": "MX.SBC_SALARY",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "SBC_SALARY",
+    "category": "SOCIAL_SECURITY",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "input": "employment.monthly_salary"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "time.worked_days"
+          }
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "SBC simplificado. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "SBC sin factor de integración (aguinaldo, prima vacacional): simplificación heredada."
+  },
+  {
+    "rule_id": "MX.BONUS.1",
+    "rule_key": "MX.BONUS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "BONUS",
+    "category": "SALARY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.BONUS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "MX.IMSS_EE_EXCESS.1",
+    "rule_key": "MX.IMSS_EE_EXCESS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_EE_EXCESS",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_excess",
+      "params": {
+        "base": "SBC",
+        "threshold": {
+          "reference": {
+            "code": "UMA_DAILY",
+            "multiple": "3"
+          }
+        },
+        "scale_by": {
+          "input": "time.worked_days"
+        },
+        "rate": "0.004"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_EE_CASH.1",
+    "rule_key": "MX.IMSS_EE_CASH",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_EE_CASH",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.0025"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_EE_PENSIONERS.1",
+    "rule_key": "MX.IMSS_EE_PENSIONERS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_EE_PENSIONERS",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.00375"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_EE_DISABILITY.1",
+    "rule_key": "MX.IMSS_EE_DISABILITY",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_EE_DISABILITY",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.00625"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_EE_RETIREMENT.1",
+    "rule_key": "MX.IMSS_EE_RETIREMENT",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_EE_RETIREMENT",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.01125"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.INFONAVIT_CREDIT.1",
+    "rule_key": "MX.INFONAVIT_CREDIT",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "INFONAVIT_CREDIT",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.HOUSING_CREDIT",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "MX.LOANS.1",
+    "rule_key": "MX.LOANS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "LOANS",
+    "category": "VOLUNTARY",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.LOANS",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED",
+    "input_type": "USER_INPUT"
+  },
+  {
+    "rule_id": "MX.ISR_WITHHOLDING.1",
+    "rule_key": "MX.ISR_WITHHOLDING",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "ISR_WITHHOLDING",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.ISR_WITHHOLDING",
+          "default": "0"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "ISR (art. 96 LISR, tarifa por periodo y subsidio): NO IMPLEMENTADO — MOTOR TRIBUTARIO. Valor digitado."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "input_type": "EXTERNAL_INPUT"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_FIXED.1",
+    "rule_key": "MX.IMSS_ER_FIXED",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_FIXED",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_reference_amount",
+      "params": {
+        "amount": {
+          "reference": {
+            "code": "UMA_DAILY"
+          }
+        },
+        "scale_by": {
+          "input": "time.worked_days"
+        },
+        "rate": "0.2040"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_EXCESS.1",
+    "rule_key": "MX.IMSS_ER_EXCESS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_EXCESS",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_excess",
+      "params": {
+        "base": "SBC",
+        "threshold": {
+          "reference": {
+            "code": "UMA_DAILY",
+            "multiple": "3"
+          }
+        },
+        "scale_by": {
+          "input": "time.worked_days"
+        },
+        "rate": "0.011"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_CASH.1",
+    "rule_key": "MX.IMSS_ER_CASH",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_CASH",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.007"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_PENSIONERS.1",
+    "rule_key": "MX.IMSS_ER_PENSIONERS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_PENSIONERS",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.0105"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_NURSERY.1",
+    "rule_key": "MX.IMSS_ER_NURSERY",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_NURSERY",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.01"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_DISABILITY.1",
+    "rule_key": "MX.IMSS_ER_DISABILITY",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_DISABILITY",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.0175"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_RETIREMENT.1",
+    "rule_key": "MX.IMSS_ER_RETIREMENT",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_RETIREMENT",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.02"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.IMSS_ER_SEVERANCE_OLD_AGE.1",
+    "rule_key": "MX.IMSS_ER_SEVERANCE_OLD_AGE",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_SEVERANCE_OLD_AGE",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.0524"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Tasa plana aproximada; la ley usa tabla progresiva por rango salarial (NO DETERMINABLE 2026)."
+  },
+  {
+    "rule_id": "MX.IMSS_ER_RISK.1",
+    "rule_key": "MX.IMSS_ER_RISK",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "IMSS_ER_RISK",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.005"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Prima de riesgo clase I de ejemplo; la fija cada empresa."
+  },
+  {
+    "rule_id": "MX.INFONAVIT_ER.1",
+    "rule_key": "MX.INFONAVIT_ER",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "INFONAVIT_ER",
+    "category": "SOCIAL_SECURITY",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "SBC",
+        "rate": "0.05"
+      },
+      "rounding": "contribution"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tasa de cuota obrero-patronal. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México, IMSS), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "MX.AGUINALDO_ACCRUAL.1",
+    "rule_key": "MX.AGUINALDO_ACCRUAL",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "AGUINALDO_ACCRUAL",
+    "category": "BENEFIT_ACCRUAL",
+    "kind": "ACCRUAL",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "SPLIT_BY_DAYS",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "rate_on_base",
+      "params": {
+        "base": "MX_SALARY_EARNED_BASE",
+        "rate": "0.0417"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Provisión de aguinaldo 15/360 aproximada. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Legacy: 4.17% (15/360 = 4.1667%)."
+  },
+  {
+    "rule_id": "MX.VAL.WORKED_DAYS.1",
+    "rule_key": "MX.VAL.WORKED_DAYS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.worked_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "value": "30"
+      }
+    },
+    "message": "Los días trabajados superan 30.",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "MX.VAL.INCAPACITY_DAYS.1",
+    "rule_key": "MX.VAL.INCAPACITY_DAYS",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "time.incapacity_days",
+        "default": "0"
+      },
+      "op": ">",
+      "right": {
+        "input": "time.worked_days",
+        "default": "0"
+      }
+    },
+    "message": "Los días de incapacidad superan los días trabajados.",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

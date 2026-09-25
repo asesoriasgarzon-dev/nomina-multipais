@@ -1,0 +1,59 @@
+[
+  {
+    "base": "SBC",
+    "country": "MX",
+    "description": "Salario Base de Cotización IMSS (simplificado: salario diario × días con tope de 25 UMA; sin integración de prestaciones ni bonos).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Tope de 25 UMA. Valor tomado del motor heredado / NORMATIVA_PAISES.md (México), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Datos migrados del motor heredado a formato normativo para equivalencia de resultados; la regla jurídica sigue sin revisión profesional (PENDING_VERIFICATION)."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "UMA_DAILY",
+            "multiple": "25"
+          }
+        },
+        "scale_by": {
+          "input": "time.worked_days"
+        },
+        "enforcement": "ENFORCE"
+      }
+    }
+  },
+  {
+    "base": "MX_SALARY_EARNED_BASE",
+    "country": "MX",
+    "description": "Salario devengado del periodo (base de la provisión de aguinaldo).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Salario devengado del periodo (base de la provisión de aguinaldo)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

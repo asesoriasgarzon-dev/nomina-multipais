@@ -1,0 +1,98 @@
+[
+  {
+    "base": "CO.CESANTIAS_BASE",
+    "country": "CO",
+    "description": "Base de cesantías: salario (art. 253) + auxilio de transporte",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 249 (cesantías: un mes de salario por año y proporcionalmente por fracción) y 253 (base: último salario o promedio del último año si varió en los 3 últimos meses o es variable)",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; interpretación sin validación profesional."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "CO.PRIMA_BASE",
+    "country": "CO",
+    "description": "Base de prima de servicios: salario + auxilio de transporte",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 306 (modificado Ley 1788/2016): prima de servicios, 30 días de salario por año, por todo el semestre trabajado o proporcionalmente al tiempo trabajado",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; interpretación sin validación profesional."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "CO.VACATION_BASE",
+    "country": "CO",
+    "description": "Base de vacaciones: salario ordinario, sin auxilio de transporte (art. 192)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 186 (15 días hábiles por año), 189, 192 (remuneración: salario ordinario del día en que inicia el goce; variable: promedio) y 190",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; interpretación sin validación profesional."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "CO.INDEMNITY_BASE",
+    "country": "CO",
+    "description": "Salario para la indemnización del art. 64 (salario integral completo si aplica)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 64 (Ley 789/2002 art. 28): indemnización por terminación sin justa causa: contratos a término fijo = tiempo que faltare (obra o labor: mínimo 15 días); indefinido: <10 SMMLV 30 días + 20 por año subsiguiente; >=10 SMMLV 20 días + 15 por año subsiguiente, proporcional por fracción",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; interpretación sin validación profesional."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  }
+]

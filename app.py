@@ -3,10 +3,15 @@ import os
 
 from markupsafe import Markup, escape
 
-from flask import Flask, render_template, request, redirect, url_for, session, send_file
+from flask import Flask, render_template, request, redirect, url_for, session, send_file, jsonify
 
-from countries import get_country, list_countries, estado_contexto, resumen_internacional
-from countries.prima_i18n import traducir_prima, traducir_indemnizacion, traducir_base_indemnizacion
+from countries import get_country, list_countries, estado_contexto, resumen_internacional, capability_info
+from payroll_engine import explain as payroll_explain
+from payroll_engine.errors import PayrollError
+from payroll_engine.legacy_adapter import supported_form_options
+from payroll_engine.loader import load_country
+from payroll_engine.recalculate import historical_recalculation
+from payroll_engine.run import reproduce as payroll_reproduce
 import models
 import exports
 import geolocation
@@ -18,6 +23,8 @@ app = Flask(__name__)
 # El valor de respaldo solo aplica en desarrollo local — nunca se sube un
 # secreto real al repositorio.
 app.secret_key = os.environ.get("SECRET_KEY", "dev-only-change-me")
+if not os.environ.get("SECRET_KEY"):
+    app.logger.warning("SECRET_KEY no está definida: se usa la clave de desarrollo. Defínala como variable de entorno en producción.")
 models.init_db()
 
 BASE_DIR = os.path.dirname(__file__)
@@ -79,11 +86,12 @@ def _pais_flag_html(code):
 
 
 ESTADO_INFO = {
-    # nivel: (badge_css, "🟢"/etc., i18n key del título, i18n key de la descripción)
-    "activo": ("estado-activo", "🟢", "estado_activo_title", "estado_activo_desc"),
-    "cargado": ("estado-cargado", "🟡", "estado_cargado_title", "estado_cargado_desc"),
-    "preparacion": ("estado-preparacion", "🔵", "estado_preparacion_title", "estado_preparacion_desc"),
-    "matriz": ("estado-matriz", "🟣", "estado_matriz_title", "estado_matriz_desc"),
+    # estado (derivado del Capability Manifest): (css, icono, i18n título, i18n descripción)
+    "implementado": ("estado-activo", "🟢", "estado_implementado_title", "estado_implementado_desc"),
+    "parcial": ("estado-cargado", "🟡", "estado_parcial_title", "estado_parcial_desc"),
+    "pendiente_validacion": ("estado-cargado", "🟠", "estado_pendiente_validacion_title", "estado_pendiente_validacion_desc"),
+    "no_implementado": ("estado-preparacion", "🔵", "estado_no_implementado_title", "estado_no_implementado_desc"),
+    "consolidacion": ("estado-matriz", "🟣", "estado_consolidacion_title", "estado_consolidacion_desc"),
 }
 
 
@@ -137,6 +145,16 @@ def resolve_language(country_code=None):
     return best or "es"
 
 
+def _concept_label(line):
+    """Etiqueta de una línea del PayrollRun: clave i18n si existe; si no, el texto del concepto en el idioma actual
+    (es como respaldo) y, por último, el código."""
+    lang = getattr(request, "_lang", "es")
+    if line.get("label_key"):
+        return _translations[lang].get(line["label_key"], line["label_key"])
+    label = line.get("label") or {}
+    return label.get(lang) or label.get("es") or label.get("en") or line["concept"]
+
+
 @app.context_processor
 def inject_helpers():
     return {
@@ -145,10 +163,9 @@ def inject_helpers():
         "pais_flag": _pais_flag_html,
         "idioma_label": lambda lang: IDIOMA_LABEL.get(lang, lang.upper()),
         "estado_contexto": estado_contexto,
+        "capability_info": capability_info,
         "estado_info": lambda code: ESTADO_INFO[estado_contexto(code)],
-        "prima_localizada": lambda code, texto: traducir_prima(code, request._lang, texto),
-        "indemnizacion_localizada": lambda code, texto: traducir_indemnizacion(code, request._lang, texto),
-        "base_indemnizacion_localizada": lambda code, texto: traducir_base_indemnizacion(code, request._lang, texto),
+        "concept_label": _concept_label,
     }
 
 
@@ -262,14 +279,24 @@ def novedades(pais):
         novedades_data = {
             key: form.get(key, default) for key, _, _, default in engine.NOVEDADES_CAMPOS
         }
-        resultado = engine.calcular(empleado, novedades_data, config)
         periodo = form.get("periodo", "")
+        try:
+            resultado = engine.calcular_periodo(empleado, novedades_data, config, periodo)
+        except PayrollError as exc:
+            return render_template(
+                "novedades_form.html", config=config, pais=pais, campos=engine.NOVEDADES_CAMPOS,
+                ejemplo=engine.EJEMPLO_NOVEDADES, errors=[f"{exc.code}: {exc.message}"] + [str(d) for d in exc.details],
+                valores=form.to_dict(),
+            ), 400
+        run = resultado.pop("_run", None)
         nomina_id = models.guardar_nomina(pais, periodo, empleado, novedades_data, resultado)
+        if run is not None:
+            models.guardar_payroll_run(run.to_dict(), run._documents, nomina_id=nomina_id, es_demo=empleado["es_demo"])
         return redirect(url_for("resultado", nomina_id=nomina_id))
 
     return render_template(
         "novedades_form.html", config=config, pais=pais,
-        campos=engine.NOVEDADES_CAMPOS, ejemplo=engine.EJEMPLO_NOVEDADES,
+        campos=engine.NOVEDADES_CAMPOS, ejemplo=engine.EJEMPLO_NOVEDADES, errors=[], valores={},
     )
 
 
@@ -279,7 +306,66 @@ def resultado(nomina_id):
     if nomina is None:
         return redirect(url_for("index"))
     config = get_country(nomina["pais"])["config"]
-    return render_template("resultado.html", nomina=nomina, config=config)
+    run = models.obtener_payroll_run_por_nomina(nomina_id)
+    return render_template("resultado.html", nomina=nomina, config=config, run=run)
+
+
+@app.route("/run/<int:run_id>")
+def payroll_run_view(run_id):
+    run = models.obtener_payroll_run(run_id)
+    if run is None:
+        return redirect(url_for("index"))
+    config = get_country(run["country"])["config"]
+    explanation, explanation_text, evaluation = None, None, None
+    line_id = request.args.get("line")
+    rule_id = request.args.get("rule")
+    try:
+        if line_id:
+            explanation = payroll_explain.explain_line(run, line_id)
+            explanation_text = payroll_explain.render_text(explanation)
+        if rule_id:
+            evaluation = payroll_explain.explain_evaluation(run, rule_id)
+    except KeyError:
+        pass
+    not_applied = [e for e in run["trace"]["evaluations"] if e["outcome"] == "NOT_APPLICABLE"]
+    role_order = {"EARNING": 0, "EMPLOYEE_DEDUCTION": 1, "EMPLOYER_CONTRIBUTION": 2, "ACCRUAL": 3, "INFO": 4}
+    ordered = sorted(run["result"]["lines"], key=lambda l: (role_order.get(l["role"], 9), l["rule_id"]))
+    money_lines = [l for l in ordered if l["role"] != "INFO"]
+    info_lines = [l for l in ordered if l["role"] == "INFO"]
+    return render_template("payroll_run.html", run=run, config=config, explanation=explanation,
+                           money_lines=money_lines, info_lines=info_lines,
+                           explanation_text=explanation_text, evaluation=evaluation, not_applied=not_applied,
+                           selected_line=line_id)
+
+
+@app.route("/run/<int:run_id>/verify")
+def payroll_run_verify(run_id):
+    """Recalcula la corrida con SU snapshot normativo y SU entrada original; compara hashes."""
+    run = models.obtener_payroll_run(run_id)
+    if run is None:
+        return jsonify({"error": "corrida inexistente"}), 404
+    documents = models.obtener_snapshot_normativo(run["normative_snapshot"]["content_hash"])
+    if documents is None:
+        return jsonify({"same": False, "error": "snapshot normativo no disponible"}), 409
+    result = payroll_reproduce(run, documents)
+    result.pop("recomputed")
+    return jsonify(result)
+
+
+@app.route("/run/<int:run_id>/recalculate")
+def payroll_run_recalculate(run_id):
+    """Recalcula la corrida guardada con las reglas ACTUALES y devuelve la comparación (no guarda nada ni ajusta pagos)."""
+    run = models.obtener_payroll_run(run_id)
+    if run is None:
+        return jsonify({"error": "corrida inexistente"}), 404
+    try:
+        result = historical_recalculation(run)
+    except PayrollError as exc:
+        return jsonify({"error": exc.message, "code": exc.code, "details": [str(d) for d in exc.details]}), 400
+    comparison = result["comparison"]
+    comparison["new_result_hash"] = result["run"].result_hash
+    comparison["original_result_hash"] = run["result_hash"]
+    return jsonify(comparison)
 
 
 @app.route("/dashboard")
@@ -348,13 +434,30 @@ def liquidacion(pais):
             "salarios_pendientes": form.get("salarios_pendientes", "0"),
             "salario_base": form.get("salario_base", ""),
         }
-        resultado = engine.liquidar(empleado, datos, config)
+        try:
+            resultado = engine.liquidar(empleado, datos, config)
+        except PayrollError as exc:
+            return render_template(
+                "liquidacion_form.html", config=config, pais=pais, ejemplo=engine.EJEMPLO_LIQUIDACION,
+                errors=[f"{exc.code}: {exc.message}"] + [str(d) for d in exc.details], valores=form.to_dict(),
+                **_liquidacion_opciones(pais),
+            ), 400
+        run = resultado.pop("_run", None)
+        if run is not None:
+            resultado["run_db_id"] = models.guardar_payroll_run(run.to_dict(), run._documents, es_demo=empleado["es_demo"])
         liquidacion_id = models.guardar_liquidacion(pais, empleado, datos, resultado)
         return redirect(url_for("liquidacion_resultado", liquidacion_id=liquidacion_id))
 
     return render_template(
-        "liquidacion_form.html", config=config, pais=pais, ejemplo=engine.EJEMPLO_LIQUIDACION
+        "liquidacion_form.html", config=config, pais=pais, ejemplo=engine.EJEMPLO_LIQUIDACION, errors=[], valores={},
+        **_liquidacion_opciones(pais),
     )
+
+
+def _liquidacion_opciones(pais):
+    """Causas y contratos del formulario que el país soporta (leídos del manifiesto normativo, no escritos aquí)."""
+    causas, contratos = supported_form_options(load_country(pais.upper()).manifest)
+    return {"opciones_terminacion": causas, "opciones_contrato": contratos}
 
 
 @app.route("/liquidacion/resultado/<int:liquidacion_id>")

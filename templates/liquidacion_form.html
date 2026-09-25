@@ -3,52 +3,51 @@
 <a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a>
 <h1>{{ config.name }} — {{ config.nombre_liquidacion }}</h1>
 <div class="warning-box">{{ t('warning_liquidacion') }}</div>
+<div class="warning-box">{{ t('liq_engine_notice') }}</div>
+{% if errors %}
+<div class="err-box"><strong>{{ t('form_errors_title') }}</strong><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% endif %}
 {% if ejemplo %}
 <p><button type="button" class="btn-export" onclick="cargarDemoLiquidacion()">{{ t('cargar_ejemplo_demo') }}</button></p>
 {% endif %}
 <form method="post" class="form-grid">
     <input type="hidden" name="es_demo" id="es_demo" value="0">
     <label>{{ t('employee_name') }}
-        <input type="text" name="nombre" id="f_nombre" required>
+        <input type="text" name="nombre" id="f_nombre" value="{{ valores.get('nombre', '') }}" required>
     </label>
     <label>{{ t('employee_id') }}
-        <input type="text" name="identificacion" id="f_identificacion">
+        <input type="text" name="identificacion" id="f_identificacion" value="{{ valores.get('identificacion', '') }}">
     </label>
     <label>{{ t('salario_contrato') }} ({{ config.currency }})
-        <input type="number" step="0.01" name="salario_contrato" id="f_salario_contrato" required>
+        <input type="number" step="0.01" name="salario_contrato" id="f_salario_contrato" value="{{ valores.get('salario_contrato', '') }}" required>
     </label>
     <label>{{ t('salario_base_liquidacion') }} ({{ config.currency }})
-        <input type="number" step="0.01" name="salario_base" id="f_salario_base">
+        <input type="number" step="0.01" name="salario_base" id="f_salario_base" value="{{ valores.get('salario_base', '') }}">
     </label>
     <label>{{ t('fecha_ingreso') }}
-        <input type="date" name="fecha_ingreso" id="f_fecha_ingreso" required>
+        <input type="date" name="fecha_ingreso" id="f_fecha_ingreso" value="{{ valores.get('fecha_ingreso', '') }}" required>
     </label>
     <label>{{ t('fecha_retiro') }}
-        <input type="date" name="fecha_retiro" id="f_fecha_retiro" required>
+        <input type="date" name="fecha_retiro" id="f_fecha_retiro" value="{{ valores.get('fecha_retiro', '') }}" required>
     </label>
     <label>{{ t('tipo_contrato') }}
         <select name="tipo_contrato" id="f_tipo_contrato">
-            <option value="indefinido">{{ t('contrato_indefinido') }}</option>
-            <option value="fijo">{{ t('contrato_fijo') }}</option>
-            <option value="obra_labor">{{ t('contrato_obra_labor') }}</option>
+            {% for opt in opciones_contrato %}<option value="{{ opt }}" {{ 'selected' if valores.get('tipo_contrato') == opt }}>{{ t('contrato_' ~ opt) }}</option>{% endfor %}
         </select>
     </label>
     <label>{{ t('tipo_terminacion') }}
         <select name="tipo_terminacion" id="f_tipo_terminacion">
-            <option value="sin_justa_causa">{{ t('term_sin_justa_causa') }}</option>
-            <option value="justa_causa">{{ t('term_justa_causa') }}</option>
-            <option value="renuncia">{{ t('term_renuncia') }}</option>
-            <option value="mutuo_acuerdo">{{ t('term_mutuo_acuerdo') }}</option>
+            {% for opt in opciones_terminacion %}<option value="{{ opt }}" {{ 'selected' if valores.get('tipo_terminacion') == opt }}>{{ t('term_' ~ opt) }}</option>{% endfor %}
         </select>
     </label>
     <label>{{ t('dias_faltantes_contrato') }}
-        <input type="number" step="1" name="dias_faltantes_contrato" id="f_dias_faltantes_contrato" value="0">
+        <input type="number" step="1" name="dias_faltantes_contrato" id="f_dias_faltantes_contrato" value="{{ valores.get('dias_faltantes_contrato', '0') }}">
     </label>
     <label>{{ t('dias_vacaciones_pendientes') }}
-        <input type="number" step="0.5" name="dias_vacaciones_pendientes" id="f_dias_vacaciones_pendientes" value="0">
+        <input type="number" step="0.5" name="dias_vacaciones_pendientes" id="f_dias_vacaciones_pendientes" value="{{ valores.get('dias_vacaciones_pendientes', '0') }}">
     </label>
     <label>{{ t('salarios_pendientes') }}
-        <input type="number" step="0.01" name="salarios_pendientes" id="f_salarios_pendientes" value="0">
+        <input type="number" step="0.01" name="salarios_pendientes" id="f_salarios_pendientes" value="{{ valores.get('salarios_pendientes', '0') }}">
     </label>
     <button type="submit">{{ t('calcular_liquidacion') }}</button>
 </form>

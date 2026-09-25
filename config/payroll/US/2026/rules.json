@@ -1,0 +1,273 @@
+[
+  {
+    "rule_id": "US.FLSA_OVERTIME.1",
+    "rule_key": "US.FLSA_OVERTIME",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "FLSA_OVERTIME",
+    "category": "FEDERAL",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "applies_to": {
+      "employment.exempt_status": [
+        "NON_EXEMPT"
+      ]
+    },
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  },
+  {
+    "rule_id": "US.FICA_SS_EMPLOYEE.1",
+    "rule_key": "US.FICA_SS_EMPLOYEE",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "FICA_SS_EMPLOYEE",
+    "category": "FEDERAL",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  },
+  {
+    "rule_id": "US.FICA_SS_EMPLOYER.1",
+    "rule_key": "US.FICA_SS_EMPLOYER",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "FICA_SS_EMPLOYER",
+    "category": "FEDERAL",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  },
+  {
+    "rule_id": "US.MEDICARE_EMPLOYEE.1",
+    "rule_key": "US.MEDICARE_EMPLOYEE",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "MEDICARE_EMPLOYEE",
+    "category": "FEDERAL",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  },
+  {
+    "rule_id": "US.MEDICARE_EMPLOYER.1",
+    "rule_key": "US.MEDICARE_EMPLOYER",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "MEDICARE_EMPLOYER",
+    "category": "FEDERAL",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  },
+  {
+    "rule_id": "US.FUTA.1",
+    "rule_key": "US.FUTA",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "FUTA",
+    "category": "FEDERAL",
+    "kind": "EMPLOYER_CONTRIBUTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  },
+  {
+    "rule_id": "US.FEDERAL_WITHHOLDING.1",
+    "rule_key": "US.FEDERAL_WITHHOLDING",
+    "version": "1",
+    "country": "US",
+    "jurisdiction": "FEDERAL",
+    "concept": "FEDERAL_WITHHOLDING",
+    "category": "FEDERAL",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "USE_ANCHOR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": "0"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "NOT_IMPLEMENTED",
+    "notes": "NOT_IMPLEMENTED: requiere acumulados del año (base salarial máxima) y datos de horas; sin motor."
+  }
+]

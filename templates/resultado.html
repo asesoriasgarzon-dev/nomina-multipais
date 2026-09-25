@@ -6,6 +6,19 @@
 {% endif %}
 <h1>{{ t('resultado_title') }} — {{ nomina.empleado.nombre }} ({{ config.name }}, {{ nomina.periodo }})</h1>
 
+{% if run %}
+<div class="run-strip">
+    <span class="cap-status run-{{ run.status }}">{{ t('run_status_' ~ run.status) }}</span>
+    <span class="muted">{{ t('cap_ruleset') }} {{ run.ruleset_version }} · {{ t('run_engine') }} {{ run.engine_version }}</span>
+    <a class="btn-export" href="{{ url_for('payroll_run_view', run_id=run.db_id) }}">{{ t('ver_auditoria') }}</a>
+</div>
+{% if run.warnings %}
+<div class="warning-box">
+    <ul class="warn-list">{% for w in run.warnings %}<li>{{ w.message }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+{% endif %}
+
 {% macro tabla(titulo, items, total_key, total_val) %}
 <section class="result-block">
     <h2>{{ titulo }}</h2>

@@ -1,0 +1,424 @@
+[
+  {
+    "concept": "PE_T_BASIC",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneración básica (mensual)",
+      "en": "Basic monthly remuneration"
+    },
+    "treatments": [
+      {
+        "base": "PE.CTS_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.GRATIFICATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.VACATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "TUO de la Ley de Compensación por Tiempo de Servicios, D.S. 001-97-TR: arts. 2, 9, 10, 18, 21",
+      "official_url": "https://cdn.www.gob.pe/uploads/document/file/229267/TUO_Compensacion_por_Tiempo_de_Servicios_-_D.S_001-97-TR.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 21: 'tantos dozavos de la remuneración computable ... como meses completos haya laborado en el semestre respectivo. La fracción de mes se depositará por treintavos.' Art. 2: se devenga desde el primer mes; cumplido ese requisito toda fracción se computa por treintavos. Art. 18: un sexto de la gratificación semestral se incorpora a la remuneración computable."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "Art. 9 TUO CTS: remuneración básica y todo lo que regularmente perciba el trabajador."
+  },
+  {
+    "concept": "PE_T_FAMILY",
+    "role": "INFO",
+    "label": {
+      "es": "Asignación familiar",
+      "en": "Family allowance"
+    },
+    "treatments": [
+      {
+        "base": "PE.CTS_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.GRATIFICATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.VACATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "TUO de la Ley de Compensación por Tiempo de Servicios, D.S. 001-97-TR: arts. 2, 9, 10, 18, 21",
+      "official_url": "https://cdn.www.gob.pe/uploads/document/file/229267/TUO_Compensacion_por_Tiempo_de_Servicios_-_D.S_001-97-TR.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 21: 'tantos dozavos de la remuneración computable ... como meses completos haya laborado en el semestre respectivo. La fracción de mes se depositará por treintavos.' Art. 2: se devenga desde el primer mes; cumplido ese requisito toda fracción se computa por treintavos. Art. 18: un sexto de la gratificación semestral se incorpora a la remuneración computable."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "Se trata como remuneración regular (art. 9 TUO CTS); interpretación sin revisar por profesional."
+  },
+  {
+    "concept": "PE_T_VARIABLE",
+    "role": "INFO",
+    "label": {
+      "es": "Promedio de remuneraciones variables regulares",
+      "en": "Average of regular variable pay"
+    },
+    "treatments": [
+      {
+        "base": "PE.CTS_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.GRATIFICATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.VACATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "PE.INDEMNITY_BASE",
+        "mode": "INCLUDE"
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "TUO de la Ley de Compensación por Tiempo de Servicios, D.S. 001-97-TR: arts. 2, 9, 10, 18, 21",
+      "official_url": "https://cdn.www.gob.pe/uploads/document/file/229267/TUO_Compensacion_por_Tiempo_de_Servicios_-_D.S_001-97-TR.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 21: 'tantos dozavos de la remuneración computable ... como meses completos haya laborado en el semestre respectivo. La fracción de mes se depositará por treintavos.' Art. 2: se devenga desde el primer mes; cumplido ese requisito toda fracción se computa por treintavos. Art. 18: un sexto de la gratificación semestral se incorpora a la remuneración computable."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "El usuario informa el promedio ya calculado según el art. 16 TUO CTS (3 meses de cada 6)."
+  },
+  {
+    "concept": "PE_T_LAST_GRATIFICATION",
+    "role": "INFO",
+    "label": {
+      "es": "Última gratificación ordinaria percibida",
+      "en": "Last ordinary gratification received"
+    },
+    "treatments": [
+      {
+        "base": "PE.CTS_BASE",
+        "mode": "INCLUDE",
+        "fraction": "1/6",
+        "note": "Art. 18 TUO CTS: un sexto de la gratificación semestral."
+      }
+    ],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "TUO de la Ley de Compensación por Tiempo de Servicios, D.S. 001-97-TR: arts. 2, 9, 10, 18, 21",
+      "official_url": "https://cdn.www.gob.pe/uploads/document/file/229267/TUO_Compensacion_por_Tiempo_de_Servicios_-_D.S_001-97-TR.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 21: 'tantos dozavos de la remuneración computable ... como meses completos haya laborado en el semestre respectivo. La fracción de mes se depositará por treintavos.' Art. 2: se devenga desde el primer mes; cumplido ese requisito toda fracción se computa por treintavos. Art. 18: un sexto de la gratificación semestral se incorpora a la remuneración computable."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_T_GRATIFICATION_PRIOR",
+    "role": "INFO",
+    "label": {
+      "es": "Gratificación del semestre anterior aún no pagada",
+      "en": "Prior-semester bonus not yet paid"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "note": "Cese antes del 15-jul / 15-dic: la gratificación ordinaria del semestre que terminó aún no se pagó; el usuario informa su importe."
+  },
+  {
+    "concept": "PE_T_UNPAID_SALARY",
+    "role": "INFO",
+    "label": {
+      "es": "Remuneraciones pendientes de pago",
+      "en": "Unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_CTS_TRUNCA",
+    "role": "EARNING",
+    "label": {
+      "es": "CTS trunca",
+      "en": "Truncated CTS (severance deposit)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_GRATIFICACION_TRUNCA",
+    "role": "EARNING",
+    "label": {
+      "es": "Gratificación trunca",
+      "en": "Truncated statutory bonus"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_BONIFICACION_EXTRAORDINARIA",
+    "role": "EARNING",
+    "label": {
+      "es": "Bonificación extraordinaria 9 % (sobre gratificación trunca)",
+      "en": "Extraordinary bonus 9 % (on truncated bonus)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_VACACIONES_TRUNCAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones truncas",
+      "en": "Truncated vacation"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_VACACIONES_ADQUIRIDAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Vacaciones adquiridas no gozadas",
+      "en": "Accrued unused vacation"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_VACACIONES_INDEMNIZACION",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización por descanso no gozado (adicional)",
+      "en": "Indemnity for unused vacation (additional)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_T_PROBATION_MONTHS",
+    "role": "INFO",
+    "label": {
+      "es": "Meses de período de prueba",
+      "en": "Probation months"
+    },
+    "treatments": [],
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "D.Leg. 728 art. 10: período de prueba de 3 meses (ampliable por pacto en cargos de confianza/dirección). No consultado en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_INDEMNIZACION_DESPIDO_ARBITRARIO",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización por despido arbitrario (contrato indefinido)",
+      "en": "Arbitrary dismissal indemnity (indefinite contract)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_INDEMNIZACION_PLAZO_FIJO",
+    "role": "EARNING",
+    "label": {
+      "es": "Indemnización por terminación anticipada (plazo fijo)",
+      "en": "Early termination indemnity (fixed term)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_SALARIO_PENDIENTE_DIAS",
+    "role": "EARNING",
+    "label": {
+      "es": "Remuneración del mes de cese (días trabajados)",
+      "en": "Final-month remuneration (days worked)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_T_DAYS_WORKED",
+    "role": "INFO",
+    "label": {
+      "es": "Días del mes de cese",
+      "en": "Days in the final month"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_GRATIFICACION_ANTERIOR",
+    "role": "EARNING",
+    "label": {
+      "es": "Gratificación del semestre anterior (no pagada)",
+      "en": "Prior-semester bonus (unpaid)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_REMUNERACIONES_PENDIENTES",
+    "role": "EARNING",
+    "label": {
+      "es": "Remuneraciones pendientes informadas",
+      "en": "Reported unpaid remuneration"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "PE_OVERTIME",
+    "role": "EARNING",
+    "label": {
+      "es": "Horas extra (sobretiempo)",
+      "en": "Overtime"
+    },
+    "treatments": [],
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

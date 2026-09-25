@@ -1,0 +1,172 @@
+[
+  {
+    "rule_id": "MX.OVERTIME.1",
+    "rule_key": "MX.OVERTIME",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-04-30"
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": "240"
+        },
+        "categories": [
+          {
+            "key": "horas_extra_semanales",
+            "weekly_hours_input": "overtime_weekly_hours",
+            "tiers": [
+              {
+                "up_to_hours": "9",
+                "multiplier": "2"
+              },
+              {
+                "multiplier": "3"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 61 (jornada 8 h diurna/7 nocturna/7,5 mixta), 66 (hasta 3 horas diarias, 3 veces por semana), 67 (100 % más), 68 (más de 9 horas semanales: 200 % más), 71 (prima dominical 25 %), 73-75 (descanso/festivos: salario doble)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Texto previo a la reforma del 1-may-2026 (arts. 66-68). El valor hora usa la jornada diaria informada (8 por defecto). Ni el límite de 3 horas diarias/3 veces por semana ni la jornada nocturna/mixta se validan."
+    },
+    "notes": "Dobles hasta 9 horas por semana y triples las excedentes; la jornada diaria (8 h diurna) es el divisor del valor hora."
+  },
+  {
+    "rule_id": "MX.OVERTIME.2",
+    "rule_key": "MX.OVERTIME",
+    "version": "2",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-05-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": "240"
+        },
+        "categories": [
+          {
+            "key": "horas_extra_semanales",
+            "weekly_hours_input": "overtime_weekly_hours",
+            "tiers": [
+              {
+                "up_to_hours": "9",
+                "multiplier": "2"
+              },
+              {
+                "multiplier": "3"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Diario Oficial de la Federación",
+      "legal_reference": "Decreto de reducción gradual de jornada a 40 horas (DOF 1-may-2026): arts. 59, 61, 66-69 LFT y transitorios (48 h en 2026, 46 en 2027, 44 en 2028, 42 en 2029, 40 en 2030; horas extra dobles hasta 9 h/semana en 2026-2027, 10 en 2028, 11 en 2029, 12 en 2030)",
+      "official_url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01%2F05%2F2026",
+      "verified_at": "2026-09-24",
+      "note": "Contenido extraído por lectura automática de la nota del DOF; verificación literal por una persona pendiente."
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Reforma DOF 1-may-2026: tope semanal de horas dobles 9 h en 2026-2027 (10, 11 y 12 en 2028-2030: NUEVAS versiones pendientes para esos años). Contenido extraído por lectura automática; PENDING_VERIFICATION del texto literal.",
+      "open_question": true
+    },
+    "notes": "Dobles hasta 9 horas por semana y triples las excedentes; la jornada diaria (8 h diurna) es el divisor del valor hora."
+  },
+  {
+    "rule_id": "MX.SUNDAY_PREMIUM.1",
+    "rule_key": "MX.SUNDAY_PREMIUM",
+    "version": "1",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "concept": "MX_SUNDAY_PREMIUM",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": "240"
+        },
+        "categories": [
+          {
+            "key": "prima_dominical",
+            "hours_input": "time.sunday_hours",
+            "components": [
+              "0.25"
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 61 (jornada 8 h diurna/7 nocturna/7,5 mixta), 66 (hasta 3 horas diarias, 3 veces por semana), 67 (100 % más), 68 (más de 9 horas semanales: 200 % más), 71 (prima dominical 25 %), 73-75 (descanso/festivos: salario doble)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Prima dominical del 25 % sobre el salario de los días ordinarios (art. 71), por las horas trabajadas en domingo (el salario del día ya está en la nómina)."
+    },
+    "notes": "Días de descanso obligatorio (art. 75) y descanso semanal trabajado (art. 73): salario doble: NOT_IMPLEMENTED."
+  }
+]

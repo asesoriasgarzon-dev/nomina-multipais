@@ -1,0 +1,106 @@
+[
+  {
+    "ref_id": "MX.WORKWEEK.2027",
+    "code": "WORKWEEK_HOURS",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "46",
+    "effective": {
+      "from": "2027-01-01",
+      "to": "2027-12-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Diario Oficial de la Federación",
+      "legal_reference": "Decreto de reducción gradual de jornada a 40 horas (DOF 1-may-2026): arts. 59, 61, 66-69 LFT y transitorios (48 h en 2026, 46 en 2027, 44 en 2028, 42 en 2029, 40 en 2030; horas extra dobles hasta 9 h/semana en 2026-2027, 10 en 2028, 11 en 2029, 12 en 2030)",
+      "official_url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01%2F05%2F2026",
+      "verified_at": "2026-09-24",
+      "note": "Contenido extraído por lectura automática de la nota del DOF; verificación literal por una persona pendiente."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+    },
+    "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+  },
+  {
+    "ref_id": "MX.WORKWEEK.2028",
+    "code": "WORKWEEK_HOURS",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "44",
+    "effective": {
+      "from": "2028-01-01",
+      "to": "2028-12-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Diario Oficial de la Federación",
+      "legal_reference": "Decreto de reducción gradual de jornada a 40 horas (DOF 1-may-2026): arts. 59, 61, 66-69 LFT y transitorios (48 h en 2026, 46 en 2027, 44 en 2028, 42 en 2029, 40 en 2030; horas extra dobles hasta 9 h/semana en 2026-2027, 10 en 2028, 11 en 2029, 12 en 2030)",
+      "official_url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01%2F05%2F2026",
+      "verified_at": "2026-09-24",
+      "note": "Contenido extraído por lectura automática de la nota del DOF; verificación literal por una persona pendiente."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+    },
+    "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+  },
+  {
+    "ref_id": "MX.WORKWEEK.2029",
+    "code": "WORKWEEK_HOURS",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "42",
+    "effective": {
+      "from": "2029-01-01",
+      "to": "2029-12-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Diario Oficial de la Federación",
+      "legal_reference": "Decreto de reducción gradual de jornada a 40 horas (DOF 1-may-2026): arts. 59, 61, 66-69 LFT y transitorios (48 h en 2026, 46 en 2027, 44 en 2028, 42 en 2029, 40 en 2030; horas extra dobles hasta 9 h/semana en 2026-2027, 10 en 2028, 11 en 2029, 12 en 2030)",
+      "official_url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01%2F05%2F2026",
+      "verified_at": "2026-09-24",
+      "note": "Contenido extraído por lectura automática de la nota del DOF; verificación literal por una persona pendiente."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+    },
+    "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+  },
+  {
+    "ref_id": "MX.WORKWEEK.2030",
+    "code": "WORKWEEK_HOURS",
+    "country": "MX",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "40",
+    "effective": {
+      "from": "2030-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Diario Oficial de la Federación",
+      "legal_reference": "Decreto de reducción gradual de jornada a 40 horas (DOF 1-may-2026): arts. 59, 61, 66-69 LFT y transitorios (48 h en 2026, 46 en 2027, 44 en 2028, 42 en 2029, 40 en 2030; horas extra dobles hasta 9 h/semana en 2026-2027, 10 en 2028, 11 en 2029, 12 en 2030)",
+      "official_url": "https://dof.gob.mx/nota_detalle.php?codigo=5786537&fecha=01%2F05%2F2026",
+      "verified_at": "2026-09-24",
+      "note": "Contenido extraído por lectura automática de la nota del DOF; verificación literal por una persona pendiente."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+    },
+    "note": "Reducción gradual de la jornada (reforma DOF 1-may-2026)."
+  }
+]

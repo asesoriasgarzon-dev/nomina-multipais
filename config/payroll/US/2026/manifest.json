@@ -1,0 +1,63 @@
+{
+  "country": "US",
+  "year": 2026,
+  "ruleset_version": "US-2026.1.0",
+  "jurisdiction_default": "FEDERAL",
+  "currency": "USD",
+  "local_payroll_engine": false,
+  "consolidation_context": false,
+  "execution_path": "NONE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Sin motor: EE. UU. no se trata como un país único."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "Salario mínimo federal y horas extra FLSA con fuente oficial (DOL); base salarial máxima con fuente secundaria."
+    },
+    "federal": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Reglas federales cargadas como datos (NOT_IMPLEMENTED)."
+    },
+    "state": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Salario mínimo, retención y SUTA estatales sin datos."
+    },
+    "local": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Salarios mínimos e impuestos locales sin datos."
+    },
+    "overtime_flsa": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Umbral y multiplicador con fuente oficial; sin cálculo (empleados exentos/no exentos)."
+    },
+    "payroll_taxes": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "FICA, Medicare y FUTA sin cálculo (requieren acumulados anuales)."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Retención federal, estatal y local sin motor."
+    },
+    "paid_leave_and_termination": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Depende del estado; sin investigación normativa."
+    }
+  },
+  "known_gaps": [
+    "Jurisdicciones FEDERAL / STATE / LOCAL y EXEMPT / NON_EXEMPT: estructura preparada, sin reglas estatales ni locales.",
+    "Acumulados anuales para FICA/FUTA/SUTA.",
+    "Retenciones federal, estatal y local."
+  ],
+  "jurisdiction_levels": [
+    "FEDERAL",
+    "STATE",
+    "LOCAL"
+  ],
+  "employee_classes": [
+    "EXEMPT",
+    "NON_EXEMPT"
+  ]
+}

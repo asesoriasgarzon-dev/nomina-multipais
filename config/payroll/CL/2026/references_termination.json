@@ -1,0 +1,123 @@
+[
+  {
+    "ref_id": "CL.TOPE_UF.2026-01",
+    "code": "TAX_CAP_UF_PENSION",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "UF",
+    "value": "89.9",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-01-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones (vía Dirección del Trabajo)",
+      "legal_reference": "Res. exenta SP N°27 de 9-ene-2026 (89,9 UF desde el 1-ene) y N°237 de 2026 (90,0 UF desde el 1-feb-2026): tope imponible AFP, salud y accidentes del trabajo",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-118076.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tope imponible mensual AFP/salud/accidentes (enero-2026)."
+    },
+    "note": "Tope imponible mensual AFP/salud/accidentes (enero-2026)."
+  },
+  {
+    "ref_id": "CL.TOPE_UF.2026-02",
+    "code": "TAX_CAP_UF_PENSION",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "UF",
+    "value": "90.0",
+    "effective": {
+      "from": "2026-02-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones (vía Dirección del Trabajo)",
+      "legal_reference": "Res. exenta SP N°27 de 9-ene-2026 (89,9 UF desde el 1-ene) y N°237 de 2026 (90,0 UF desde el 1-feb-2026): tope imponible AFP, salud y accidentes del trabajo",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-118076.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tope imponible mensual AFP/salud/accidentes desde el 1-feb-2026."
+    },
+    "note": "Tope imponible mensual AFP/salud/accidentes desde el 1-feb-2026."
+  },
+  {
+    "ref_id": "CL.TOPE_AFC.2026-01",
+    "code": "TAX_CAP_UF_UNEMPLOYMENT",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "UF",
+    "value": "135.1",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-01-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones (vía Dirección del Trabajo)",
+      "legal_reference": "Res. exenta SP N°26 de 9-ene-2026 (135,1 UF desde el 1-ene) y N°236 de 2026 (135,2 UF desde el 1-feb-2026): tope imponible del seguro de cesantía",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-118077.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "CL.TOPE_AFC.2026-02",
+    "code": "TAX_CAP_UF_UNEMPLOYMENT",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "UF",
+    "value": "135.2",
+    "effective": {
+      "from": "2026-02-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Superintendencia de Pensiones (vía Dirección del Trabajo)",
+      "legal_reference": "Res. exenta SP N°26 de 9-ene-2026 (135,1 UF desde el 1-ene) y N°236 de 2026 (135,2 UF desde el 1-feb-2026): tope imponible del seguro de cesantía",
+      "official_url": "https://www.dt.gob.cl/portal/1628/w3-article-118077.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "ref_id": "CL.INDEMNITY_CAP_UF",
+    "code": "INDEMNITY_CAP_UF",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "unit": "UF",
+    "value": "90",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo art. 172: ninguna remuneración mensual superior a 90 UF del último día del mes anterior al pago para las indemnizaciones de los arts. 163, 163 bis, 168, 169, 170 y 171",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tope de la base de indemnizaciones por término de contrato."
+    },
+    "note": "Tope de la base de indemnizaciones por término de contrato."
+  }
+]

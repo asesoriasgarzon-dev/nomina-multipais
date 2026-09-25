@@ -1,0 +1,22 @@
+{
+  "calculation_precision": 28,
+  "currency_precision": 2,
+  "rounding_mode": "ROUND_HALF_UP",
+  "currency": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "tax": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "contribution": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "display": {
+    "precision": 2,
+    "mode": "ROUND_HALF_UP"
+  },
+  "status": "PENDING_VERIFICATION"
+}

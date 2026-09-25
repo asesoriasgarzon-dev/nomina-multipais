@@ -1,0 +1,81 @@
+{
+  "country": "AR",
+  "year": 2026,
+  "ruleset_version": "AR-2026.2.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "ARS",
+  "local_payroll_engine": true,
+  "consolidation_context": false,
+  "execution_path": "NEW_ENGINE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "payroll_monthly": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Nómina mensual normativa equivalente al motor heredado; sin topes; Ganancias manual."
+    },
+    "reference_units": {
+      "status": "PENDING_VALIDATION",
+      "note": "SMVM mensual completo (ene-dic 2026): sep-dic con fuente oficial (BO), ene-ago secundaria."
+    },
+    "working_hours": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Jornada sin verificar."
+    },
+    "overtime_and_premiums": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Recargos 50 %/100 % (art. 201); divisor del valor hora sin verificar."
+    },
+    "vacation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Escala 14/21/28/35 y pago proporcional al egreso; requisito de mitad de días del año no verificado."
+    },
+    "social_security": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Aportes y contribuciones sin base máxima; contribución unificada 18%."
+    },
+    "income_tax_withholding": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "El impuesto es un valor digitado (EXTERNAL_INPUT); no existe motor tributario."
+    },
+    "benefit_accruals": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Provisión mensual simple; SAC por semestre en corrida TERMINATION."
+    },
+    "termination": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "SAC proporcional por semestre jurídico (art. 123), vacaciones (arts. 150-156), indemnización art. 245 (texto Ley 27.802), preaviso e integración del mes de despido desde datos con fuente oficial (InfoLeg). Tope de convenio, SAC sobre preaviso/vacaciones, FAL (vigente desde 1-nov-2026 por Decreto 408/2026) y regímenes especiales: no implementados."
+    },
+    "surcharges": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Recargos de jornada nocturna y feriados no investigados (solo horas suplementarias del art. 201)."
+    }
+  },
+  "known_gaps": [
+    "Ganancias 4ª categoría.",
+    "Topes de base y de 3x convenio.",
+    "Ley 27.802: solo descrita en NORMATIVA_PAISES.md (REQUIERE VALIDACIÓN PROFESIONAL).",
+    "Convenios colectivos.",
+    "Tope del art. 245 por convenio colectivo: requiere amounts.cct_average_salary (sin el dato no se aplica).",
+    "Fondo de Asistencia Laboral (Ley 27.802 Título II): vigencia prorrogada al 1-nov-2026 (Decreto 408/2026): NOT_IMPLEMENTED.",
+    "Regímenes especiales (construcción, servicio doméstico, agrario, PyME) y contratos a plazo: NOT_IMPLEMENTED.",
+    "Requisito de mitad de días trabajados para vacaciones completas (art. 151): no verificado.",
+    "SAC sobre preaviso e integración, y sobre vacaciones: criterio jurisprudencial NOT_IMPLEMENTED."
+  ],
+  "termination": {
+    "causes": [
+      "RESIGNATION",
+      "DISMISSAL_WITH_CAUSE",
+      "DISMISSAL_WITHOUT_CAUSE",
+      "FIXED_TERM_EXPIRY",
+      "MUTUAL_AGREEMENT",
+      "DEATH",
+      "RETIREMENT",
+      "OTHER"
+    ],
+    "contract_types": [
+      "INDEFINITE",
+      "FIXED_TERM"
+    ],
+    "requires_contract_end_for": []
+  }
+}

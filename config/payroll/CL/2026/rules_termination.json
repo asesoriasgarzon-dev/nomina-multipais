@@ -1,0 +1,554 @@
+[
+  {
+    "rule_id": "CL.IN.LAST_REMUNERATION.1",
+    "rule_key": "CL.IN.LAST_REMUNERATION",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_T_LAST_MONTHLY_REMUNERATION",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "history_value",
+      "params": {
+        "history_input": "salary_history",
+        "method": "AVERAGE_IF_VARIED",
+        "window_months": 3,
+        "vary_months": 3,
+        "fallback": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo art. 172: la última remuneración mensual comprende toda cantidad que perciba el trabajador por sus servicios (incluidas cotizaciones de cargo del trabajador y regalías), excluida la asignación familiar, sobretiempo y beneficios esporádicos; variables: promedio de los últimos tres meses; tope de 90 UF del último día del mes anterior al pago",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Remuneración fija: la última; variable: promedio de los últimos tres meses calendario. El usuario informa solo conceptos que integran la base (sin asignación familiar, sobretiempo ni pagos esporádicos)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CL.IN.CL_T_UNPAID_SALARY.1",
+    "rule_key": "CL.IN.CL_T_UNPAID_SALARY",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_T_UNPAID_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.unpaid_salary",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.INDEMNIZACION_ANOS.1",
+    "rule_key": "CL.INDEMNIZACION_ANOS",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_INDEMNIZACION_ANOS_SERVICIO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "CL.INDEMNITY_BASE"
+        },
+        "unit_days_per_month": "30",
+        "tiers": [
+          {
+            "over_years": "0",
+            "units_per_year": "30",
+            "fraction": "THRESHOLD",
+            "threshold_months": 6
+          }
+        ],
+        "max_units": "330"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo art. 163: 30 días de la última remuneración mensual devengada por cada año de servicio y fracción superior a seis meses, tope de 330 días; vigente un año o más; causal art. 161",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "30 días de la última remuneración por año y fracción SUPERIOR a seis meses (6 meses y 1 día suma), tope de 330 días, con la base topada a 90 UF (art. 172). Solo causal del art. 161 con contrato de un año o más; la indemnización pactada por las partes (si es mayor) no se modela."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_BUSINESS_NEEDS",
+            "DISMISSAL_DESAHUCIO"
+          ]
+        },
+        {
+          "left": {
+            "service": "COMPLETED_YEARS"
+          },
+          "op": ">=",
+          "right": "1"
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CL.AVISO_PREVIO.1",
+    "rule_key": "CL.AVISO_PREVIO",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_INDEMNIZACION_AVISO_PREVIO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "CL.INDEMNITY_BASE"
+        },
+        "factor": "1"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo art. 161 (y 162 inc. 4): aviso de 30 días o indemnización sustitutiva equivalente a la última remuneración mensual devengada (con el tope del art. 172)",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Una última remuneración mensual (con el tope de 90 UF) si el empleador no dio aviso con 30 días de anticipación (termination.notice_given=false)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_BUSINESS_NEEDS",
+            "DISMISSAL_DESAHUCIO"
+          ]
+        },
+        {
+          "left": {
+            "input": "termination.notice_given",
+            "default": false
+          },
+          "op": "==",
+          "right": false
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CL.IN.VAC_DAYS.1",
+    "rule_key": "CL.IN.VAC_DAYS",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_T_VACATION_DAYS",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_quantity",
+      "params": {
+        "years_basis": "COMPLETED_YEARS_PLUS_PRIOR",
+        "prior_cap": "10",
+        "linear": {
+          "base_quantity": "15",
+          "per_completed_year": "1",
+          "after_years": 10,
+          "block_years": 3
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo arts. 67 (15 días hábiles de feriado anual), 68 (un día adicional por cada tres nuevos años tras 10 años de trabajo, hasta 10 años de empleadores anteriores), 69 (el sábado es siempre inhábil), 71 (remuneración íntegra) y 73 (compensación en dinero al terminar; proporcional al tiempo si no completó el año)",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "15 días hábiles; con 10 años de trabajo (para uno o más empleadores, contando hasta 10 años de empleadores anteriores: employment.prior_years) un día adicional por cada tres nuevos años."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CL.IN.VAC_PRORATED.1",
+    "rule_key": "CL.IN.VAC_PRORATED",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_T_VACATION_DAYS_PRORATED",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "line": "CL_T_VACATION_DAYS"
+        },
+        "window": {
+          "type": "SERVICE_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_ACTUAL",
+          "divisor": "365"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo arts. 67 (15 días hábiles de feriado anual), 68 (un día adicional por cada tres nuevos años tras 10 años de trabajo, hasta 10 años de empleadores anteriores), 69 (el sábado es siempre inhábil), 71 (remuneración íntegra) y 73 (compensación en dinero al terminar; proporcional al tiempo si no completó el año)",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Proporción del año desde el último aniversario (art. 73: proporcional al tiempo que medie entre la contratación o la última anualidad y el término)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CL.IN.VAC_DUE.1",
+    "rule_key": "CL.IN.VAC_DUE",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_T_VACATION_DAYS_DUE",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "adjusted_quantity",
+      "params": {
+        "quantity": {
+          "line": "CL_T_VACATION_DAYS_PRORATED"
+        },
+        "add": [
+          {
+            "input": "vacation_history.days_pending_prior",
+            "default": "0"
+          }
+        ],
+        "subtract": [
+          {
+            "input": "vacation_history.days_taken_current",
+            "default": "0"
+          }
+        ]
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo arts. 67 (15 días hábiles de feriado anual), 68 (un día adicional por cada tres nuevos años tras 10 años de trabajo, hasta 10 años de empleadores anteriores), 69 (el sábado es siempre inhábil), 71 (remuneración íntegra) y 73 (compensación en dinero al terminar; proporcional al tiempo si no completó el año)",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CL.FERIADO.1",
+    "rule_key": "CL.FERIADO",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_FERIADO_PROPORCIONAL",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "CL.VACATION_BASE"
+        },
+        "factor": "7/5",
+        "proration": {
+          "type": "FIXED_DIVISOR",
+          "divisor": "30",
+          "days": {
+            "line": "CL_T_VACATION_DAYS_DUE"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Biblioteca del Congreso Nacional de Chile (Ley Chile) — DFL 1, Código del Trabajo",
+      "legal_reference": "Código del Trabajo arts. 67 (15 días hábiles de feriado anual), 68 (un día adicional por cada tres nuevos años tras 10 años de trabajo, hasta 10 años de empleadores anteriores), 69 (el sábado es siempre inhábil), 71 (remuneración íntegra) y 73 (compensación en dinero al terminar; proporcional al tiempo si no completó el año)",
+      "official_url": "https://www.bcn.cl/leychile/navegar?idNorma=207436",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Días hábiles × 7/5 (conversión de lunes-a-viernes a días corridos, porque el sábado es siempre inhábil: art. 69) × remuneración/30. La conversión a días corridos es criterio de la práctica (PENDING_VERIFICATION); debe verificarse contra la Dirección del Trabajo.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CL.IN.DAYS_MONTH.1",
+    "rule_key": "CL.IN.DAYS_MONTH",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_T_DAYS_MONTH",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "COMMERCIAL_DAYS_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CL.SUELDO_MES.1",
+    "rule_key": "CL.SUELDO_MES",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_REMUNERACION_MES_TERMINACION",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "CL.VACATION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "CL_T_DAYS_MONTH"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Sueldo/30 por los días del mes de terminación."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "CL.REM_PENDIENTES.1",
+    "rule_key": "CL.REM_PENDIENTES",
+    "version": "1",
+    "country": "CL",
+    "jurisdiction": "NATIONAL",
+    "concept": "CL_REMUNERACIONES_PENDIENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "CL_T_UNPAID_SALARY"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

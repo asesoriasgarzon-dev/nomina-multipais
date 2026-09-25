@@ -1,0 +1,1309 @@
+[
+  {
+    "rule_id": "CO.IN.SALARY_12M.1",
+    "rule_key": "CO.IN.SALARY_12M",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_SALARY_12M",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "history_value",
+      "params": {
+        "history_input": "salary_history",
+        "method": "AVERAGE_IF_VARIED",
+        "window_months": 12,
+        "vary_months": 3,
+        "fallback": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 249 (cesantías: un mes de salario por año y proporcionalmente por fracción) y 253 (base: último salario o promedio del último año si varió en los 3 últimos meses o es variable)",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Art. 253 CST: último salario mensual si no varió en los 3 últimos meses; si varió o es variable, promedio del último año o del tiempo servido. Sin historial se usa el salario contractual vigente."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CO.IN.SALARY_6M.1",
+    "rule_key": "CO.IN.SALARY_6M",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_SALARY_6M",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "history_value",
+      "params": {
+        "history_input": "salary_history",
+        "method": "AVERAGE_IF_VARIED",
+        "window_months": 6,
+        "vary_months": 3,
+        "fallback": {
+          "input": "employment.monthly_salary"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 306 (modificado Ley 1788/2016): prima de servicios, 30 días de salario por año, por todo el semestre trabajado o proporcionalmente al tiempo trabajado",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "El art. 306 no define la base; se aplica el mismo criterio del art. 253 con ventana de 6 meses. PENDING_VERIFICATION.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CO.IN.TRANSPORT.1",
+    "rule_key": "CO.IN.TRANSPORT",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_TRANSPORT",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "reference": {
+            "code": "TRANSPORT_ALLOWANCE"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Presidencia de la República",
+      "legal_reference": "Decreto 1470 de 2025: trabajadores que devengan hasta 2 SMMLV",
+      "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1470_2025.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Elegible si el salario mensual es <= 2 SMMLV (frontera inclusiva)."
+    },
+    "implementation_status": "IMPLEMENTED",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "employment.salary_type",
+            "default": "ORDINARY",
+            "as": "text"
+          },
+          "op": "==",
+          "right": {
+            "value": "ORDINARY"
+          }
+        },
+        {
+          "left": {
+            "input": "employment.monthly_salary"
+          },
+          "op": "<=",
+          "right": {
+            "reference": {
+              "code": "SMMLV",
+              "multiple": "2"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.IN.DAYS_MONTH.1",
+    "rule_key": "CO.IN.DAYS_MONTH",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_DAYS_MONTH",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "COMMERCIAL_DAYS_IN_MONTH"
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.IN.DAYS_YEAR.1",
+    "rule_key": "CO.IN.DAYS_YEAR",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_DAYS_YEAR",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "date_measure",
+      "params": {
+        "measure": "WINDOW_UNITS",
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_360"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.IN.CO_T_CESANTIAS_PRIOR.1",
+    "rule_key": "CO.IN.CO_T_CESANTIAS_PRIOR",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_CESANTIAS_PRIOR",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.cesantias_unpaid_prior",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.IN.CO_T_INTEREST_PRIOR.1",
+    "rule_key": "CO.IN.CO_T_INTEREST_PRIOR",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_INTEREST_PRIOR",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.interest_unpaid_prior",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.IN.CO_T_PRIMA_PRIOR.1",
+    "rule_key": "CO.IN.CO_T_PRIMA_PRIOR",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_PRIMA_PRIOR",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.prima_unpaid_prior",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.IN.CO_T_UNPAID_SALARY.1",
+    "rule_key": "CO.IN.CO_T_UNPAID_SALARY",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_T_UNPAID_SALARY",
+    "category": "TERMINATION_INPUT",
+    "kind": "INFO",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "input": "amounts.unpaid_salary",
+          "default": "0"
+        }
+      },
+      "rounding": "none"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.VAL.TERM_CESANTIAS_REGIME.1",
+    "rule_key": "CO.VAL.TERM_CESANTIAS_REGIME",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "category": "VALIDATION",
+    "kind": "VALIDATION",
+    "run_types": [
+      "TERMINATION"
+    ],
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "priority": 100,
+    "severity": "ERROR",
+    "conditions": {
+      "left": {
+        "input": "employment.cesantias_regime",
+        "default": "LEY_50",
+        "as": "text"
+      },
+      "op": "!=",
+      "right": {
+        "value": "LEY_50"
+      }
+    },
+    "message": "Solo está implementado el régimen de cesantías de la Ley 50/1990 (fondo). El régimen tradicional/retroactivo (contratos anteriores a 1991) NO está implementado.",
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.CESANTIAS.1",
+    "rule_key": "CO.CESANTIAS",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_CESANTIAS",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "CO.CESANTIAS_BASE"
+        },
+        "window": {
+          "type": "CALENDAR_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_360",
+          "divisor": "360"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 249 (cesantías: un mes de salario por año y proporcionalmente por fracción) y 253 (base: último salario o promedio del último año si varió en los 3 últimos meses o es variable)",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Un mes de salario por año, proporcional por días base 360 (convención comercial: fin de mes = 30) desde el 1-ene (o el ingreso). No liquida años anteriores no consignados (se informan en amounts.cesantias_unpaid_prior). Salario integral: no aplica."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "employment.salary_type",
+        "default": "ORDINARY",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "ORDINARY"
+      }
+    },
+    "notes": "Salario integral: no causa cesantías (CST art. 132 num. 2: el salario integral compensa prestaciones)."
+  },
+  {
+    "rule_id": "CO.CESANTIAS_INTERESES.1",
+    "rule_key": "CO.CESANTIAS_INTERESES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_CESANTIAS_INTERESES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "CO_CESANTIAS"
+        },
+        "factor": "0.12",
+        "proration": {
+          "type": "FIXED_DIVISOR",
+          "divisor": "360",
+          "days": {
+            "line": "CO_T_DAYS_YEAR"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Ley 52 de 1975: intereses de cesantías 12 % anual sobre lo acumulado, proporcionales a la fracción. Texto no consultado en esta ejecución (la URL de la Secretaría del Senado devolvió 404): PENDING_VERIFICATION."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "12 % anual sobre las cesantías del período, por días/360 (Ley 52/1975): fuente PENDING."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "employment.salary_type",
+        "default": "ORDINARY",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "ORDINARY"
+      }
+    }
+  },
+  {
+    "rule_id": "CO.PRIMA.1",
+    "rule_key": "CO.PRIMA",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_PRIMA",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "CO.PRIMA_BASE"
+        },
+        "window": {
+          "type": "RECURRING_PERIODS",
+          "periods": [
+            {
+              "start": "01-01",
+              "end": "06-30"
+            },
+            {
+              "start": "07-01",
+              "end": "12-31"
+            }
+          ]
+        },
+        "count": {
+          "unit": "DAYS_360",
+          "divisor": "360"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 306 (modificado Ley 1788/2016): prima de servicios, 30 días de salario por año, por todo el semestre trabajado o proporcionalmente al tiempo trabajado",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "30 días de salario por año => salario × días/360 sobre el semestre en curso (ene-jun / jul-dic). Salario integral: no aplica."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "employment.salary_type",
+        "default": "ORDINARY",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "ORDINARY"
+      }
+    }
+  },
+  {
+    "rule_id": "CO.VACACIONES_PROP.1",
+    "rule_key": "CO.VACACIONES_PROP",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_VACACIONES_PROPORCIONALES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "service_period_proration",
+      "params": {
+        "base": {
+          "base": "CO.VACATION_BASE"
+        },
+        "window": {
+          "type": "SERVICE_YEAR"
+        },
+        "count": {
+          "unit": "DAYS_360",
+          "divisor": "720"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 186 (15 días hábiles por año), 189, 192 (remuneración: salario ordinario del día en que inicia el goce; variable: promedio) y 190",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "15 días hábiles por año de servicio: días/360 × 15 días × salario/30 = salario × días/720, contados desde el último aniversario. Aplica también a salario integral (sobre el salario integral completo: interpretación sin revisar)."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CO.VACACIONES_PEND.1",
+    "rule_key": "CO.VACACIONES_PEND",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_VACACIONES_PENDIENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "CO.VACATION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "input": "vacation_history.days_pending_prior",
+            "default": "0"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST arts. 186 (15 días hábiles por año), 189, 192 (remuneración: salario ordinario del día en que inicia el goce; variable: promedio) y 190",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Días hábiles causados y no disfrutados de períodos ya cumplidos (dato del empleador), cada uno a salario/30."
+    },
+    "implementation_status": "PARTIAL"
+  },
+  {
+    "rule_id": "CO.INDEMNIZACION_INDEF_LT10.1",
+    "rule_key": "CO.INDEMNIZACION_INDEF_LT10",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_INDEMNIZACION_INDEFINIDO_MENOR_10",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "CO.INDEMNITY_BASE"
+        },
+        "unit_days_per_month": "30",
+        "tiers": [
+          {
+            "over_years": "0",
+            "fixed_units": "30"
+          },
+          {
+            "over_years": "1",
+            "units_per_year": "20",
+            "count_from_years": "1",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 64 (Ley 789/2002 art. 28): indemnización por terminación sin justa causa: contratos a término fijo = tiempo que faltare (obra o labor: mínimo 15 días); indefinido: <10 SMMLV 30 días + 20 por año subsiguiente; >=10 SMMLV 20 días + 15 por año subsiguiente, proporcional por fracción",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "30 días el primer año (o fracción) + 20 días por cada año subsiguiente, proporcional por fracción (fracción medida en días/360 desde el primer aniversario)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE",
+            "INDIRECT_DISMISSAL"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "INDEFINITE"
+          ]
+        },
+        {
+          "left": {
+            "base": "CO.INDEMNITY_BASE"
+          },
+          "op": "<",
+          "right": {
+            "reference": {
+              "code": "SMMLV",
+              "multiple": "10"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.INDEMNIZACION_INDEF_GE10.1",
+    "rule_key": "CO.INDEMNIZACION_INDEF_GE10",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_INDEMNIZACION_INDEFINIDO_MAYOR_IGUAL_10",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "tiered_service_amount",
+      "params": {
+        "base": {
+          "base": "CO.INDEMNITY_BASE"
+        },
+        "unit_days_per_month": "30",
+        "tiers": [
+          {
+            "over_years": "0",
+            "fixed_units": "20"
+          },
+          {
+            "over_years": "1",
+            "units_per_year": "15",
+            "count_from_years": "1",
+            "fraction": "PRORATA"
+          }
+        ]
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 64 (Ley 789/2002 art. 28): indemnización por terminación sin justa causa: contratos a término fijo = tiempo que faltare (obra o labor: mínimo 15 días); indefinido: <10 SMMLV 30 días + 20 por año subsiguiente; >=10 SMMLV 20 días + 15 por año subsiguiente, proporcional por fracción",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "20 días el primer año + 15 días por cada año subsiguiente, proporcional por fracción."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE",
+            "INDIRECT_DISMISSAL"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "INDEFINITE"
+          ]
+        },
+        {
+          "left": {
+            "base": "CO.INDEMNITY_BASE"
+          },
+          "op": ">=",
+          "right": {
+            "reference": {
+              "code": "SMMLV",
+              "multiple": "10"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.INDEMNIZACION_FIJO.1",
+    "rule_key": "CO.INDEMNIZACION_FIJO",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_INDEMNIZACION_TERMINO_FIJO",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "remaining_term_amount",
+      "params": {
+        "base": {
+          "base": "CO.INDEMNITY_BASE"
+        },
+        "unit": "DAYS_360"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 64 (Ley 789/2002 art. 28): indemnización por terminación sin justa causa: contratos a término fijo = tiempo que faltare (obra o labor: mínimo 15 días); indefinido: <10 SMMLV 30 días + 20 por año subsiguiente; >=10 SMMLV 20 días + 15 por año subsiguiente, proporcional por fracción",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Salarios del tiempo que faltare para cumplir el plazo (días base 360, salario/30)."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE",
+            "INDIRECT_DISMISSAL"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "FIXED_TERM"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.INDEMNIZACION_OBRA.1",
+    "rule_key": "CO.INDEMNIZACION_OBRA",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_INDEMNIZACION_OBRA_LABOR",
+    "category": "TERMINATION_INDEMNITY",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "remaining_term_amount",
+      "params": {
+        "base": {
+          "base": "CO.INDEMNITY_BASE"
+        },
+        "unit": "DAYS_360",
+        "min_days": "15"
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado de la República (compilación oficial del CST)",
+      "legal_reference": "CST art. 64 (Ley 789/2002 art. 28): indemnización por terminación sin justa causa: contratos a término fijo = tiempo que faltare (obra o labor: mínimo 15 días); indefinido: <10 SMMLV 30 días + 20 por año subsiguiente; >=10 SMMLV 20 días + 15 por año subsiguiente, proporcional por fracción",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/codigo_sustantivo_trabajo.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Tiempo que faltare según la duración estimada de la obra/labor (employment.contract_end_date), con mínimo de 15 días."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "all": [
+        {
+          "left": {
+            "input": "termination.cause",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "DISMISSAL_WITHOUT_CAUSE",
+            "INDIRECT_DISMISSAL"
+          ]
+        },
+        {
+          "left": {
+            "input": "employment.contract_type",
+            "as": "text"
+          },
+          "op": "in",
+          "right": [
+            "WORK_COMPLETION"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "rule_id": "CO.SALARIO_MES.1",
+    "rule_key": "CO.SALARIO_MES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_SALARIO_MES_TERMINACION",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "base": "CO.VACATION_BASE"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "CO_T_DAYS_MONTH"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Días del mes de terminación en base 30; si ya se pagó, termination.final_month_paid=true."
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "CO.TRANSPORTE_MES.1",
+    "rule_key": "CO.TRANSPORTE_MES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_AUXILIO_TRANSPORTE_MES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "fixed_amount_prorated",
+      "params": {
+        "amount": {
+          "line": "CO_T_TRANSPORT"
+        },
+        "proration": {
+          "type": "THIRTY_DAY_MONTH",
+          "days": {
+            "line": "CO_T_DAYS_MONTH"
+          }
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "PARTIAL",
+    "conditions": {
+      "left": {
+        "input": "termination.final_month_paid",
+        "default": false
+      },
+      "op": "==",
+      "right": false
+    }
+  },
+  {
+    "rule_id": "CO.PASS.CO_CESANTIAS_ANTERIORES.1",
+    "rule_key": "CO.PASS.CO_CESANTIAS_ANTERIORES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_CESANTIAS_ANTERIORES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "CO_T_CESANTIAS_PRIOR"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.PASS.CO_INTERESES_ANTERIORES.1",
+    "rule_key": "CO.PASS.CO_INTERESES_ANTERIORES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_INTERESES_ANTERIORES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "CO_T_INTEREST_PRIOR"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.PASS.CO_PRIMA_ANTERIOR.1",
+    "rule_key": "CO.PASS.CO_PRIMA_ANTERIOR",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_PRIMA_ANTERIOR",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "CO_T_PRIMA_PRIOR"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.PASS.CO_SALARIOS_PENDIENTES.1",
+    "rule_key": "CO.PASS.CO_SALARIOS_PENDIENTES",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "CO_SALARIOS_PENDIENTES",
+    "category": "TERMINATION_BENEFIT",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "termination_date",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "run_types": [
+      "TERMINATION"
+    ],
+    "calculation": {
+      "mechanism": "pass_through",
+      "params": {
+        "amount": {
+          "line": "CO_T_UNPAID_SALARY"
+        }
+      },
+      "rounding": "currency"
+    },
+    "source": {
+      "status": "NOT_APPLICABLE",
+      "note": "Dato contractual / de entrada"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    },
+    "implementation_status": "IMPLEMENTED"
+  }
+]

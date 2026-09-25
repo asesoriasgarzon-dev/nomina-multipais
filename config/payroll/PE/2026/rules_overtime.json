@@ -1,0 +1,63 @@
+[
+  {
+    "rule_id": "PE.OVERTIME.1",
+    "rule_key": "PE.OVERTIME",
+    "version": "1",
+    "country": "PE",
+    "jurisdiction": "NATIONAL",
+    "concept": "PE_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": "240"
+        },
+        "categories": [
+          {
+            "key": "primeras_2_horas",
+            "hours_input": "time.overtime_hours_first_2",
+            "components": [
+              "1.25"
+            ]
+          },
+          {
+            "key": "horas_restantes",
+            "hours_input": "time.overtime_hours_after_2",
+            "components": [
+              "1.35"
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "TUO de la Ley de Jornada de Trabajo, Horario y Trabajo en Sobretiempo, D.S. 007-2002-TR, art. 10",
+      "official_url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/34CB632FA0BEB31E05257E2300593BE4/$FILE/1_DECRETO_SUPREMO_007_04_07_2002.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Sobretasa: no menor a 25 % por hora las 2 primeras horas y 35 % por las restantes (cita verificada por resumen de búsqueda; el PDF no se descargó). El divisor del valor hora (30 días × 8 h) no se verificó."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Valor hora = remuneración / (30 × 8). Divisor PENDING_VERIFICATION. Sobretiempo voluntario; topes de jornada no modelados.",
+      "open_question": true
+    },
+    "implementation_status": "PARTIAL",
+    "notes": "Sobretasa 25 % (2 primeras horas) y 35 % (siguientes) sobre el valor hora."
+  }
+]

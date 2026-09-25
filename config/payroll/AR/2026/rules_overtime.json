@@ -1,0 +1,63 @@
+[
+  {
+    "rule_id": "AR.OVERTIME.1",
+    "rule_key": "AR.OVERTIME",
+    "version": "1",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "concept": "AR_OVERTIME",
+    "category": "OVERTIME",
+    "kind": "EARNING",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "calculation": {
+      "mechanism": "hours_at_multipliers",
+      "rounding": "currency",
+      "params": {
+        "hourly": {
+          "monthly_base": {
+            "input": "employment.monthly_salary"
+          },
+          "hours_per_month": "200"
+        },
+        "categories": [
+          {
+            "key": "extra_dia_comun",
+            "hours_input": "time.overtime_hours_50",
+            "components": [
+              "1.5"
+            ]
+          },
+          {
+            "key": "extra_sabado_domingo_feriado",
+            "hours_input": "time.overtime_hours_100",
+            "components": [
+              "2"
+            ]
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT art. 201: horas suplementarias con recargo del 50 % (días comunes) y 100 % (sábados después de las 13 h, domingos y feriados)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24",
+      "note": "Texto citado del InfoLeg: Art. 201. Horas Suplementarias. El empleador deberá abonar al trabajador que prestare servicios en horas suplementarias, medie o no autorización del organismo administrativo competente, un recargo del cincuenta por ciento (50%) calculado sobre el salario habitual, si se tratare del días comunes, y del ciento por ciento (100%) en días sábado después de las trece (13) horas, domingo y feriados. Art. 202. Trabajo por equipos. En el trabajo por equipos o turnos rotativos regirá lo dispuesto por la ley 11.544, sea que haya sido adoptado a fin de asegurar la continuidad de la explotación, sea por necesidad o conveniencia económica o por razones técnicas inherentes a aquélla. El descanso semanal "
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Valor hora = sueldo mensual / 200 (divisor de práctica para mensualizados de 48 h; el art. 201 no fija el divisor): PENDING_VERIFICATION. Jornada máxima 8 h/48 h (Ley 11.544) no verificada en esta ejecución.",
+      "open_question": true
+    },
+    "notes": "Recargos de LCT art. 201; el divisor 200 no está verificado."
+  }
+]

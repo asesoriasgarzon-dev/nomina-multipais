@@ -1,0 +1,346 @@
+[
+  {
+    "ref_id": "AR.SMVM.2026-01",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "341000",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-01-31"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-02",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "346800",
+    "effective": {
+      "from": "2026-02-01",
+      "to": "2026-02-28"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-03",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "352400",
+    "effective": {
+      "from": "2026-03-01",
+      "to": "2026-03-31"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-04",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "357800",
+    "effective": {
+      "from": "2026-04-01",
+      "to": "2026-04-30"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-05",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "363000",
+    "effective": {
+      "from": "2026-05-01",
+      "to": "2026-05-31"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-06",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "367800",
+    "effective": {
+      "from": "2026-06-01",
+      "to": "2026-06-30"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-07",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "372400",
+    "effective": {
+      "from": "2026-07-01",
+      "to": "2026-07-31"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-08",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "376600",
+    "effective": {
+      "from": "2026-08-01",
+      "to": "2026-08-31"
+    },
+    "source": {
+      "status": "SECONDARY",
+      "authority": "Fuente secundaria (contraste)",
+      "legal_reference": "Resolución 9/2025 del Consejo del Salario (valores mensuales 2026)",
+      "official_url": null,
+      "secondary_url": "https://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/",
+      "verified_at": "2026-09-24",
+      "note": "Serie tomada de una fuente secundaria; el texto oficial de la Resolución 9/2025 no fue descargado."
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-09",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "383800",
+    "effective": {
+      "from": "2026-09-01",
+      "to": "2026-09-30"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría de Trabajo, Empleo y Seguridad Social — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      "legal_reference": "Resolución 4/2026 (Boletín Oficial 2-sep-2026): SMVM mensualizados",
+      "official_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
+      "verified_at": "2026-09-24",
+      "publication_date": "2026-09-02"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-10",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "391200",
+    "effective": {
+      "from": "2026-10-01",
+      "to": "2026-10-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría de Trabajo, Empleo y Seguridad Social — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      "legal_reference": "Resolución 4/2026 (Boletín Oficial 2-sep-2026): SMVM mensualizados",
+      "official_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
+      "verified_at": "2026-09-24",
+      "publication_date": "2026-09-02"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-11",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "398800",
+    "effective": {
+      "from": "2026-11-01",
+      "to": "2026-11-30"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría de Trabajo, Empleo y Seguridad Social — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      "legal_reference": "Resolución 4/2026 (Boletín Oficial 2-sep-2026): SMVM mensualizados",
+      "official_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
+      "verified_at": "2026-09-24",
+      "publication_date": "2026-09-02"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.SMVM.2026-12",
+    "code": "SMVM",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "ARS/mes",
+    "value": "406400",
+    "effective": {
+      "from": "2026-12-01",
+      "to": "2026-12-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría de Trabajo, Empleo y Seguridad Social — Consejo Nacional del Empleo, la Productividad y el SMVM",
+      "legal_reference": "Resolución 4/2026 (Boletín Oficial 2-sep-2026): SMVM mensualizados",
+      "official_url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/346775/20260902",
+      "verified_at": "2026-09-24",
+      "publication_date": "2026-09-02"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "El SMVM cambia cada mes: no existe un único valor anual."
+    },
+    "note": "El SMVM cambia cada mes: no existe un único valor anual."
+  },
+  {
+    "ref_id": "AR.WORKWEEK.LEGACY",
+    "code": "WORKWEEK_HOURS",
+    "country": "AR",
+    "jurisdiction": "NATIONAL",
+    "unit": "horas/semana",
+    "value": "48",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Jornada semanal (Ley 11.544). Valor tomado del motor heredado / NORMATIVA_PAISES.md (Argentina), resumen interno sin cita oficial verificada en esta ejecución."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  }
+]

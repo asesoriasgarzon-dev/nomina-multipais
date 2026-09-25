@@ -2,26 +2,40 @@
 {% block content %}
 <a class="btn-back" href="{{ url_for('pais_home', pais=pais) }}">&larr; {{ t('back') }}</a>
 <h1>{{ config.name }} — {{ t('novedades_title') }}</h1>
+{% if errors %}
+<div class="err-box">
+    <strong>{{ t('form_errors_title') }}</strong>
+    <ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
 {% if ejemplo %}
 <p><button type="button" class="btn-export" onclick="cargarDemo()">{{ t('cargar_ejemplo_demo') }}</button></p>
 {% endif %}
 <form method="post" class="form-grid">
-    <input type="hidden" name="es_demo" id="es_demo" value="0">
+    <input type="hidden" name="es_demo" id="es_demo" value="{{ valores.get('es_demo', '0') }}">
     <label>{{ t('employee_name') }}
-        <input type="text" name="nombre" id="f_nombre" required>
+        <input type="text" name="nombre" id="f_nombre" required value="{{ valores.get('nombre', '') }}">
     </label>
     <label>{{ t('employee_id') }}
-        <input type="text" name="identificacion" id="f_identificacion">
+        <input type="text" name="identificacion" id="f_identificacion" value="{{ valores.get('identificacion', '') }}">
     </label>
     <label>{{ t('period') }}
-        <input type="month" name="periodo" id="f_periodo" required>
+        <input type="month" name="periodo" id="f_periodo" required value="{{ valores.get('periodo', '') }}">
     </label>
     <label>{{ t('salario_contrato') }} ({{ config.currency }})
-        <input type="number" step="0.01" name="salario_contrato" id="f_salario_contrato" required>
+        <input type="number" step="0.01" name="salario_contrato" id="f_salario_contrato" required value="{{ valores.get('salario_contrato', '') }}">
     </label>
     {% for key, label_key, step, default in campos %}
     <label>{{ t(label_key) }}
-        <input type="number" step="{{ step }}" name="{{ key }}" id="f_{{ key }}" value="{{ default }}">
+        {% if step.startswith('select:') %}
+        <select name="{{ key }}" id="f_{{ key }}">
+            {% for opt in step[7:].split('|') %}
+            <option value="{{ opt }}" {{ 'selected' if valores.get(key, default) == opt else '' }}>{{ t('opt_' ~ opt|lower) }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <input type="number" step="{{ step }}" name="{{ key }}" id="f_{{ key }}" value="{{ valores.get(key, default) }}">
+        {% endif %}
     </label>
     {% endfor %}
     <button type="submit">{{ t('submit') }}</button>
@@ -31,7 +45,7 @@
 {% if ejemplo %}
 <script>
 // Escenario DEMO de {{ config.name }}: datos ficticios de un empleado de
-// ejemplo, no un caso real — pero se calculan con la fórmula real del país.
+// ejemplo, no un caso real — pero se calculan con las reglas normativas del país.
 function cargarDemo() {
     var valores = {{ ejemplo|tojson }};
     for (var campo in valores) {

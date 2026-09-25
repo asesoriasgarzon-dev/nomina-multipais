@@ -1,0 +1,124 @@
+[
+  {
+    "base": "MX.DAILY_BASE",
+    "country": "MX",
+    "description": "Salario diario (cuota diaria) para aguinaldo, vacaciones y salario",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT art. 87: aguinaldo anual de por lo menos 15 días de salario, proporcional al tiempo trabajado 'cualquiera que fuere éste'",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "MX.SDI_BASE",
+    "country": "MX",
+    "description": "Salario diario integrado para indemnizaciones (art. 89 y 84)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT arts. 48 (3 meses de salario), 50 (I plazo determinado: mitad del tiempo de servicios si <1 año, 6 meses + 20 días por año siguiente; II indeterminado: 20 días por año; III además 3 meses), 89 (base: cuota diaria + parte proporcional de prestaciones del art. 84)",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "MX.PA_BASE_GENERAL",
+    "country": "MX",
+    "description": "Salario para prima de antigüedad, tope 2 × salario mínimo general (zona general)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT art. 162: prima de antigüedad de 12 días de salario por año de servicios; el salario no excede del doble del salario mínimo (arts. 485-486); se paga a quien se separa voluntariamente con 15 años o más, y a quienes son separados o se separan por causa justificada",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24",
+      "note": "El tope del doble del salario mínimo se cita del art. 486 (no reproducido en esta extracción): verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "SM_GENERAL_DAILY"
+          }
+        },
+        "scale_by": "2",
+        "enforcement": "ENFORCE",
+        "source": "LFT art. 486"
+      }
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "MX.PA_BASE_ZLFN",
+    "country": "MX",
+    "description": "Salario para prima de antigüedad, tope 2 × salario mínimo de la ZLFN",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Orden Jurídico Nacional (Secretaría de Gobernación) — LFT, texto vigente, última reforma DOF 30-sep-2024",
+      "legal_reference": "LFT art. 162: prima de antigüedad de 12 días de salario por año de servicios; el salario no excede del doble del salario mínimo (arts. 485-486); se paga a quien se separa voluntariamente con 15 años o más, y a quienes son separados o se separan por causa justificada",
+      "official_url": "https://ordenjuridico.gob.mx/Documentos/Federal/pdf/wo9059.pdf",
+      "verified_at": "2026-09-24",
+      "note": "El tope del doble del salario mínimo se cita del art. 486 (no reproducido en esta extracción): verificar."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "limits": {
+      "maximum": {
+        "value": {
+          "reference": {
+            "code": "SM_ZLFN_DAILY"
+          }
+        },
+        "scale_by": "2",
+        "enforcement": "ENFORCE",
+        "source": "LFT art. 486"
+      }
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  }
+]

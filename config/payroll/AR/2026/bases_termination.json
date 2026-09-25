@@ -1,0 +1,75 @@
+[
+  {
+    "base": "AR.VACATION_BASE",
+    "country": "AR",
+    "description": "Sueldo mensual para vacaciones (art. 155: sueldo / 25)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg (Ministerio de Justicia de la Nación) — texto actualizado de la LCT",
+      "legal_reference": "LCT arts. 150 (14/21/28/35 días corridos según antigüedad al 31-dic), 151, 155 (retribución: sueldo mensual / 25), 156 (indemnización proporcional a la fracción del año trabajada)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "AR.NOTICE_BASE",
+    "country": "AR",
+    "description": "Remuneración del preaviso (art. 232), sin el tope del art. 245",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado",
+      "legal_reference": "LCT arts. 231 (preaviso: 1 mes hasta 5 años, 2 meses más de 5; sin obligación en período de prueba; texto art. 48 Ley 27.802), 232 (indemnización sustitutiva), 233 (integración del mes de despido; no procede en período de prueba)",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "AR.INDEMNITY_BASE",
+    "country": "AR",
+    "description": "Base del art. 245 (mejor remuneración mensual normal y habitual)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "InfoLeg — LCT texto actualizado y Ley 27.802 (B.O. 6-mar-2026)",
+      "legal_reference": "LCT art. 245 (texto art. 51 Ley 27.802, vigente desde su publicación): un mes de sueldo por año o fracción mayor de 3 meses sobre la mejor remuneración mensual, normal y habitual del último año; tope de 3 veces el promedio del convenio colectivo aplicable (nunca inferior al 67 % de la remuneración); mínimo de un mes",
+      "official_url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/25000-29999/25552/texact.htm",
+      "verified_at": "2026-09-24",
+      "note": "El tope depende del convenio colectivo (dato de entrada amounts.cct_average_salary); sin el dato el tope NO se aplica y se emite advertencia."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto; validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  }
+]

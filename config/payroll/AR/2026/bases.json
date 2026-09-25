@@ -1,0 +1,24 @@
+[
+  {
+    "base": "AR_REMUNERATION_BASE",
+    "country": "AR",
+    "description": "Remuneración base de aportes y contribuciones (simplificada, sin topes).",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "PENDING",
+      "authority": null,
+      "legal_reference": null,
+      "official_url": null,
+      "verified_at": null,
+      "note": "Remuneración base de aportes y contribuciones (simplificada, sin topes)."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Datos migrados del motor heredado a formato normativo para equivalencia de resultados; la regla jurídica sigue sin revisión profesional (PENDING_VERIFICATION)."
+    }
+  }
+]

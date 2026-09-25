@@ -1,0 +1,102 @@
+[
+  {
+    "base": "PE.CTS_BASE",
+    "country": "PE",
+    "description": "Remuneración computable para CTS (art. 9, 16, 18 TUO CTS)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "TUO de la Ley de Compensación por Tiempo de Servicios, D.S. 001-97-TR: arts. 2, 9, 10, 18, 21",
+      "official_url": "https://cdn.www.gob.pe/uploads/document/file/229267/TUO_Compensacion_por_Tiempo_de_Servicios_-_D.S_001-97-TR.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 21: 'tantos dozavos de la remuneración computable ... como meses completos haya laborado en el semestre respectivo. La fracción de mes se depositará por treintavos.' Art. 2: se devenga desde el primer mes; cumplido ese requisito toda fracción se computa por treintavos. Art. 18: un sexto de la gratificación semestral se incorpora a la remuneración computable."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto (tratamientos); validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "PE.GRATIFICATION_BASE",
+    "country": "PE",
+    "description": "Remuneración computable para gratificación (D.S. 005-2002-TR art. 3.1/5.3)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "D.S. 005-2002-TR (Reglamento de la Ley 27735), art. 3.3 (períodos ene-jun / jul-dic), art. 5 (gratificación trunca)",
+      "official_url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/2AD0D0DFA71EA38705257E26005C8083/$FILE/2_DECRETO_SUPREMO_005_04_07_2002.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 5: derecho a la gratificación trunca al cese con al menos un mes íntegro de servicios; monto proporcional a los meses calendario completos laborados en el período; remuneración computable vigente al mes inmediato anterior al cese."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto (tratamientos); validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "PE.VACATION_BASE",
+    "country": "PE",
+    "description": "Remuneración vacacional (D.S. 012-92-TR art. 16: computable CTS sin periódicas)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Ministerio de Trabajo y Promoción del Empleo (MTPE)",
+      "legal_reference": "D.S. 012-92-TR (Reglamento del D.Leg. 713), arts. 16 y 23",
+      "official_url": "https://www2.congreso.gob.pe/sicr/cendocbib/con4_uibd.nsf/0D48067F03F11D1405257E23005CE18D/$FILE/2_DECRETO_SUPREMO_012_03_12_92.pdf",
+      "verified_at": "2026-09-24",
+      "note": "Art. 23: el récord trunco procede con un mes de servicios y se compensa a razón de tantos dozavos y treintavos de la remuneración como meses y días computables. Art. 16: la remuneración vacacional es la computable para CTS, salvo las periódicas del art. 18 del D.Leg. 650."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto (tratamientos); validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  },
+  {
+    "base": "PE.INDEMNITY_BASE",
+    "country": "PE",
+    "description": "Remuneración ordinaria mensual para la indemnización por despido arbitrario",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "SUNAT (Intendencia Nacional Jurídica)",
+      "legal_reference": "Informe 263-2001-SUNAT, cita del art. 38 del TUO del D.Leg. 728 (D.S. 003-97-TR)",
+      "official_url": "https://www.sunat.gob.pe/legislacion/oficios/2001/oficios/i2632001.htm",
+      "verified_at": "2026-09-24",
+      "note": "Cita: 'una remuneración y media ordinaria mensual por cada año completo de servicios con un máximo de doce (12) remuneraciones. Las fracciones de año se abonan por dozavos y treintavos, según corresponda. Su abono procede superado el período de prueba.' Es cita indirecta: el texto primario del TUO 728 no se descargó."
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "Composición declarada por concepto (tratamientos); validación profesional pendiente."
+    },
+    "run_types": [
+      "TERMINATION"
+    ]
+  }
+]

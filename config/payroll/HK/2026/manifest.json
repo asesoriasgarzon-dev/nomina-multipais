@@ -1,0 +1,29 @@
+{
+  "country": "HK",
+  "year": 2026,
+  "ruleset_version": "HK-2026.1.0",
+  "jurisdiction_default": "NATIONAL",
+  "currency": "HKD",
+  "local_payroll_engine": false,
+  "consolidation_context": true,
+  "execution_path": "NONE",
+  "normative_date": "2026-09-24",
+  "capabilities": {
+    "local_payroll": {
+      "status": "NOT_APPLICABLE",
+      "note": "Hong Kong es contexto de consolidación; no tiene motor de nómina local. Habilitarlo exige investigación normativa independiente."
+    },
+    "consolidation": {
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Panel consolidado por país sin conversión de moneda ni totales del grupo."
+    },
+    "fx_conversion": {
+      "status": "NOT_IMPLEMENTED",
+      "note": "Sin tasas de cambio ni moneda base del grupo definida."
+    }
+  },
+  "known_gaps": [
+    "Moneda base del grupo y tasas de cambio: NOT_IMPLEMENTED.",
+    "MPF y demás reglas locales: fuera de alcance (NO se infieren)."
+  ]
+}

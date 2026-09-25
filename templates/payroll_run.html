@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+<a class="btn-back" href="{{ url_for('resultado', nomina_id=run.nomina_id) if run.nomina_id else url_for('dashboard') }}">&larr; {{ t('back') }}</a>
+{% if run.es_demo %}
+<div class="demo-banner">{{ t('demo_banner').replace('{pais}', config.name) }}</div>
+{% endif %}
+<h1>{{ t('run_title') }} — {{ config.name }} ({{ run.period.end[:7] }})</h1>
+
+<section class="result-block">
+    <dl class="cap-summary">
+        <div><dt>{{ t('run_status') }}</dt><dd><span class="cap-status run-{{ run.status }}">{{ t('run_status_' ~ run.status) }}</span></dd></div>
+        <div><dt>{{ t('run_engine') }}</dt><dd>{{ run.engine_version }}</dd></div>
+        <div><dt>{{ t('cap_ruleset') }}</dt><dd>{{ run.ruleset_version }}</dd></div>
+        <div><dt>{{ t('run_type') }}</dt><dd>{{ run.run_type }}</dd></div>
+        <div><dt>{{ t('run_anchor') }}</dt><dd>{{ run.anchor_dates.period_end }}</dd></div>
+        <div><dt>{{ t('run_calculated_at') }}</dt><dd>{{ run.calculation_timestamp[:19] }}</dd></div>
+    </dl>
+    <p class="hash-line">result <code>{{ run.result_hash[:16] }}</code> · input <code>{{ run.input_snapshot.hash[:16] }}</code> ·
+        norm <code>{{ run.normative_snapshot.content_hash[:16] }}</code> ·
+        <a class="btn-export" href="{{ url_for('payroll_run_verify', run_id=run.db_id) }}" target="_blank">{{ t('run_verify') }}</a></p>
+</section>
+
+{% if run.warnings %}
+<section class="result-block">
+    <h2>{{ t('run_warnings') }}</h2>
+    <ul class="warn-list">{% for w in run.warnings %}<li><code>{{ w.type }}</code> {{ w.message }}</li>{% endfor %}</ul>
+</section>
+{% endif %}
+
+<section class="result-block">
+    <h2>{{ t('run_lines') }}</h2>
+    <table class="dashboard-table trace-table">
+        <thead><tr><th>#</th><th>{{ t('run_concept') }}</th><th>{{ t('run_rule') }}</th><th>{{ t('run_amount') }} ({{ run.result.currency }})</th><th></th></tr></thead>
+        <tbody>
+        {% for line in money_lines %}
+        <tr class="{{ 'selected' if selected_line == line.line_id else '' }}">
+            <td>{{ line.line_id }}</td>
+            <td>{{ concept_label(line) }} <small class="muted">{{ line.concept }}</small></td>
+            <td><code>{{ line.rule_id }}</code></td>
+            <td class="num">{{ line.amount }}</td>
+            <td><a href="{{ url_for('payroll_run_view', run_id=run.db_id, line=line.line_id) }}#explicacion">{{ t('run_explain') }}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if info_lines %}
+    <h3>{{ t('run_info_lines') }}</h3>
+    <table class="dashboard-table trace-table">
+        {% for line in info_lines %}
+        <tr class="{{ 'selected' if selected_line == line.line_id else '' }}">
+            <td>{{ line.line_id }}</td><td>{{ line.concept }}</td><td><code>{{ line.rule_id }}</code></td>
+            <td class="num">{{ line.amount }}</td>
+            <td><a href="{{ url_for('payroll_run_view', run_id=run.db_id, line=line.line_id) }}#explicacion">{{ t('run_explain') }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</section>
+
+{% if explanation %}
+<section class="result-block" id="explicacion">
+    <h2>{{ t('run_explain') }} — {{ explanation.concept }} = {{ explanation.result }} {{ explanation.currency }}</h2>
+    <dl class="explain-list">
+        <dt>{{ t('exp_country') }} / {{ t('exp_jurisdiction') }}</dt><dd>{{ explanation.country }} / {{ explanation.jurisdiction }}</dd>
+        <dt>{{ t('exp_anchor') }}</dt><dd>{{ explanation.anchor_date }}</dd>
+        <dt>{{ t('exp_rule') }}</dt><dd><code>{{ explanation.rule.rule_id }}</code> ({{ t('exp_version') }} {{ explanation.rule.version }}, {{ explanation.rule.effective_from }}{% if explanation.rule.effective_to %} → {{ explanation.rule.effective_to }}{% endif %})</dd>
+        <dt>{{ t('exp_formula') }}</dt><dd><code>{{ explanation.formula }}</code></dd>
+        {% if explanation.base %}<dt>{{ t('exp_base') }}</dt><dd>{{ explanation.base.code }} = {{ explanation.base.value }}{% if explanation.base.cap_applied %} ({{ t('exp_cap') }}: {{ explanation.base.cap_applied }}){% endif %}</dd>{% endif %}
+        {% if explanation.rate %}<dt>{{ t('exp_rate') }}</dt><dd>{{ explanation.rate }}</dd>{% endif %}
+        {% if explanation.minimum %}<dt>{{ t('exp_min') }}</dt><dd>{{ explanation.minimum }}</dd>{% endif %}
+        {% if explanation.maximum %}<dt>{{ t('exp_max') }}</dt><dd>{{ explanation.maximum }}</dd>{% endif %}
+        {% for ex in explanation.exceptions if ex.result %}<dt>{{ t('exp_exceptions') }}</dt><dd>{{ ex.reason }}</dd>{% endfor %}
+        <dt>{{ t('exp_rounding') }}</dt><dd>{{ explanation.rounding.before }} → {{ explanation.rounding.after }}{% if explanation.rounding.applied %} ({{ explanation.rounding.mode }}, {{ explanation.rounding.precision }}){% endif %}</dd>
+        <dt>{{ t('exp_source') }}</dt><dd>{{ explanation.legal_source.legal_reference or explanation.legal_source.note or 'PENDING_VERIFICATION' }} <span class="cap-status">{{ explanation.legal_source.status }}</span>
+            {% if explanation.legal_source.official_url %}<br><a href="{{ explanation.legal_source.official_url }}" target="_blank" rel="noopener">{{ explanation.legal_source.official_url }}</a>{% endif %}</dd>
+        {% if explanation.verification %}<dt>{{ t('run_verification') }}</dt><dd>{{ explanation.verification.interpretation_status }} · professional_validation={{ explanation.verification.professional_validation }}</dd>{% endif %}
+    </dl>
+    {% if explanation.base and explanation.base.contributions %}
+    <h3>{{ t('exp_base') }}: {{ explanation.base.code }}</h3>
+    <table class="dashboard-table trace-table">
+        {% for c in explanation.base.contributions %}
+        <tr><td>{{ c.concept }}</td><td>{{ c.mode }}{% if c.status == 'PENDING_VERIFICATION' %} <span class="cap-status cap-PENDING_VALIDATION">PENDING_VERIFICATION</span>{% endif %}</td><td class="num">{{ c.contributed or c.amount }}</td></tr>
+        {% endfor %}
+        {% for c in explanation.base.exclusions %}
+        <tr class="muted"><td>{{ c.concept }}</td><td>EXCLUDE ({{ c.reason }})</td><td class="num">0</td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <pre class="explain-text">{{ explanation_text }}</pre>
+</section>
+{% endif %}
+
+{% if not_applied %}
+<section class="result-block">
+    <h2>{{ t('run_not_applied') }}</h2>
+    <table class="dashboard-table trace-table">
+        {% for e in not_applied %}
+        <tr><td><code>{{ e.rule_id }}</code></td><td>{{ e.reason }}</td>
+            <td><a href="{{ url_for('payroll_run_view', run_id=run.db_id, rule=e.rule_id) }}#evaluacion">{{ t('run_explain') }}</a></td></tr>
+        {% endfor %}
+    </table>
+</section>
+{% endif %}
+{% if evaluation %}
+<section class="result-block" id="evaluacion">
+    <h2>{{ evaluation.rule_id }}</h2>
+    <pre class="explain-text">{{ evaluation | tojson(indent=1) }}</pre>
+</section>
+{% endif %}
+
+<section class="result-block">
+    <h2>{{ t('run_verification') }}</h2>
+    <pre class="explain-text">{{ run.verification_summary | tojson(indent=1) }}</pre>
+</section>
+
+<p><a class="btn-back" href="{{ url_for('resultado', nomina_id=run.nomina_id) if run.nomina_id else url_for('dashboard') }}">&larr; {{ t('back') }}</a></p>
+{% endblock %}
