@@ -277,5 +277,13 @@
   "term_terminacion_obra": "Work/task completion",
   "term_periodo_prueba": "Termination during probation",
   "term_jubilacion": "Retirement",
-  "term_muerte": "Death of the employee"
+  "term_muerte": "Death of the employee",
+  "retencion_modo": "Withholding tax: how it is obtained",
+  "opt_calculated": "Calculate (art. 383 ET, provisional)",
+  "opt_manual": "Value typed below",
+  "tiene_dependientes": "Deduct for dependents? (art. 387 ET)",
+  "opt_yes": "Yes",
+  "opt_no": "No",
+  "salud_prepagada": "Prepaid health payments of the month (COP)",
+  "intereses_vivienda": "Housing loan interest of the month (COP)"
 }

@@ -1,7 +1,7 @@
 {
   "country": "CO",
   "year": 2026,
-  "ruleset_version": "CO-2026.2.0",
+  "ruleset_version": "CO-2026.2.1",
   "jurisdiction_default": "NATIONAL",
   "currency": "COP",
   "local_payroll_engine": true,
@@ -46,8 +46,8 @@
       "note": "Ley 1393 art. 30: fórmula literal (exceso sobre el 40 % del total de la remuneración integra el IBC) ejecutada como CÁLCULO PROVISIONAL; alcance del 'total de la remuneración' según UGPP/jurisprudencia de unificación y salario integral NO verificados."
     },
     "income_tax_withholding": {
-      "status": "NOT_IMPLEMENTED",
-      "note": "La retención en la fuente es un valor digitado (EXTERNAL_INPUT); no hay motor tributario."
+      "status": "PARTIALLY_IMPLEMENTED",
+      "note": "Retención de nómina mensual (procedimiento 1, art. 383 ET) con UVT 2026 oficial, deducciones del art. 387, tope 40 % y renta exenta del 25 % (790 UVT), como modo CALCULATED opt-in. Modo MANUAL (por defecto en la API) sigue digitado. Sin validación profesional."
     },
     "overtime_and_premiums": {
       "status": "PARTIALLY_IMPLEMENTED",
@@ -67,7 +67,6 @@
     }
   },
   "known_gaps": [
-    "Retención en la fuente (tabla UVT): NOT_IMPLEMENTED.",
     "Piso de incapacidad (SMMLV) y tramos por día: PENDING_VERIFICATION.",
     "Mínimo de IBC (1 SMMLV) para periodos parciales: solo advertencia.",
     "Redondeo de aportes PILA: PENDING_VERIFICATION.",
@@ -78,7 +77,7 @@
     "Intereses de cesantías (Ley 52/1975) y auxilio de transporte en bases de cesantías/prima: fuente PENDING_VERIFICATION.",
     "Ley 1393/2010 art. 30 (40 %): fórmula literal implementada; alcance del 'total de la remuneración' según UGPP/Consejo de Estado NO verificado (ver docs/CO_LEY_1393_AUDITORIA.md).",
     "Cesantías del régimen tradicional (contratos anteriores a 1991): NOT_IMPLEMENTED (validación bloquea).",
-    "Retención en la fuente sobre la liquidación: NOT_IMPLEMENTED."
+    "Retención en la fuente: solo procedimiento 1 mensual; sin procedimiento 2, sin retención sobre prima/cesantías/liquidación, sin redondeo al múltiplo de mil; tope de 1.340 UVT, intereses de vivienda y límites de AFC/pensión voluntaria con fuente PENDING_VERIFICATION."
   ],
   "termination": {
     "causes": [

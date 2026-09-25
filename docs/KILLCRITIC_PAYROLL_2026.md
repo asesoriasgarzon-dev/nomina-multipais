@@ -1,14 +1,14 @@
 # KILLCRITIC — Gate de calidad de Colombia (2026)
 
-> **Generado** el 2026-09-25 ejecutando la suite real. Motor v1.1.0, reglas `CO-2026.2.0`.
+> **Generado** el 2026-09-25 ejecutando la suite real. Motor v1.1.0, reglas `CO-2026.2.1`.
 
 ## Resultado de la suite
 
-`============================= 930 passed in 8.67s =============================`
+`============================ 954 passed in 10.96s =============================`
 
 | passed | failed | skipped | errors |
 |---:|---:|---:|---:|
-| 930 | 0 | 0 | 0 |
+| 954 | 0 | 0 | 0 |
 
 ## Gate (sección 34 del encargo)
 
@@ -32,7 +32,7 @@
 
 | Estado de la fuente | Reglas |
 |---|---:|
-| OFFICIAL | 17 |
+| OFFICIAL | 18 |
 | SECONDARY | 10 |
 | PENDING | 8 |
 | NOT_APPLICABLE | 25 |
@@ -95,6 +95,7 @@ Fuentes OFICIALES verificadas en esta ejecución: SMMLV (Decretos 1469/2025 y 15
 - `CO.VAL.TERM_CESANTIAS_REGIME`
 - `CO.VOLUNTARY_PENSION`
 - `CO.WITHHOLDING_TAX`
+- `CO.WITHHOLDING_TAX_CALC`
 
 ## Riesgos reales que siguen abiertos
 

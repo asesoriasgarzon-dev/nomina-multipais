@@ -76,7 +76,9 @@ python tools/generate_payroll_docs.py         # regenera docs/ (ejecuta las prue
 esquema la revisa → agregar la prueba de frontera (-1 / exacto / +1) con el esperado calculado de forma independiente → regenerar docs. Si la regla necesita
 un mecanismo que no existe, se agrega en `mechanisms*.py` (genérico, sin país).
 
-**Lo que NO está hecho** (no afirmar lo contrario): **impuesto** de los 7 países (valor digitado `EXTERNAL_INPUT`), **validación profesional** de
+**Retención en la fuente:** Colombia la calcula (procedimiento 1 mensual, art. 383 ET, UVT 2026 oficial; opción «Calcular» del formulario, provisional); los otros 6 países la reciben digitada (`EXTERNAL_INPUT`).
+
+**Lo que NO está hecho** (no afirmar lo contrario): **impuesto** de MX, PE, CL, BR, AR y EC (valor digitado), retención de Colombia sobre prima/cesantías/liquidación y procedimiento 2, **validación profesional** de
 cualquier regla, fuentes aún SECUNDARIAS/PENDING (tasas de seguridad social de Colombia, UMA, RMV de Perú, SM/INSS de Brasil, intereses de cesantías…), Ley 1393
 con alcance sin verificar (cálculo PROVISIONAL), indemnización moratoria, jubilación patronal, salarios vencidos, PTU, INSS/IRRF de la rescisión, EE. UU. estatal/local,
 nómina local de Hong Kong, autenticación/CSRF y separación física de datos demo/reales.

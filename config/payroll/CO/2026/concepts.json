@@ -89,6 +89,14 @@
         "base": "EXONERATION_BASE",
         "mode": "INCLUDE",
         "priority": 10
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE"
       }
     ],
     "source": {
@@ -134,6 +142,14 @@
       },
       {
         "base": "EXONERATION_BASE",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
         "mode": "INCLUDE"
       }
     ],
@@ -181,6 +197,18 @@
       {
         "base": "EXONERATION_BASE",
         "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
       }
     ],
     "source": {
@@ -226,6 +254,18 @@
       {
         "base": "EXONERATION_BASE",
         "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
       }
     ],
     "source": {
@@ -316,6 +356,14 @@
       {
         "base": "EXONERATION_BASE",
         "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE"
       }
     ],
     "source": {
@@ -383,6 +431,18 @@
         "base": "EXONERATION_BASE",
         "mode": "EXCLUDE",
         "reason": "No constitutivo de salario"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
       }
     ],
     "source": {
@@ -434,6 +494,14 @@
         "base": "EXONERATION_BASE",
         "mode": "INCLUDE",
         "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE"
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE"
       }
     ],
     "source": {
@@ -486,6 +554,18 @@
         "base": "EXONERATION_BASE",
         "mode": "EXCLUDE",
         "status": "PENDING_VERIFICATION"
+      },
+      {
+        "base": "CO.WITHHOLDING_GROSS",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
+      },
+      {
+        "base": "CO.WITHHOLDING_NET",
+        "mode": "INCLUDE",
+        "status": "PENDING_VERIFICATION",
+        "note": "Se trata como pago laboral gravado; el alcance para retención no está revisado (PENDING_VERIFICATION)."
       }
     ],
     "source": {
@@ -810,6 +890,28 @@
       "official_url": "https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm",
       "verified_at": "2026-09-24",
       "publication_date": "2021-07-15"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING"
+    }
+  },
+  {
+    "concept": "WITHHOLDING_TAX_CALC",
+    "role": "EMPLOYEE_DEDUCTION",
+    "label_key": "retencion_fuente",
+    "label": {
+      "es": "Retención en la fuente (calculada, art. 383 ET)",
+      "en": "Withholding tax (calculated, art. 383 ET)"
+    },
+    "treatments": [],
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "DIAN (Oficio 901007 de 2020, cita del art. 383 ET modificado por la Ley 2010/2019 art. 42)",
+      "legal_reference": "Estatuto Tributario art. 383: tabla de retención en la fuente en UVT (0 % hasta 95; 19 %, 28 % +10, 33 % +69, 35 % +162, 37 % +268, 39 % +770 UVT)",
+      "official_url": "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_901007_2020.htm",
+      "verified_at": "2026-09-24",
+      "note": "La tabla se verificó en la cita de la DIAN (el texto del Senado la trae como imagen)."
     },
     "verification": {
       "interpretation_status": "UNREVIEWED",

@@ -420,8 +420,19 @@
       "professional_validation": "PENDING"
     },
     "implementation_status": "PARTIAL",
-    "notes": "El motor no calcula el impuesto; solo traslada el valor digitado y lo marca como EXTERNAL_INPUT.",
-    "input_type": "EXTERNAL_INPUT"
+    "notes": "Modo MANUAL (por defecto): traslada el valor digitado y lo marca EXTERNAL_INPUT. Con withholding_mode=CALCULATED lo reemplaza la regla CO.WITHHOLDING_TAX_CALC.",
+    "input_type": "EXTERNAL_INPUT",
+    "conditions": {
+      "left": {
+        "input": "employment.withholding_mode",
+        "default": "MANUAL",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "MANUAL"
+      }
+    }
   },
   {
     "rule_id": "CO.AFC_DEDUCTION.1",
@@ -1477,5 +1488,196 @@
       "professional_validation": "PENDING"
     },
     "implementation_status": "IMPLEMENTED"
+  },
+  {
+    "rule_id": "CO.WITHHOLDING_TAX_CALC.1",
+    "rule_key": "CO.WITHHOLDING_TAX_CALC",
+    "version": "1",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "concept": "WITHHOLDING_TAX_CALC",
+    "category": "TAX",
+    "kind": "EMPLOYEE_DEDUCTION",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "anchor": "period_end",
+    "straddle_policy": "ERROR",
+    "priority": 100,
+    "conditions": {
+      "left": {
+        "input": "employment.withholding_mode",
+        "default": "MANUAL",
+        "as": "text"
+      },
+      "op": "==",
+      "right": {
+        "value": "CALCULATED"
+      }
+    },
+    "calculation": {
+      "mechanism": "depurated_table_tax",
+      "rounding": "tax",
+      "params": {
+        "income": {
+          "base": "CO.WITHHOLDING_GROSS"
+        },
+        "base": {
+          "base": "CO.WITHHOLDING_NET"
+        },
+        "unit": {
+          "reference": {
+            "code": "UVT"
+          }
+        },
+        "deductions": [
+          {
+            "key": "dependientes_art_387",
+            "amount": {
+              "base": "CO.WITHHOLDING_GROSS"
+            },
+            "cap_share_of_income": "0.10",
+            "cap_units": "32",
+            "enabled": {
+              "input": "employment.has_dependents",
+              "default": false
+            }
+          },
+          {
+            "key": "salud_prepagada_art_387",
+            "amount": {
+              "input": "amounts.prepaid_health",
+              "default": "0"
+            },
+            "cap_units": "16"
+          },
+          {
+            "key": "intereses_vivienda",
+            "amount": {
+              "input": "amounts.housing_interest",
+              "default": "0"
+            },
+            "cap_units": "100"
+          }
+        ],
+        "other_exempt": [
+          {
+            "key": "afc",
+            "amount": {
+              "line": "AFC_DEDUCTION"
+            }
+          },
+          {
+            "key": "pension_voluntaria",
+            "amount": {
+              "line": "VOLUNTARY_PENSION"
+            }
+          }
+        ],
+        "exempt_share": {
+          "share": "0.25",
+          "annual_cap_units": "790",
+          "periods_per_year": "12"
+        },
+        "global_cap": {
+          "share": "0.40",
+          "annual_cap_units": "1340",
+          "periods_per_year": "12"
+        },
+        "table": [
+          {
+            "from": "0",
+            "to": "95",
+            "rate": "0",
+            "plus": "0"
+          },
+          {
+            "from": "95",
+            "to": "150",
+            "rate": "0.19",
+            "plus": "0"
+          },
+          {
+            "from": "150",
+            "to": "360",
+            "rate": "0.28",
+            "plus": "10"
+          },
+          {
+            "from": "360",
+            "to": "640",
+            "rate": "0.33",
+            "plus": "69"
+          },
+          {
+            "from": "640",
+            "to": "945",
+            "rate": "0.35",
+            "plus": "162"
+          },
+          {
+            "from": "945",
+            "to": "2300",
+            "rate": "0.37",
+            "plus": "268"
+          },
+          {
+            "from": "2300",
+            "to": null,
+            "rate": "0.39",
+            "plus": "770"
+          }
+        ]
+      }
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "DIAN (Oficio 901007 de 2020, cita del art. 383 ET modificado por la Ley 2010/2019 art. 42)",
+      "legal_reference": "Estatuto Tributario art. 383: tabla de retención en la fuente en UVT (0 % hasta 95; 19 %, 28 % +10, 33 % +69, 35 % +162, 37 % +268, 39 % +770 UVT)",
+      "official_url": "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_901007_2020.htm",
+      "verified_at": "2026-09-24",
+      "note": "La tabla se verificó en la cita de la DIAN (el texto del Senado la trae como imagen)."
+    },
+    "implementation_status": "PARTIAL",
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "PENDING_VERIFICATION: procedimiento 1 (art. 385) mensual sobre pagos laborales. Verificados: tabla art. 383, deducciones art. 387, tope 40 % art. 388, 25 % con 790 UVT (art. 206 num. 10) y UVT 2026. NO verificados: tope de 1.340 UVT, intereses de vivienda (100 UVT), límites de AFC/pensión voluntaria (art. 126-1/126-4), redondeo al múltiplo de mil, procedimiento 2, retención sobre primas/cesantías y liquidación.",
+      "open_question": true
+    },
+    "notes": "El auxilio de transporte y los pagos no salariales se tratan como ingreso laboral gravado (fuente PENDING).",
+    "sources_extra": {
+      "art_387": {
+        "status": "OFFICIAL",
+        "authority": "Secretaría del Senado (compilación oficial del Estatuto Tributario)",
+        "legal_reference": "ET art. 387: deducción por dependientes hasta 10 % del ingreso laboral del mes con máximo 32 UVT; pagos por salud hasta 16 UVT mensuales; intereses de vivienda según reglamento",
+        "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html",
+        "verified_at": "2026-09-24"
+      },
+      "art_206_10": {
+        "status": "OFFICIAL",
+        "authority": "Secretaría del Senado (compilación oficial del Estatuto Tributario)",
+        "legal_reference": "ET art. 206 num. 10 (Ley 2277/2022 art. 2): renta exenta del 25 % de los pagos laborales, limitada a 790 UVT anuales, calculada después de detraer ingresos no constitutivos, deducciones y demás exentas",
+        "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html",
+        "verified_at": "2026-09-24"
+      },
+      "tope_1340_uvt": {
+        "status": "PENDING",
+        "authority": null,
+        "legal_reference": null,
+        "official_url": null,
+        "verified_at": null,
+        "note": "Límite anual de 1.340 UVT a deducciones y rentas exentas (ET art. 336, Ley 2277/2022): texto NO consultado en esta ejecución."
+      },
+      "intereses_vivienda": {
+        "status": "PENDING",
+        "authority": null,
+        "legal_reference": null,
+        "official_url": null,
+        "verified_at": null,
+        "note": "Deducción por intereses de vivienda (ET art. 119; tope 100 UVT mensuales del reglamento): NO verificada en esta ejecución."
+      }
+    }
   }
 ]

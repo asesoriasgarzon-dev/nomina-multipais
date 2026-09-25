@@ -159,5 +159,53 @@
       "interpretation_status": "UNREVIEWED",
       "professional_validation": "PENDING"
     }
+  },
+  {
+    "base": "CO.WITHHOLDING_GROSS",
+    "country": "CO",
+    "description": "Ingreso laboral bruto del mes para la retención (pagos laborales gravados)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado (compilación oficial del Estatuto Tributario)",
+      "legal_reference": "ET art. 388: deducciones y rentas exentas no superan el 40 % del pago menos los ingresos no constitutivos de renta",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "UNREVIEWED",
+      "professional_validation": "PENDING",
+      "note": "PENDING_VERIFICATION: qué pagos laborales integran el ingreso (vacaciones compensadas, incapacidades, no salariales) no está revisado.",
+      "open_question": true
+    }
+  },
+  {
+    "base": "CO.WITHHOLDING_NET",
+    "country": "CO",
+    "description": "Ingreso laboral menos los aportes obligatorios de salud, pensión y FSP (ingresos no constitutivos de renta)",
+    "effective": {
+      "from": "2026-01-01",
+      "to": null
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "Secretaría del Senado (compilación oficial del Estatuto Tributario)",
+      "legal_reference": "ET art. 388: deducciones y rentas exentas no superan el 40 % del pago menos los ingresos no constitutivos de renta",
+      "official_url": "https://www.secretariasenado.gov.co/senado/basedoc/estatuto_tributario.html",
+      "verified_at": "2026-09-24"
+    },
+    "subtract_lines": [
+      "HEALTH_EMPLOYEE",
+      "PENSION_EMPLOYEE",
+      "FSP_EMPLOYEE"
+    ],
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING",
+      "note": "Los aportes obligatorios del trabajador se restan como ingresos no constitutivos de renta."
+    }
   }
 ]

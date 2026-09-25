@@ -42,7 +42,11 @@ class ColombiaNormativeEngine(NormativeLiquidationMixin, ColombiaForm, PayrollEn
 
     COUNTRY = "CO"
 
-    NOVEDADES_CAMPOS = [("tipo_salario", "tipo_salario", "select:ORDINARY|INTEGRAL", "ORDINARY")] \
+    NOVEDADES_CAMPOS = [("tipo_salario", "tipo_salario", "select:ORDINARY|INTEGRAL", "ORDINARY"),
+                        ("retencion_modo", "retencion_modo", "select:CALCULATED|MANUAL", "CALCULATED"),
+                        ("tiene_dependientes", "tiene_dependientes", "select:NO|YES", "NO"),
+                        ("salud_prepagada", "salud_prepagada", "0.01", "0"),
+                        ("intereses_vivienda", "intereses_vivienda", "0.01", "0")] \
         + ColombiaForm.NOVEDADES_CAMPOS
 
     def build_payload(self, empleado, novedades, periodo):
@@ -59,12 +63,17 @@ class ColombiaNormativeEngine(NormativeLiquidationMixin, ColombiaForm, PayrollEn
         except Exception as exc:
             raise InputValidationError("los días deben ser numéricos") from exc
         amounts = {code: _text(novedades.get(key)) for key, code in AMOUNT_MAP.items()}
+        amounts["prepaid_health"] = _text(novedades.get("salud_prepagada"))
+        amounts["housing_interest"] = _text(novedades.get("intereses_vivienda"))
         return {
             "country": "CO", "jurisdictions": ["NATIONAL"], "run_type": "REGULAR",
             "period": {"start": start, "end": end},
             "employee": {"id": _text(empleado.get("identificacion"), ""), "name": _text(empleado.get("nombre"), "")},
             "employer": {"exonerated_art_114_1": bool(novedades.get("exonerado_aportes", True)), "arl_class": "I"},
             "employment": {"salary_type": _text(novedades.get("tipo_salario"), "ORDINARY"),
+                           # sin el campo (API/pruebas) la retención sigue siendo el valor digitado; el formulario ofrece CALCULATED
+                           "withholding_mode": _text(novedades.get("retencion_modo"), "MANUAL"),
+                           "has_dependents": novedades.get("tiene_dependientes") == "YES",
                            "monthly_salary": _text(empleado.get("salario_contrato"), "0"),
                            "contract_type": "INDEFINITE"},
             "time": {"worked_days": worked, "incapacity_employer_days": incap, "vacation_days": vacation_days,

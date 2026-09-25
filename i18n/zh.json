@@ -277,5 +277,13 @@
   "term_terminacion_obra": "工程/任务完成",
   "term_periodo_prueba": "试用期内终止",
   "term_jubilacion": "退休",
-  "term_muerte": "员工死亡"
+  "term_muerte": "员工死亡",
+  "retencion_modo": "预扣税：取得方式",
+  "opt_calculated": "计算（ET第383条，暂定）",
+  "opt_manual": "使用下方输入值",
+  "tiene_dependientes": "是否扣除受抚养人？（ET第387条）",
+  "opt_yes": "是",
+  "opt_no": "否",
+  "salud_prepagada": "当月商业医疗支付（COP）",
+  "intereses_vivienda": "当月住房贷款利息（COP）"
 }

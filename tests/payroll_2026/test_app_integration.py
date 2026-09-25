@@ -61,7 +61,7 @@ def test_cada_pais_muestra_el_panel_de_capacidades_con_datos_reales(client, cc):
 def test_co_muestra_cobertura_y_capacidades(client):
     _, body = page(client, "/pais/CO")
     assert "Motor normativo (reglas versionadas)" in body
-    assert "No implementado" in body and "Pendiente de validación" in body       # impuesto y validación profesional
+    assert "Parcial" in body and "Pendiente de validación" in body
     assert "sin validación profesional" in body
 
 
@@ -86,9 +86,9 @@ def test_formulario_de_colombia_ofrece_tipo_de_salario_integral(client):
 def test_flujo_completo_colombia_demo_con_auditoria_y_reproduccion(client):
     nomina_id, run = post_run(client)
     _, body = page(client, f"/resultado/{nomina_id}")
-    assert "7049221.23" in body                       # neto normativo (sin auxilio: 8 M > 2 SMMLV)
+    assert "7049226.26" in body                       # neto normativo (sin auxilio: 8 M > 2 SMMLV)
     assert "232488.67" not in body                    # el auxilio que el motor heredado pagaba a 8 M
-    assert "Ver auditoría y explicación" in body and "valor digitado por el usuario" in body
+    assert "Ver auditoría y explicación" in body and "WITHHOLDING_TAX_CALC" in body
 
     run_url = f"/run/{run['db_id']}"
     _, run_body = page(client, run_url)
@@ -103,12 +103,12 @@ def test_el_auxilio_de_transporte_no_aparece_para_8_millones(client):
     nomina_id, _ = post_run(client)
     nomina = models.obtener_nomina(nomina_id)
     assert "auxilio_transporte" not in nomina["resultado"]["devengado"]
-    assert nomina["resultado"]["neto_pagado"] == pytest.approx(7049221.23, abs=0.01)
+    assert nomina["resultado"]["neto_pagado"] == pytest.approx(7049226.26, abs=0.01)   # retención CALCULADA (art. 383 ET) en vez de los 69.001 digitados
 
 
 def test_la_ficha_de_una_corrida_guarda_snapshots_y_versiones(client):
     _, run = post_run(client)
-    assert run["engine_version"] == "1.1.0" and run["ruleset_version"] == "CO-2026.2.0"
+    assert run["engine_version"] == "1.1.0" and run["ruleset_version"] == "CO-2026.2.1"
     assert run["input_snapshot"]["payload"]["employment"]["monthly_salary"] == "8000000"
     assert models.obtener_snapshot_normativo(run["normative_snapshot"]["content_hash"])["manifest"]["country"] == "CO"
     assert run["es_demo"] is True

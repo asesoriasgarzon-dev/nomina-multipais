@@ -364,7 +364,8 @@ def test_co_retencion_manual_se_marca_external_input_no_es_motor_tributario():
     line = next(l for l in run.trace["lines"] if l["concept"] == "WITHHOLDING_TAX")
     assert line["input_type"] == "EXTERNAL_INPUT"
     assert any(w["type"] == "EXTERNAL_INPUT" for w in run.warnings)
-    assert run.manifest["capabilities"]["income_tax_withholding"]["status"] == "NOT_IMPLEMENTED"
+    assert run.manifest["capabilities"]["income_tax_withholding"]["status"] == "PARTIALLY_IMPLEMENTED"     # solo procedimiento 1 en modo CALCULATED
+    assert run.line("WITHHOLDING_TAX_CALC") is None                                                       # modo MANUAL por defecto: no se calcula
 
 
 def test_co_historico_reproducible_aunque_cambie_una_tasa_despues():

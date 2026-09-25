@@ -27,7 +27,7 @@ def test_cada_contexto_declara_los_diez_componentes_criticos(cc):
 def test_ningun_pais_es_implementado_ni_tiene_motor_completo(cc):
     info = capabilities.describe(cc)
     assert info["complete_engine"] is False and info["state"] != "implementado"
-    assert info["components"]["tax"]["status"] == "NOT_IMPLEMENTED"                    # el impuesto sigue siendo un valor digitado
+    assert info["components"]["tax"]["status"] == ("PARTIALLY_IMPLEMENTED" if cc == "CO" else "NOT_IMPLEMENTED")   # solo CO calcula (proc. 1)
     assert info["components"]["historical_recalculation"]["status"] == "PARTIALLY_IMPLEMENTED"     # sin ajuste contable ni encadenamiento
     assert info["components"]["audit"]["status"] == "IMPLEMENTED"
 

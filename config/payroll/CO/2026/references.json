@@ -133,5 +133,28 @@
       "note": "Fecha derivada del texto: entrada en vigencia 15-jul-2021; 'transcurridos dos años' (47 h), 'tres años' (46 h) y 'a partir del cuarto año' -2 h cada año (44 h y 42 h). Interpretación: cada reducción rige desde el 15-jul."
     },
     "note": "Fecha derivada del texto: entrada en vigencia 15-jul-2021; 'transcurridos dos años' (47 h), 'tres años' (46 h) y 'a partir del cuarto año' -2 h cada año (44 h y 42 h). Interpretación: cada reducción rige desde el 15-jul."
+  },
+  {
+    "ref_id": "CO.UVT.2026",
+    "code": "UVT",
+    "country": "CO",
+    "jurisdiction": "NATIONAL",
+    "unit": "COP",
+    "value": "52374",
+    "effective": {
+      "from": "2026-01-01",
+      "to": "2026-12-31"
+    },
+    "source": {
+      "status": "OFFICIAL",
+      "authority": "DIAN",
+      "legal_reference": "Resolución 000238 de 15-dic-2025: UVT 2026 = $52.374",
+      "official_url": "https://normograma.dian.gov.co/dian/compilacion/docs/resolucion_dian_0238_2025.htm",
+      "verified_at": "2026-09-24"
+    },
+    "verification": {
+      "interpretation_status": "INTERPRETED",
+      "professional_validation": "PENDING"
+    }
   }
 ]

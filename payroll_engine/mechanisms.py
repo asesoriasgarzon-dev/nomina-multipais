@@ -157,3 +157,7 @@ def mechanism_bases(params):
 from .mechanisms_termination import TERMINATION_MECHANISMS  # noqa: E402
 
 MECHANISMS.update(TERMINATION_MECHANISMS)
+
+from .mechanisms_tax import TAX_MECHANISMS  # noqa: E402
+
+MECHANISMS.update(TAX_MECHANISMS)

@@ -6,7 +6,7 @@ Cada celda es el estado real del dato: para salarios mínimos y jornada, el peor
 
 | País | Salario mínimo / unidad | Jornada | Horas extra | Recargos | Vacaciones | Seguridad social | Impuesto / retención | Prestaciones legales | Terminación |
 |---|---|---|---|---|---|---|---|---|---|
-| **CO** Colombia | OFFICIAL (1 vigencia) | OFFICIAL (2 vigencias) | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
+| **CO** Colombia | OFFICIAL (1 vigencia) | OFFICIAL (2 vigencias) | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
 | **MX** México | OFFICIAL (1 vigencia) | OFFICIAL (5 vigencias) | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
 | **PE** Perú | SECONDARY (1 vigencia) | PENDING (1 vigencia) | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
 | **CL** Chile | PENDING (2 vigencias) | OFFICIAL (3 vigencias) | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
@@ -44,7 +44,7 @@ Cada celda es el estado real del dato: para salarios mínimos y jornada, el peor
 - `working_hours`: **PENDING_VALIDATION** — Jornada por vigencia: 44 h hasta 14-jul-2026; 42 h desde 15-jul-2026.
 - `benefit_accruals`: **PARTIALLY_IMPLEMENTED** — Provisiones mensuales; sin calendario de pago ni consignación.
 - `non_salary_share_40`: **PENDING_VALIDATION** — Ley 1393 art. 30: fórmula literal (exceso sobre el 40 % del total de la remuneración integra el IBC) ejecutada como CÁLCULO PROVISIONAL; alcance del 'total de la remuneración' según UGPP/jurisprudencia de unificación y salario integral NO verificados.
-- `income_tax_withholding`: **NOT_IMPLEMENTED** — La retención en la fuente es un valor digitado (EXTERNAL_INPUT); no hay motor tributario.
+- `income_tax_withholding`: **PARTIALLY_IMPLEMENTED** — Retención de nómina mensual (procedimiento 1, art. 383 ET) con UVT 2026 oficial, deducciones del art. 387, tope 40 % y renta exenta del 25 % (790 UVT), como modo CALCULATED opt-in. Modo MANUAL (por defecto en la API) sigue digitado. Sin validación profesional.
 - `overtime_and_premiums`: **PARTIALLY_IMPLEMENTED** — Recargos nocturno/extra/dominical (Ley 2466: 80 % → 90 % el 1-jul-2026 → 100 % el 1-jul-2027) desde datos; acumulación de recargos y clasificación de horas: interpretación sin validar.
 - `termination`: **PARTIALLY_IMPLEMENTED** — Cesantías, intereses, prima, vacaciones e indemnización del art. 64 (indefinido <10/>=10 SMMLV, término fijo, obra o labor) ejecutan desde datos con fuentes oficiales del CST; intereses de cesantías y auxilio en las bases con fuente PENDING; sin validación profesional; sin indemnización moratoria (art. 65).
 - `vacation`: **PARTIALLY_IMPLEMENTED** — Compensación de vacaciones proporcionales y pendientes al retiro; goce/programación no modelados.

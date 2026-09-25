@@ -314,8 +314,9 @@ def test_estado_derivado_del_manifiesto():
 
 
 def test_todos_los_paises_con_motor_declaran_impuesto_no_implementado():
-    for cc in ("CO", "MX", "PE", "CL", "BR", "AR", "EC"):
+    for cc in ("MX", "PE", "CL", "BR", "AR", "EC"):
         assert describe(cc)["capabilities"]["income_tax_withholding"]["status"] == "NOT_IMPLEMENTED"
+    assert describe("CO")["capabilities"]["income_tax_withholding"]["status"] == "PARTIALLY_IMPLEMENTED"     # solo Colombia, procedimiento 1
 
 
 def test_cobertura_se_calcula_de_los_datos():

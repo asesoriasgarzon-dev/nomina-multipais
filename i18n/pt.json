@@ -277,5 +277,13 @@
   "term_terminacion_obra": "Conclusão da obra ou serviço",
   "term_periodo_prueba": "Término no período de experiência",
   "term_jubilacion": "Aposentadoria",
-  "term_muerte": "Falecimento do empregado"
+  "term_muerte": "Falecimento do empregado",
+  "retencion_modo": "Retenção na fonte: como é obtida",
+  "opt_calculated": "Calcular (art. 383 ET, provisório)",
+  "opt_manual": "Valor digitado abaixo",
+  "tiene_dependientes": "Deduz por dependentes? (art. 387 ET)",
+  "opt_yes": "Sim",
+  "opt_no": "Não",
+  "salud_prepagada": "Pagamentos de saúde privada do mês (COP)",
+  "intereses_vivienda": "Juros de financiamento habitacional do mês (COP)"
 }

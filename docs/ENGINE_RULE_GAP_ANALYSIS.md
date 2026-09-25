@@ -4,7 +4,7 @@
 
 ## 1. Resultado de la suite de pruebas al generar este documento
 
-`============================= 930 passed in 8.67s =============================` — passed **930** · failed **0** · skipped **0** · errors **0**
+`============================ 954 passed in 10.96s =============================` — passed **954** · failed **0** · skipped **0** · errors **0**
 
 ## 2. Arquitectura implementada
 
@@ -54,7 +54,7 @@
 
 | País | payroll_monthly | reference_units | working_hours | overtime_and_premiums | surcharges | vacation | social_security | income_tax_withholding | benefit_accruals | termination |
 |---|---|---|---|---|---|---|---|---|---|---|
-| CO | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
+| CO | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
 | MX | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
 | PE | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
 | CL | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED |
@@ -68,7 +68,7 @@
 
 | País | monthly_payroll | overtime | surcharges | vacation | social_security | benefits | termination | tax | audit | historical_recalculation | ¿motor completo? |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| CO | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | IMPLEMENTED | PARTIALLY_IMPLEMENTED | NO |
+| CO | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PENDING_VALIDATION | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | IMPLEMENTED | PARTIALLY_IMPLEMENTED | NO |
 | MX | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | IMPLEMENTED | PARTIALLY_IMPLEMENTED | NO |
 | PE | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | IMPLEMENTED | PARTIALLY_IMPLEMENTED | NO |
 | CL | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | PARTIALLY_IMPLEMENTED | NOT_IMPLEMENTED | IMPLEMENTED | PARTIALLY_IMPLEMENTED | NO |
@@ -82,7 +82,6 @@
 
 ### CO
 
-- Retención en la fuente (tabla UVT): NOT_IMPLEMENTED.
 - Piso de incapacidad (SMMLV) y tramos por día: PENDING_VERIFICATION.
 - Mínimo de IBC (1 SMMLV) para periodos parciales: solo advertencia.
 - Redondeo de aportes PILA: PENDING_VERIFICATION.
@@ -93,7 +92,7 @@
 - Intereses de cesantías (Ley 52/1975) y auxilio de transporte en bases de cesantías/prima: fuente PENDING_VERIFICATION.
 - Ley 1393/2010 art. 30 (40 %): fórmula literal implementada; alcance del 'total de la remuneración' según UGPP/Consejo de Estado NO verificado (ver docs/CO_LEY_1393_AUDITORIA.md).
 - Cesantías del régimen tradicional (contratos anteriores a 1991): NOT_IMPLEMENTED (validación bloquea).
-- Retención en la fuente sobre la liquidación: NOT_IMPLEMENTED.
+- Retención en la fuente: solo procedimiento 1 mensual; sin procedimiento 2, sin retención sobre prima/cesantías/liquidación, sin redondeo al múltiplo de mil; tope de 1.340 UVT, intereses de vivienda y límites de AFC/pensión voluntaria con fuente PENDING_VERIFICATION.
 
 ### MX
 

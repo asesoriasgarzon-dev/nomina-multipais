@@ -277,5 +277,13 @@
   "term_terminacion_obra": "工程／任務完成",
   "term_periodo_prueba": "試用期內終止",
   "term_jubilacion": "退休",
-  "term_muerte": "員工死亡"
+  "term_muerte": "員工死亡",
+  "retencion_modo": "預扣稅：取得方式",
+  "opt_calculated": "計算（ET第383條，暫定）",
+  "opt_manual": "使用下方輸入值",
+  "tiene_dependientes": "是否扣除受撫養人？（ET第387條）",
+  "opt_yes": "是",
+  "opt_no": "否",
+  "salud_prepagada": "當月商業醫療支付（COP）",
+  "intereses_vivienda": "當月住房貸款利息（COP）"
 }

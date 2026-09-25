@@ -6,9 +6,9 @@
 
 ## CO — Colombia
 
-- **Estado derivado del manifiesto:** `parcial` · ruta `NEW_ENGINE` · versión de reglas `CO-2026.2.0` · fecha normativa 2026-09-24 · moneda COP
+- **Estado derivado del manifiesto:** `parcial` · ruta `NEW_ENGINE` · versión de reglas `CO-2026.2.1` · fecha normativa 2026-09-24 · moneda COP
 - `local_payroll_engine`: true · `consolidation_context`: false
-- **Cobertura:** 52 reglas — 31 implementadas, 21 parciales, 0 NOT_IMPLEMENTED · 37 sin fuente oficial · 52 sin validación profesional
+- **Cobertura:** 53 reglas — 31 implementadas, 22 parciales, 0 NOT_IMPLEMENTED · 37 sin fuente oficial · 53 sin validación profesional
 
 ### Referencias (unidades y parámetros con vigencia)
 
@@ -20,6 +20,7 @@
 | `SUNDAY_HOLIDAY_SURCHARGE` | NATIONAL | 0.90 | fracción sobre el salario ordinario | 2026-07-01 | 2027-06-30 | OFFICIAL | Ley 2466 de 2025 art. 14 (CST art. 179): recargo dominical/festivo 100 %, gradual: 80 % desde el 1-jul-2025, 90 % desde el 1-jul-2026, 100 % desde el  https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html |
 | `SUNDAY_HOLIDAY_SURCHARGE` | NATIONAL | 1.00 | fracción sobre el salario ordinario | 2027-07-01 | — | OFFICIAL | Ley 2466 de 2025 art. 14 (CST art. 179): recargo dominical/festivo 100 %, gradual: 80 % desde el 1-jul-2025, 90 % desde el 1-jul-2026, 100 % desde el  https://www.secretariasenado.gov.co/senado/basedoc/ley_2466_2025.html |
 | `TRANSPORT_ALLOWANCE` | NATIONAL | 249095 | COP/mes | 2026-01-01 | — | OFFICIAL | Decreto 1470 de 2025 art. 1-2 (Diario Oficial 53.350, 29-dic-2025) https://www.cancilleria.gov.co/normograma/compilacion/docs/decreto_1470_2025.htm |
+| `UVT` | NATIONAL | 52374 | COP | 2026-01-01 | 2026-12-31 | OFFICIAL | Resolución 000238 de 15-dic-2025: UVT 2026 = $52.374 https://normograma.dian.gov.co/dian/compilacion/docs/resolucion_dian_0238_2025.htm |
 | `WORKWEEK_HOURS` | NATIONAL | 44 | horas/semana | 2025-07-15 | 2026-07-14 | OFFICIAL | Ley 2101 de 2021, art. 3 (Diario Oficial 51.736, 15-jul-2021) https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm |
 | `WORKWEEK_HOURS` | NATIONAL | 42 | horas/semana | 2026-07-15 | — | OFFICIAL | Ley 2101 de 2021, art. 3 (Diario Oficial 51.736, 15-jul-2021) https://www.cancilleria.gov.co/normograma/compilacion/docs/ley_2101_2021.htm |
 
@@ -33,6 +34,8 @@
 | `BENEFIT_BASE` | Base de prestaciones sociales (prima, cesantías, intereses). | — | PENDING |
 | `VACATION_BASE` | Base de la provisión de vacaciones. | — | PENDING |
 | `EXONERATION_BASE` | Salario devengado en el mes para la exoneración del art. 114-1 ET. | — | SECONDARY |
+| `CO.WITHHOLDING_GROSS` | Ingreso laboral bruto del mes para la retención (pagos laborales gravados) | — | OFFICIAL |
+| `CO.WITHHOLDING_NET` | Ingreso laboral menos los aportes obligatorios de salud, pensión y FSP (ingresos no constitutivos de renta) | — | OFFICIAL |
 | `CO.CESANTIAS_BASE` | Base de cesantías: salario (art. 253) + auxilio de transporte | — | OFFICIAL |
 | `CO.PRIMA_BASE` | Base de prima de servicios: salario + auxilio de transporte | — | OFFICIAL |
 | `CO.VACATION_BASE` | Base de vacaciones: salario ordinario, sin auxilio de transporte (art. 192) | — | OFFICIAL |
@@ -42,15 +45,15 @@
 
 | Concepto | Rol | Etiqueta i18n | Tratamientos (base → modo) |
 |---|---|---|---|
-| `BASE_SALARY` | EARNING | valor_salario_devengado | IBC→INCLUDE; IBC→INCLUDE; RISK_BASE→INCLUDE; RISK_BASE→INCLUDE*; PARAFISCAL_BASE→INCLUDE; PARAFISCAL_BASE→INCLUDE*; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE; EXONERATION_BASE→INCLUDE |
-| `VACATION_ENJOYED` | EARNING | valor_vac_disfrutadas | IBC→INCLUDE; RISK_BASE→EXCLUDE*; PARAFISCAL_BASE→INCLUDE; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE |
-| `VACATION_COMPENSATED` | EARNING | valor_vac_compensadas | IBC→INCLUDE*; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→INCLUDE*; BENEFIT_BASE→EXCLUDE; VACATION_BASE→EXCLUDE; EXONERATION_BASE→INCLUDE |
-| `INCAPACITY_EMPLOYER` | EARNING | incapacidad_empresa | IBC→INCLUDE; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→EXCLUDE*; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE |
+| `BASE_SALARY` | EARNING | valor_salario_devengado | IBC→INCLUDE; IBC→INCLUDE; RISK_BASE→INCLUDE; RISK_BASE→INCLUDE*; PARAFISCAL_BASE→INCLUDE; PARAFISCAL_BASE→INCLUDE*; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE; EXONERATION_BASE→INCLUDE; CO.WITHHOLDING_GROSS→INCLUDE; CO.WITHHOLDING_NET→INCLUDE |
+| `VACATION_ENJOYED` | EARNING | valor_vac_disfrutadas | IBC→INCLUDE; RISK_BASE→EXCLUDE*; PARAFISCAL_BASE→INCLUDE; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE; CO.WITHHOLDING_GROSS→INCLUDE; CO.WITHHOLDING_NET→INCLUDE |
+| `VACATION_COMPENSATED` | EARNING | valor_vac_compensadas | IBC→INCLUDE*; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→INCLUDE*; BENEFIT_BASE→EXCLUDE; VACATION_BASE→EXCLUDE; EXONERATION_BASE→INCLUDE; CO.WITHHOLDING_GROSS→INCLUDE*; CO.WITHHOLDING_NET→INCLUDE* |
+| `INCAPACITY_EMPLOYER` | EARNING | incapacidad_empresa | IBC→INCLUDE; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→EXCLUDE*; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE; CO.WITHHOLDING_GROSS→INCLUDE*; CO.WITHHOLDING_NET→INCLUDE* |
 | `INCAPACITY_EPS` | EARNING | incapacidad_valor_eps | IBC→INCLUDE; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→EXCLUDE*; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE |
-| `BONUS_SALARY` | EARNING | bonos_comisiones | IBC→INCLUDE; RISK_BASE→INCLUDE; PARAFISCAL_BASE→INCLUDE; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE |
-| `BONUS_NON_SALARY` | EARNING | bonificaciones_no_salariales | IBC→SPECIAL_RULE*; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→EXCLUDE; BENEFIT_BASE→EXCLUDE; VACATION_BASE→EXCLUDE; EXONERATION_BASE→EXCLUDE |
-| `TRM_ADJUSTMENT` | EARNING | ajuste_trm | IBC→INCLUDE*; RISK_BASE→INCLUDE*; PARAFISCAL_BASE→INCLUDE*; BENEFIT_BASE→INCLUDE*; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE* |
-| `TRANSPORT_ALLOWANCE` | EARNING | auxilio_transporte | IBC→EXCLUDE*; RISK_BASE→EXCLUDE*; PARAFISCAL_BASE→EXCLUDE*; BENEFIT_BASE→INCLUDE*; VACATION_BASE→EXCLUDE; EXONERATION_BASE→EXCLUDE* |
+| `BONUS_SALARY` | EARNING | bonos_comisiones | IBC→INCLUDE; RISK_BASE→INCLUDE; PARAFISCAL_BASE→INCLUDE; BENEFIT_BASE→INCLUDE; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE; CO.WITHHOLDING_GROSS→INCLUDE; CO.WITHHOLDING_NET→INCLUDE |
+| `BONUS_NON_SALARY` | EARNING | bonificaciones_no_salariales | IBC→SPECIAL_RULE*; RISK_BASE→EXCLUDE; PARAFISCAL_BASE→EXCLUDE; BENEFIT_BASE→EXCLUDE; VACATION_BASE→EXCLUDE; EXONERATION_BASE→EXCLUDE; CO.WITHHOLDING_GROSS→INCLUDE*; CO.WITHHOLDING_NET→INCLUDE* |
+| `TRM_ADJUSTMENT` | EARNING | ajuste_trm | IBC→INCLUDE*; RISK_BASE→INCLUDE*; PARAFISCAL_BASE→INCLUDE*; BENEFIT_BASE→INCLUDE*; VACATION_BASE→INCLUDE*; EXONERATION_BASE→INCLUDE*; CO.WITHHOLDING_GROSS→INCLUDE; CO.WITHHOLDING_NET→INCLUDE |
+| `TRANSPORT_ALLOWANCE` | EARNING | auxilio_transporte | IBC→EXCLUDE*; RISK_BASE→EXCLUDE*; PARAFISCAL_BASE→EXCLUDE*; BENEFIT_BASE→INCLUDE*; VACATION_BASE→EXCLUDE; EXONERATION_BASE→EXCLUDE*; CO.WITHHOLDING_GROSS→INCLUDE*; CO.WITHHOLDING_NET→INCLUDE* |
 | `WITHHOLDING_TAX` | EMPLOYEE_DEDUCTION | retencion_fuente | — |
 | `AFC_DEDUCTION` | EMPLOYEE_DEDUCTION | descuento_afc | — |
 | `VOLUNTARY_PENSION` | EMPLOYEE_DEDUCTION | aportes_voluntarios_pension | — |
@@ -69,6 +72,7 @@
 | `CESANTIAS_ACCRUAL` | ACCRUAL | cesantias | — |
 | `CESANTIAS_INTEREST_ACCRUAL` | ACCRUAL | intereses_cesantias | — |
 | `MONTHLY_WORK_HOURS` | INFO | — | — |
+| `WITHHOLDING_TAX_CALC` | EMPLOYEE_DEDUCTION | retencion_fuente | — |
 | `CO_T_SALARY_12M` | INFO | — | CO.CESANTIAS_BASE→INCLUDE; CO.VACATION_BASE→INCLUDE; CO.INDEMNITY_BASE→INCLUDE |
 | `CO_T_SALARY_6M` | INFO | — | CO.PRIMA_BASE→INCLUDE |
 | `CO_T_TRANSPORT` | INFO | — | CO.CESANTIAS_BASE→INCLUDE*; CO.PRIMA_BASE→INCLUDE* |
@@ -153,6 +157,7 @@
 | `CO.VACATION_ENJOYED.1` | VACATION_ENJOYED | EARNING | 2026-01-01→… | period_end / USE_ANCHOR | fixed_amount_prorated {"amount":{"input":"employment.monthly_salary"},"proration":{"type":"THIRTY_DAY… | NOT_APPLICABLE | UNREVIEWED | PENDING | IMPLEMENTED |
 | `CO.VOLUNTARY_PENSION.1` | VOLUNTARY_PENSION | EMPLOYEE_DEDUCTION | 2026-01-01→… | period_end / USE_ANCHOR | pass_through {"amount":{"input":"amounts.VOLUNTARY_PENSION","default":"0"}} | NOT_APPLICABLE | UNREVIEWED | PENDING | IMPLEMENTED |
 | `CO.WITHHOLDING_TAX.1` | WITHHOLDING_TAX | EMPLOYEE_DEDUCTION | 2026-01-01→… | period_end / USE_ANCHOR | pass_through {"amount":{"input":"amounts.WITHHOLDING_TAX","default":"0"}} | PENDING | UNREVIEWED | PENDING | PARTIAL |
+| `CO.WITHHOLDING_TAX_CALC.1` | WITHHOLDING_TAX_CALC | EMPLOYEE_DEDUCTION | 2026-01-01→… | period_end / ERROR | depurated_table_tax {"income":{"base":"CO.WITHHOLDING_GROSS"},"base":{"base":"CO.WITHHOLDING_NET"},… | OFFICIAL | UNREVIEWED | PENDING | PARTIAL |
 | `CO.VAL.ACCOUNTED_DAYS.1` | — | VALIDATION | 2026-01-01→… | period_end / USE_ANCHOR | VALIDATION: Los días trabajados, de incapacidad y de vacaciones superan 30 (mes co | NOT_APPLICABLE | UNREVIEWED | PENDING | IMPLEMENTED |
 | `CO.VAL.ARL_CLASS.1` | — | VALIDATION | 2026-01-01→… | period_end / USE_ANCHOR | VALIDATION: Solo está implementada la clase de riesgo I de ARL; las clases II-V es | SECONDARY | UNREVIEWED | PENDING | IMPLEMENTED |
 | `CO.VAL.INTEGRAL_MINIMUM.1` | — | VALIDATION | 2026-01-01→… | period_end / USE_ANCHOR | VALIDATION: El salario integral no puede ser inferior a 13 SMMLV (10 SMMLV + 30% d | SECONDARY | INTERPRETED | PENDING | IMPLEMENTED |
@@ -170,7 +175,6 @@
 
 ### Brechas conocidas
 
-- Retención en la fuente (tabla UVT): NOT_IMPLEMENTED.
 - Piso de incapacidad (SMMLV) y tramos por día: PENDING_VERIFICATION.
 - Mínimo de IBC (1 SMMLV) para periodos parciales: solo advertencia.
 - Redondeo de aportes PILA: PENDING_VERIFICATION.
@@ -181,7 +185,7 @@
 - Intereses de cesantías (Ley 52/1975) y auxilio de transporte en bases de cesantías/prima: fuente PENDING_VERIFICATION.
 - Ley 1393/2010 art. 30 (40 %): fórmula literal implementada; alcance del 'total de la remuneración' según UGPP/Consejo de Estado NO verificado (ver docs/CO_LEY_1393_AUDITORIA.md).
 - Cesantías del régimen tradicional (contratos anteriores a 1991): NOT_IMPLEMENTED (validación bloquea).
-- Retención en la fuente sobre la liquidación: NOT_IMPLEMENTED.
+- Retención en la fuente: solo procedimiento 1 mensual; sin procedimiento 2, sin retención sobre prima/cesantías/liquidación, sin redondeo al múltiplo de mil; tope de 1.340 UVT, intereses de vivienda y límites de AFC/pensión voluntaria con fuente PENDING_VERIFICATION.
 
 ## MX — México
 

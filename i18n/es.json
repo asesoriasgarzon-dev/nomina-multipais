@@ -277,5 +277,13 @@
   "term_terminacion_obra": "Terminación de la obra o labor",
   "term_periodo_prueba": "Terminación en período de prueba",
   "term_jubilacion": "Jubilación / retiro",
-  "term_muerte": "Fallecimiento del trabajador"
+  "term_muerte": "Fallecimiento del trabajador",
+  "retencion_modo": "Retención en la fuente: cómo se obtiene",
+  "opt_calculated": "Calcular (art. 383 ET, provisional)",
+  "opt_manual": "Valor digitado abajo",
+  "tiene_dependientes": "¿Deduce por dependientes? (art. 387 ET)",
+  "opt_yes": "Sí",
+  "opt_no": "No",
+  "salud_prepagada": "Pagos de salud prepagada del mes (COP)",
+  "intereses_vivienda": "Intereses de vivienda del mes (COP)"
 }
